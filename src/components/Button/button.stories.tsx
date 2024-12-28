@@ -46,11 +46,13 @@ export const ButtonDisplay: Story = {
     docs: { disable: true },
   },
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px',
-    }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+      }}
+    >
       {/* 基础按钮组 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
         <Button>默认按钮</Button>
@@ -59,45 +61,83 @@ export const ButtonDisplay: Story = {
         <Button btnType="success">成功按钮</Button>
         <Button btnType="warning">警告按钮</Button>
         <Button btnType="danger">危险按钮</Button>
-        <Button btnType="link" href="#">链接按钮</Button>
+        <Button btnType="link" href="#">
+          链接按钮
+        </Button>
       </div>
 
       {/* 朴素按钮组 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
         <Button plain>朴素默认</Button>
-        <Button plain btnType="primary">朴素主要</Button>
-        <Button plain btnType="info">朴素信息</Button>
-        <Button plain btnType="success">朴素成功</Button>
-        <Button plain btnType="warning">朴素警告</Button>
-        <Button plain btnType="danger">朴素危险</Button>
+        <Button plain btnType="primary">
+          朴素主要
+        </Button>
+        <Button plain btnType="info">
+          朴素信息
+        </Button>
+        <Button plain btnType="success">
+          朴素成功
+        </Button>
+        <Button plain btnType="warning">
+          朴素警告
+        </Button>
+        <Button plain btnType="danger">
+          朴素危险
+        </Button>
       </div>
 
       {/* 圆角按钮组 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
         <Button circle>Default</Button>
-        <Button circle btnType="primary">Primary</Button>
-        <Button circle btnType="info">Info</Button>
-        <Button circle btnType="success">Success</Button>
-        <Button circle btnType="warning">Warning</Button>
-        <Button circle btnType="danger">Danger</Button>
+        <Button circle btnType="primary">
+          Primary
+        </Button>
+        <Button circle btnType="info">
+          Info
+        </Button>
+        <Button circle btnType="success">
+          Success
+        </Button>
+        <Button circle btnType="warning">
+          Warning
+        </Button>
+        <Button circle btnType="danger">
+          Danger
+        </Button>
       </div>
 
       {/* 禁用状态 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
         <Button disabled>禁用按钮</Button>
-        <Button disabled btnType="primary">禁用主要</Button>
-        <Button disabled btnType="info">禁用信息</Button>
-        <Button disabled btnType="success">禁用成功</Button>
-        <Button disabled btnType="warning">禁用警告</Button>
-        <Button disabled btnType="danger">禁用危险</Button>
-        <Button disabled btnType="link" href="#">禁用链接</Button>
+        <Button disabled btnType="primary">
+          禁用主要
+        </Button>
+        <Button disabled btnType="info">
+          禁用信息
+        </Button>
+        <Button disabled btnType="success">
+          禁用成功
+        </Button>
+        <Button disabled btnType="warning">
+          禁用警告
+        </Button>
+        <Button disabled btnType="danger">
+          禁用危险
+        </Button>
+        <Button disabled btnType="link" href="#">
+          禁用链接
+        </Button>
       </div>
 
       {/* 不同尺寸 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        <Button size="lg" btnType="primary">大号按钮</Button>
+        <Button size="lg" btnType="primary">
+          大号按钮
+        </Button>
         <Button btnType="primary">默认按钮</Button>
-        <Button size="sm" btnType="primary">小号按钮</Button>
+        <Button size="sm" btnType="primary">
+          小号按钮
+        </Button>
       </div>
     </div>
   ),
@@ -199,4 +239,3 @@ export const Plain: Story = {
     children: '朴素按钮',
   },
 };
-

@@ -1,4 +1,5 @@
 import tseslint from 'typescript-eslint';
+import prettier from 'eslint-plugin-prettier';
 
 export default [
   {
@@ -13,31 +14,48 @@ export default [
         project: './tsconfig.app.json'
       }
     },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      'prettier': prettier,
+    },
     rules: {
       // TypeScript 相关规则
-      '@typescript-eslint/no-explicit-any': 'warn', // 警告使用 any 类型
-      '@typescript-eslint/explicit-function-return-type': 'off', // 不强制要求函数返回类型
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // 未使用的变量报错，但忽略下划线开头的参数
-      '@typescript-eslint/no-empty-interface': 'warn', // 空接口警告
-      '@typescript-eslint/consistent-type-imports': 'error', // 强制使用 import type
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-empty-interface': 'warn',
+      '@typescript-eslint/consistent-type-imports': 'error',
       
       // 常规 ESLint 规则
-      'no-console': ['warn', { allow: ['warn', 'error'] }], // 警告使用 console，但允许 warn 和 error
-      'prefer-const': 'error', // 能用 const 的地方强制使用 const
-      'no-var': 'error', // 禁止使用 var
-      'eqeqeq': ['error', 'always'], // 强制使用 === 和 !==
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'eqeqeq': ['error', 'always'],
       
       // React 相关规则
-      'react/prop-types': 'off', // 使用 TypeScript 时关闭 prop-types 检查
-      'react/react-in-jsx-scope': 'off', // 新版 React 不需要引入 React
-      'react/display-name': 'off', // 不强制要求组件具有 display name
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/display-name': 'off',
       
       // 代码风格
-      'max-len': ['warn', { code: 100, ignoreComments: true }], // 单行最大长度
-      'no-multiple-empty-lines': ['error', { max: 1 }], // 最多允许一个空行
-      'quotes': ['error', 'single'], // 强制使用单引号
-      'semi': ['error', 'always'], // 强制使用分号
-      'comma-dangle': ['error', 'always-multiline'], // 多行时尾随逗号
-    }
+      'max-len': ['warn', { code: 100, ignoreComments: true }],
+      'no-multiple-empty-lines': ['error', { max: 1 }],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
+
+      // Prettier 相关规则
+      'prettier/prettier': ['error', {
+        singleQuote: true,
+        trailingComma: 'all',
+        semi: true,
+        printWidth: 100,
+        tabWidth: 2,
+        useTabs: false,
+        bracketSpacing: true,
+        arrowParens: 'avoid',
+        endOfLine: 'lf',
+      }],
+    },
   }
 ];

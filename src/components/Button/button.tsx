@@ -3,14 +3,7 @@ import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 export type ButtonSize = 'lg' | 'sm';
-export type ButtonType =
-  | 'default'
-  | 'primary'
-  | 'info'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'link';
+export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'danger' | 'warning' | 'link';
 
 interface BaseButtonProps {
   className?: string;
@@ -21,13 +14,11 @@ interface BaseButtonProps {
   plain?: boolean;
 }
 
-type NativeButtonProps = BaseButtonProps &
-  React.ButtonHTMLAttributes<HTMLElement>;
-type AnchorButtonProps = BaseButtonProps &
-  React.AnchorHTMLAttributes<HTMLElement>;
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>;
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button: React.FC<PropsWithChildren<ButtonProps>> = (props) => {
+const Button: React.FC<PropsWithChildren<ButtonProps>> = props => {
   const {
     className,
     disabled = false,
