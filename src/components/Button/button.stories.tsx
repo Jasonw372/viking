@@ -122,7 +122,7 @@ export const Disabled: Story = {
 export const Circle: Story = {
   args: {
     circle: true,
-    children: '圆'
+    children: '圆角按钮'
   }
 };
 
@@ -162,6 +162,7 @@ export const ButtonDisplay: Story = {
 
       {/* 朴素按钮组 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <Button plain>朴素默认</Button>
         <Button plain btnType="primary">朴素主要</Button>
         <Button plain btnType="info">朴素信息</Button>
         <Button plain btnType="success">朴素成功</Button>

@@ -70,11 +70,18 @@ $btn-types: (
 
   // Default 样式
   &-default {
-    @include mixin.button-variant(
-      variables.$body-color,
-      variables.$white,
-      variables.$border-color
-    );
+    border: variables.$btn-border-width solid variables.$btn-primary;
+    &.hover{
+      background-color: mixin.lighten-color(variables.$btn-primary, 0.9);
+    }
+
+    &.btn-plain {
+      &:hover,
+      &:focus,
+      &.hover {
+        background-color: transparent;
+      }
+    }
   }
 
   // 统一圆角样式
