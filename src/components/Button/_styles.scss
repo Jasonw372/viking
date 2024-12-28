@@ -1,0 +1,101 @@
+@use "../../styles/variables";
+@use "../../styles/mixin";
+
+// 使用 CSS 变量重新定义按钮类型映射
+$btn-types: (
+  "primary": variables.$btn-primary,
+  "danger": variables.$btn-danger,
+  "warning": variables.$btn-warning,
+  "success": variables.$btn-success,
+  "info": variables.$btn-info
+);
+
+.btn {
+  @include mixin.button-base;
+  @include mixin.button-size(
+    variables.$btn-padding-y,
+    variables.$btn-padding-x,
+    variables.$btn-font-size-base,
+    variables.$btn-border-radius
+  );
+  
+  font-weight: variables.$btn-font-weight;
+  border: variables.$btn-border-width solid transparent;
+  box-shadow: variables.$btn-box-shadow;
+  background: variables.$body-bg;
+  color: variables.$body-color;
+
+  // 统一处理所有状态
+  &:hover,
+  &:focus,
+  &.hover {
+    color: variables.$btn-primary;
+    background: mixin.lighten-color(variables.$btn-primary, 0.9);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(variables.$btn-primary, 0.25);
+  }
+
+  // 尺寸变体
+  &-lg {
+    @include mixin.button-size(
+      variables.$btn-padding-y-lg,
+      variables.$btn-padding-x-lg,
+      variables.$btn-font-size-lg,
+      variables.$btn-border-radius-lg
+    );
+  }
+
+  &-sm {
+    @include mixin.button-size(
+      variables.$btn-padding-y-sm,
+      variables.$btn-padding-x-sm,
+      variables.$btn-font-size-sm,
+      variables.$btn-border-radius-sm
+    );
+  }
+
+  // 生成不同类型的按钮样式
+  @each $type, $color in $btn-types {
+    &-#{$type} {
+      @include mixin.button-variant(variables.$white, $color);
+
+      &.btn-plain {
+        @include mixin.button-plain-variant($color);
+      }
+    }
+  }
+
+  // Default 样式
+  &-default {
+    @include mixin.button-variant(
+      variables.$body-color,
+      variables.$white,
+      variables.$border-color
+    );
+  }
+
+  // 统一圆角样式
+  &-circle,
+  &-round {
+    border-radius: variables.$border-radius-pill;
+  }
+
+  // 禁用状态统一处理
+  &.disabled,
+  &[disabled] {
+    @include mixin.button-disabled(variables.$btn-disabled-opacity);
+  }
+
+  // Link 按钮
+  &-link {
+    @include mixin.button-link;
+
+    &.disabled,
+    &[disabled] {
+      @include mixin.button-disabled(variables.$btn-link-disabled-opacity);
+    }
+  }
+}
