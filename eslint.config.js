@@ -1,44 +1,43 @@
-// 导入核心 ESLint 推荐配置
-import js from '@eslint/js'
-// 导入全局变量定义
-import globals from 'globals'
-// 导入 React Hooks 规则插件
-import reactHooks from 'eslint-plugin-react-hooks'
-// 导入 React Refresh 插件（用于快速刷新功能）
-import reactRefresh from 'eslint-plugin-react-refresh'
-// 导入 TypeScript ESLint 配置
-import tseslint from 'typescript-eslint'
+import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-  // 忽略 dist 目录
-  { ignores: ['dist'] },
+export default [
   {
-    // 继承推荐配置
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    // 配置适用的文件类型
-    files: ['**/*.{ts,tsx,js,jsx}'],
-    languageOptions: {
-      // 指定 ECMAScript 版本
-      ecmaVersion: 2020,
-      // 添加浏览器环境的全局变量
-      globals: globals.browser,
-    },
-    // 配置使用的插件
-    plugins: {
-      // React Hooks 规则插件
-      'react-hooks': reactHooks,
-      // React Refresh 插件
-      'react-refresh': reactRefresh,
-    },
-    // 具体规则配置
-    rules: {
-      // 使用 React Hooks 推荐规则
-      ...reactHooks.configs.recommended.rules,
-      // 配置组件导出规则，允许导出常量
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
+    ignores: ['dist/*', '*.config.ts','.storybook/*']
   },
-)
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,tsx}', '**/*.stories.tsx'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: './tsconfig.app.json'
+      }
+    },
+    rules: {
+      // TypeScript 相关规则
+      '@typescript-eslint/no-explicit-any': 'warn', // 警告使用 any 类型
+      '@typescript-eslint/explicit-function-return-type': 'off', // 不强制要求函数返回类型
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // 未使用的变量报错，但忽略下划线开头的参数
+      '@typescript-eslint/no-empty-interface': 'warn', // 空接口警告
+      '@typescript-eslint/consistent-type-imports': 'error', // 强制使用 import type
+      
+      // 常规 ESLint 规则
+      'no-console': ['warn', { allow: ['warn', 'error'] }], // 警告使用 console，但允许 warn 和 error
+      'prefer-const': 'error', // 能用 const 的地方强制使用 const
+      'no-var': 'error', // 禁止使用 var
+      'eqeqeq': ['error', 'always'], // 强制使用 === 和 !==
+      
+      // React 相关规则
+      'react/prop-types': 'off', // 使用 TypeScript 时关闭 prop-types 检查
+      'react/react-in-jsx-scope': 'off', // 新版 React 不需要引入 React
+      'react/display-name': 'off', // 不强制要求组件具有 display name
+      
+      // 代码风格
+      'max-len': ['warn', { code: 100, ignoreComments: true }], // 单行最大长度
+      'no-multiple-empty-lines': ['error', { max: 1 }], // 最多允许一个空行
+      'quotes': ['error', 'single'], // 强制使用单引号
+      'semi': ['error', 'always'], // 强制使用分号
+      'comma-dangle': ['error', 'always-multiline'], // 多行时尾随逗号
+    }
+  }
+];

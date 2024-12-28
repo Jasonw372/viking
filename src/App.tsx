@@ -1,5 +1,5 @@
-import Button from "./components/Button/button";
-import "./style.scss"
+import Button from './components/Button/button';
+import './style.scss';
 
 export default function App() {
   return (

@@ -1,21 +1,20 @@
-import { render, fireEvent } from "@testing-library/react";
-import Button from "./button";
-import { describe, expect, test, vi } from 'vitest'
-
+import { render, fireEvent } from '@testing-library/react';
+import Button from './button';
+import { describe, expect, test, vi } from 'vitest';
 
 describe('Button Component', () => {
-  test("renders default button correctly", () => {
+  test('renders default button correctly', () => {
     const wrapper = render(<Button>Default Button</Button>);
-    const element = wrapper.getByText("Default Button");
+    const element = wrapper.getByText('Default Button');
     
     expect(element).toBeInTheDocument();
     expect(element.tagName).toBe('BUTTON');
-    expect(element).toHaveClass("btn", "btn-default");
+    expect(element).toHaveClass('btn', 'btn-default');
 
     fireEvent.click(element);
   });
 
-  test("renders different button types correctly", () => {
+  test('renders different button types correctly', () => {
     const types = ['primary', 'danger', 'warning', 'success', 'info', 'link'] as const;
     
     types.forEach(type => {
@@ -31,7 +30,7 @@ describe('Button Component', () => {
     });
   });
 
-  test("renders different sizes correctly", () => {
+  test('renders different sizes correctly', () => {
     const sizes = ['lg', 'sm'] as const;
     
     sizes.forEach(size => {
@@ -42,7 +41,7 @@ describe('Button Component', () => {
     });
   });
 
-  test("renders disabled button correctly", () => {
+  test('renders disabled button correctly', () => {
     const wrapper = render(<Button disabled>Disabled Button</Button>);
     const element = wrapper.getByText('Disabled Button') as HTMLButtonElement;
     expect(element).toBeDisabled();
@@ -51,24 +50,23 @@ describe('Button Component', () => {
     expect(mockClick).not.toHaveBeenCalled();
   });
 
-  test("renders disabled link button correctly", () => {
+  test('renders disabled link button correctly', () => {
     const wrapper = render(
       <Button btnType="link" disabled href="http://example.com">
         Disabled Link
-      </Button>
+      </Button>,
     );
     const element = wrapper.getByText('Disabled Link');
     
     expect(element).toHaveClass('disabled');
     expect(element.tagName).toBe('A');
-
     
   });
 
-  test("handles click events", () => {
+  test('handles click events', () => {
     const mockClick = vi.fn();
     const wrapper = render(
-      <Button onClick={mockClick}>Clickable</Button>
+      <Button onClick={mockClick}>Clickable</Button>,
     );
     const element = wrapper.getByText('Clickable');
     
@@ -77,21 +75,21 @@ describe('Button Component', () => {
     expect(mockClick).toHaveBeenCalledTimes(1);
   });
 
-  test("renders circle button correctly", () => {
+  test('renders circle button correctly', () => {
     const wrapper = render(<Button circle>Circle</Button>);
     const element = wrapper.getByText('Circle');
     
     expect(element).toHaveClass('btn-circle');
   });
 
-  test("renders plain button correctly", () => {
+  test('renders plain button correctly', () => {
     const wrapper = render(<Button plain btnType="primary">Plain</Button>);
     const element = wrapper.getByText('Plain');
     
     expect(element).toHaveClass('btn-plain');
   });
 
-  test("renders custom className correctly", () => {
+  test('renders custom className correctly', () => {
     const wrapper = render(<Button className="custom-class">Custom</Button>);
     const element = wrapper.getByText('Custom');
     

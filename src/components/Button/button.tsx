@@ -1,15 +1,16 @@
-import classNames from "classnames";
-import React, { PropsWithChildren } from "react";
+import classNames from 'classnames';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
 
-export type ButtonSize = "lg" | "sm";
+export type ButtonSize = 'lg' | 'sm';
 export type ButtonType =
-  | "default"
-  | "primary"
-  | "info"
-  | "success"
-  | "danger"
-  | "warning"
-  | "link";
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'danger'
+  | 'warning'
+  | 'link';
 
 interface BaseButtonProps {
   className?: string;
@@ -31,7 +32,7 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = (props) => {
     className,
     disabled = false,
     size,
-    btnType = "default",
+    btnType = 'default',
     circle = false,
     plain = false,
     children,
@@ -39,15 +40,15 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = (props) => {
     ...restProps
   } = props;
 
-  const classes = classNames("btn", className, {
+  const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    [`btn-circle`]: circle,
-    [`btn-plain`]: plain,
-    disabled: btnType === "link" && disabled,
+    ['btn-circle']: circle,
+    ['btn-plain']: plain,
+    disabled: btnType === 'link' && disabled,
   });
 
-  if (btnType === "link") {
+  if (btnType === 'link') {
     return (
       <a className={classes} href={href} {...restProps}>
         {children}

@@ -13,127 +13,30 @@ const meta = {
     btnType: {
       control: 'select',
       options: ['default', 'primary', 'info', 'success', 'danger', 'warning', 'link'],
-      description: '按钮类型'
+      description: '按钮类型',
     },
     size: {
       control: 'select',
       options: ['lg', 'sm'],
-      description: '按钮尺寸'
+      description: '按钮尺寸',
     },
     disabled: {
       control: 'boolean',
-      description: '是否禁用'
+      description: '是否禁用',
     },
     circle: {
       control: 'boolean',
-      description: '是否为圆角按钮'
+      description: '是否为圆角按钮',
     },
     plain: {
       control: 'boolean',
-      description: '是否为朴素按钮'
-    }
-  }
+      description: '是否为朴素按钮',
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// 默认按钮
-export const Default: Story = {
-  args: {
-    children: '默认按钮'
-  }
-};
-
-// 主要按钮
-export const Primary: Story = {
-  args: {
-    btnType: 'primary',
-    children: '主要按钮'
-  }
-};
-
-// 信息按钮
-export const Info: Story = {
-  args: {
-    btnType: 'info',
-    children: '信息按钮'
-  }
-};
-
-// 成功按钮
-export const Success: Story = {
-  args: {
-    btnType: 'success',
-    children: '成功按钮'
-  }
-};
-
-// 警告按钮
-export const Warning: Story = {
-  args: {
-    btnType: 'warning',
-    children: '警告按钮'
-  }
-};
-
-// 危险按钮
-export const Danger: Story = {
-  args: {
-    btnType: 'danger',
-    children: '危险按钮'
-  }
-};
-
-// 链接按钮
-export const Link: Story = {
-  args: {
-    btnType: 'link',
-    children: '链接按钮',
-    href: '#'
-  }
-};
-
-// 大号按钮
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    children: '大号按钮'
-  }
-};
-
-// 小号按钮
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    children: '小号按钮'
-  }
-};
-
-// 禁用按钮
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: '禁用按钮'
-  }
-};
-
-// 圆角按钮
-export const Circle: Story = {
-  args: {
-    circle: true,
-    children: '圆角按钮'
-  }
-};
-
-// 朴素按钮
-export const Plain: Story = {
-  args: {
-    plain: true,
-    btnType: 'primary',
-    children: '朴素按钮'
-  }
-};
 
 // 按钮展示页
 export const ButtonDisplay: Story = {
@@ -141,13 +44,12 @@ export const ButtonDisplay: Story = {
     controls: { disable: true },
     actions: { disable: true },
     docs: { disable: true },
-
   },
   render: () => (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      gap: '20px' 
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
     }}>
       {/* 基础按钮组 */}
       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -198,5 +100,103 @@ export const ButtonDisplay: Story = {
         <Button size="sm" btnType="primary">小号按钮</Button>
       </div>
     </div>
-  )
-}; 
+  ),
+};
+
+// 默认按钮
+export const Default: Story = {
+  args: {
+    children: '默认按钮',
+  },
+};
+
+// 主要按钮
+export const Primary: Story = {
+  args: {
+    btnType: 'primary',
+    children: '主要按钮',
+  },
+};
+
+// 信息按钮
+export const Info: Story = {
+  args: {
+    btnType: 'info',
+    children: '信息按钮',
+  },
+};
+
+// 成功按钮
+export const Success: Story = {
+  args: {
+    btnType: 'success',
+    children: '成功按钮',
+  },
+};
+
+// 警告按钮
+export const Warning: Story = {
+  args: {
+    btnType: 'warning',
+    children: '警告按钮',
+  },
+};
+
+// 危险按钮
+export const Danger: Story = {
+  args: {
+    btnType: 'danger',
+    children: '危险按钮',
+  },
+};
+
+// 链接按钮
+export const Link: Story = {
+  args: {
+    btnType: 'link',
+    children: '链接按钮',
+    href: '#',
+  },
+};
+
+// 大号按钮
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    children: '大号按钮',
+  },
+};
+
+// 小号按钮
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    children: '小号按钮',
+  },
+};
+
+// 禁用按钮
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: '禁用按钮',
+  },
+};
+
+// 圆角按钮
+export const Circle: Story = {
+  args: {
+    circle: true,
+    children: '圆角按钮',
+  },
+};
+
+// 朴素按钮
+export const Plain: Story = {
+  args: {
+    plain: true,
+    btnType: 'primary',
+    children: '朴素按钮',
+  },
+};
+
