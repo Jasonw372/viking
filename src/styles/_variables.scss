@@ -191,6 +191,8 @@ $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175) !default;
 $box-shadow-inset: inset 0 1px 2px rgba($black, 0.075) !default;
 
+$active-border-width: 2px !default;
+
 // Button组件变量
 $btn-padding-y: 0.375rem !default;
 $btn-padding-x: 0.75rem !default;
@@ -223,3 +225,21 @@ $btn-success: $success;
 $btn-info: $info;
 $btn-warning: $warning;
 $btn-danger: $danger;
+
+// Menu组件变量
+$menu-border-width: $border-width !default;
+$menu-border-color: $border-color !default;
+$menu-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
+$menu-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+
+$menu-item-padding-y: 0.5rem !default;
+$menu-item-padding-x: 1rem !default;
+
+$menu-item-border-width: $border-width !default;
+$menu-item-border-color: transparent !default;
+$menu-item-border-radius: $border-radius !default;
+
+$menu-item-active-color: $primary !default;
+$menu-item-active-border-width: $active-border-width !default;
+
+$menu-item-disabled-color: $gray-600 !default;
