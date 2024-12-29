@@ -12,7 +12,7 @@ const testProps = {
 };
 
 const testVerProps: MenuProps = {
-  defaultIndex: 0,
+  defaultIndex: '0',
   mode: 'vertical',
 };
 
