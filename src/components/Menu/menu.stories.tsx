@@ -143,9 +143,7 @@ export const MenuDisplay: Story = {
   parameters: {
     controls: { disable: true },
     actions: { disable: true },
-    docs: {
-      disable: true,
-    },
+    docs: { source: { type: 'code' } }, // 设置不出现在主文档中
   },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
