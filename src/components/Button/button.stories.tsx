@@ -38,6 +38,103 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// 默认按钮
+export const Default: Story = {
+  args: {
+    children: '默认按钮',
+  },
+};
+
+// 主要按钮
+export const Primary: Story = {
+  args: {
+    btnType: 'primary',
+    children: '主要按钮',
+  },
+};
+
+// 信息按钮
+export const Info: Story = {
+  args: {
+    btnType: 'info',
+    children: '信息按钮',
+  },
+};
+
+// 成功按钮
+export const Success: Story = {
+  args: {
+    btnType: 'success',
+    children: '成功按钮',
+  },
+};
+
+// 警告按钮
+export const Warning: Story = {
+  args: {
+    btnType: 'warning',
+    children: '警告按钮',
+  },
+};
+
+// 危险按钮
+export const Danger: Story = {
+  args: {
+    btnType: 'danger',
+    children: '危险按钮',
+  },
+};
+
+// 链接按钮
+export const Link: Story = {
+  args: {
+    btnType: 'link',
+    children: '链接按钮',
+    href: '#',
+  },
+};
+
+// 大号按钮
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    children: '大号按钮',
+  },
+};
+
+// 小号按钮
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    children: '小号按钮',
+  },
+};
+
+// 禁用按钮
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: '禁用按钮',
+  },
+};
+
+// 圆角按钮
+export const Circle: Story = {
+  args: {
+    circle: true,
+    children: '圆角按钮',
+  },
+};
+
+// 朴素按钮
+export const Plain: Story = {
+  args: {
+    plain: true,
+    btnType: 'primary',
+    children: '朴素按钮',
+  },
+};
+
 // 按钮展示页
 export const ButtonDisplay: Story = {
   parameters: {
@@ -141,101 +238,4 @@ export const ButtonDisplay: Story = {
       </div>
     </div>
   ),
-};
-
-// 默认按钮
-export const Default: Story = {
-  args: {
-    children: '默认按钮',
-  },
-};
-
-// 主要按钮
-export const Primary: Story = {
-  args: {
-    btnType: 'primary',
-    children: '主要按钮',
-  },
-};
-
-// 信息按钮
-export const Info: Story = {
-  args: {
-    btnType: 'info',
-    children: '信息按钮',
-  },
-};
-
-// 成功按钮
-export const Success: Story = {
-  args: {
-    btnType: 'success',
-    children: '成功按钮',
-  },
-};
-
-// 警告按钮
-export const Warning: Story = {
-  args: {
-    btnType: 'warning',
-    children: '警告按钮',
-  },
-};
-
-// 危险按钮
-export const Danger: Story = {
-  args: {
-    btnType: 'danger',
-    children: '危险按钮',
-  },
-};
-
-// 链接按钮
-export const Link: Story = {
-  args: {
-    btnType: 'link',
-    children: '链接按钮',
-    href: '#',
-  },
-};
-
-// 大号按钮
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    children: '大号按钮',
-  },
-};
-
-// 小号按钮
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    children: '小号按钮',
-  },
-};
-
-// 禁用按钮
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: '禁用按钮',
-  },
-};
-
-// 圆角按钮
-export const Circle: Story = {
-  args: {
-    circle: true,
-    children: '圆角按钮',
-  },
-};
-
-// 朴素按钮
-export const Plain: Story = {
-  args: {
-    plain: true,
-    btnType: 'primary',
-    children: '朴素按钮',
-  },
 };

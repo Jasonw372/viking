@@ -1,11 +1,12 @@
 import type { RenderResult } from '@testing-library/react';
-import { fireEvent, render } from '@testing-library/react';
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import MenuItem from './menuItem';
-import type { MenuProps } from './menu';
 import Menu from './menu';
+import MenuItem from './menuItem';
+import SubMenu from './subMenu';
+import type { MenuProps } from './menu';
 
-const testProps = {
+const testProps: MenuProps = {
   defaultIndex: '0',
   onSelect: vi.fn(),
   className: 'test',
@@ -14,6 +15,13 @@ const testProps = {
 const testVerProps: MenuProps = {
   defaultIndex: '0',
   mode: 'vertical',
+  defaultOpenSubMenus: ['3'],
+};
+
+const testVerPropsWithoutOpen: MenuProps = {
+  defaultIndex: '0',
+  mode: 'vertical',
+  defaultOpenSubMenus: [],
 };
 
 const generateMenu = (props: MenuProps) => {
@@ -22,47 +30,174 @@ const generateMenu = (props: MenuProps) => {
       <MenuItem>item1</MenuItem>
       <MenuItem disabled>item2</MenuItem>
       <MenuItem>item3</MenuItem>
+      <SubMenu title="dropdown">
+        <MenuItem>drop1</MenuItem>
+        <MenuItem>drop2</MenuItem>
+      </SubMenu>
+      <MenuItem>item4</MenuItem>
     </Menu>,
   );
 };
 
-describe('test Menu and MenuItem component', () => {
-  let wrapper: RenderResult,
-    menuElement: HTMLElement,
-    activeElement: HTMLElement,
-    disabledElement: HTMLElement;
+const createStyleFile = () => {
+  const cssFile: string = `
+    .submenu-container {
+      display: none !important;
+      transition: none !important;
+    }
+    .submenu-container.menu-opened {
+      display: block !important;
+    }
+  `;
+  const style = document.createElement('style');
+  style.innerHTML = cssFile;
+  return style;
+};
+
+describe('Menu Component', () => {
+  let wrapper: RenderResult;
   beforeEach(() => {
+    cleanup();
     wrapper = generateMenu(testProps);
-    menuElement = wrapper.getByTestId('test-menu');
-    activeElement = wrapper.getByText('item1');
-    disabledElement = wrapper.getByText('item2');
+    wrapper.container.append(createStyleFile());
   });
+
   it('should render correct Menu and MenuItem based on default props', () => {
+    const menuElement = wrapper.getByTestId('test-menu');
+    const activeElement = wrapper.getByText('item1');
+    const disabledElement = wrapper.getByText('item2');
     expect(menuElement).toBeInTheDocument();
     expect(menuElement).toHaveClass('menu test');
-    expect(menuElement.querySelectorAll(':scope > li').length).toEqual(3);
+    expect(menuElement.querySelectorAll(':scope > li').length).toEqual(5);
     expect(activeElement).toHaveClass('menu-item is-active');
     expect(disabledElement).toHaveClass('menu-item is-disabled');
   });
 
   it('click items should change active and call the right callback', () => {
+    const activeElement = wrapper.getByText('item1');
     const thirdItem = wrapper.getByText('item3');
+    const disabledElement = wrapper.getByText('item2');
     fireEvent.click(thirdItem);
     expect(thirdItem).toHaveClass('is-active');
+    expect(activeElement).not.toHaveClass('is-active');
     expect(testProps.onSelect).toHaveBeenCalledWith('2');
     fireEvent.click(disabledElement);
     expect(disabledElement).not.toHaveClass('is-active');
     expect(testProps.onSelect).not.toHaveBeenCalledWith('1');
+  });
+
+  it('should render vertical mode when mode is set to vertical', () => {
+    cleanup();
+    const wrapper = generateMenu(testVerProps);
+    const menuElement = wrapper.getByTestId('test-menu');
+    expect(menuElement).toHaveClass('menu-vertical');
+  });
+
+  it('should show dropdown items when hover on subMenu', async () => {
+    expect(wrapper.queryByText('drop1')).not.toBeVisible();
+    const dropdownElement = wrapper.getByText('dropdown');
+    fireEvent.mouseEnter(dropdownElement);
+    await waitFor(
+      () => {
+        expect(wrapper.queryByText('drop1')).toBeVisible();
+      },
+      { timeout: 1000 },
+    );
+    fireEvent.mouseLeave(dropdownElement);
+    await waitFor(
+      () => {
+        expect(wrapper.queryByText('drop1')).not.toBeVisible();
+      },
+      { timeout: 1000 },
+    );
   });
 });
 
 describe('test Menu and MenuItem component in vertical mode', () => {
   let wrapper: RenderResult;
   beforeEach(() => {
+    cleanup();
     wrapper = generateMenu(testVerProps);
   });
+
   it('should render vertical mode when mode is set to vertical', () => {
     const menuElement = wrapper.getByTestId('test-menu');
     expect(menuElement).toHaveClass('menu-vertical');
+  });
+
+  it('should show dropdown items when click on subMenu for vertical mode', () => {
+    const dropDownItem = wrapper.queryByText('drop1');
+    fireEvent.click(wrapper.getByText('dropdown'));
+    expect(dropDownItem).toBeVisible();
+  });
+
+  it('should show subMenu dropdown when defaultOpenSubMenus contains SubMenu index', () => {
+    expect(wrapper.queryByText('drop1')).toBeVisible();
+  });
+});
+
+describe('test SubMenu component', () => {
+  let wrapper: RenderResult;
+  beforeEach(() => {
+    cleanup();
+    wrapper = generateMenu(testProps);
+  });
+
+  it('should render SubMenu component', () => {
+    const subMenuElement = wrapper.getByText('dropdown').parentElement;
+    expect(subMenuElement).toHaveClass('submenu-item');
+    expect(wrapper.getByText('drop1').parentElement).toHaveClass('submenu-container');
+  });
+
+  it('should toggle submenu when clicking in vertical mode', () => {
+    cleanup();
+    wrapper = generateMenu(testVerPropsWithoutOpen);
+    wrapper.container.append(createStyleFile());
+    const dropdownElement = wrapper.getByText('dropdown');
+    const submenuContainer = wrapper.queryByText('drop1')?.parentElement;
+
+    // 确保初始状态
+    expect(submenuContainer).not.toBeVisible();
+
+    // 点击切换状态
+    fireEvent.click(dropdownElement);
+    expect(submenuContainer).toBeVisible();
+
+    // 再次点击
+    fireEvent.click(dropdownElement);
+    expect(submenuContainer).not.toBeVisible();
+  });
+
+  it('should handle click events on submenu items', () => {
+    const dropdownElement = wrapper.getByText('dropdown');
+    fireEvent.mouseEnter(dropdownElement);
+    fireEvent.click(wrapper.getByText('drop1'));
+    expect(testProps.onSelect).toHaveBeenCalledWith('3-0');
+  });
+});
+
+describe('test Menu with invalid children', () => {
+  it('should warn when using invalid child component', () => {
+    const consoleError = vi.spyOn(console, 'error');
+    render(
+      <Menu>
+        <MenuItem>valid item</MenuItem>
+        <div>invalid child</div>
+      </Menu>,
+    );
+    expect(consoleError).toHaveBeenCalled();
+  });
+
+  it('should warn when using invalid child in SubMenu', () => {
+    const consoleError = vi.spyOn(console, 'error');
+    render(
+      <Menu>
+        <SubMenu title="test">
+          <MenuItem>valid item</MenuItem>
+          <div>invalid child</div>
+        </SubMenu>
+      </Menu>,
+    );
+    expect(consoleError).toHaveBeenCalled();
   });
 });

@@ -234,12 +234,8 @@ $menu-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, b
 
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
-
-$menu-item-border-width: $border-width !default;
-$menu-item-border-color: transparent !default;
-$menu-item-border-radius: $border-radius !default;
-
 $menu-item-active-color: $primary !default;
 $menu-item-active-border-width: $active-border-width !default;
-
 $menu-item-disabled-color: $gray-600 !default;
+
+$submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
