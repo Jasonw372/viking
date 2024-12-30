@@ -35,7 +35,7 @@ const meta = {
     },
     defaultOpenSubMenus: {
       description: '默认展开的子菜单索引数组',
-      control: 'array',
+      control: 'object',
       table: {
         type: { summary: 'string[]' },
         defaultValue: { summary: '[]' },
