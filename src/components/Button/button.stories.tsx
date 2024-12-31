@@ -137,12 +137,7 @@ export const Plain: Story = {
 
 // 按钮展示页
 export const ButtonDisplay: Story = {
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    docs: { disable: true },
-  },
-  render: () => (
+  render: _args => (
     <div
       style={{
         display: 'flex',
@@ -238,4 +233,9 @@ export const ButtonDisplay: Story = {
       </div>
     </div>
   ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+    docs: { source: { type: '' } },
+  },
 };

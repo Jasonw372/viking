@@ -1,0 +1,57 @@
+@use '../../styles/variables';
+
+.tabs {
+  .tabs-nav { 
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    border-bottom: variables.$nav-tabs-border-width solid variables.$nav-tabs-border-color;
+
+    .tabs-nav-item {
+      display: block;
+      padding: variables.$nav-link-padding-y variables.$nav-link-padding-x;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: variables.$nav-tabs-link-hover-color;
+      }
+
+      &.is-disabled {
+        color: variables.$nav-link-disabled-color;
+        pointer-events: none;
+        cursor: not-allowed;
+        background-color: transparent;
+        border-color: transparent;
+      }
+      &.is-active {
+        color: variables.$nav-tabs-link-active-color;
+      }
+    }
+  }
+}
+
+.nav-line{
+  .tabs-nav-item {
+    &.is-active {
+      border-bottom: variables.$nav-tabs-border-width * 2 solid  variables.$nav-tabs-link-active-color;
+    }
+  }
+}
+
+.nav-card {
+  .tabs-nav-item {
+    border: variables.$nav-tabs-border-width solid transparent;
+    margin-bottom: - variables.$nav-tabs-border-width;
+    &.is-active {
+      background-color: variables.$nav-tabs-link-active-bg;
+      border-color: variables.$nav-tabs-link-active-border-color;
+      border-top-left-radius: variables.$nav-tabs-border-radius;
+      border-top-right-radius: variables.$nav-tabs-border-radius;
+    }
+  }
+}
+
+.tabs-content {
+  margin-top: variables.$nav-tabs-content-margin;
+}

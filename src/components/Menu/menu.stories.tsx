@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Menu from './menu';
-import MenuItem from './menuItem';
-import SubMenu from './subMenu';
+import Menu from './index';
+
 import './_styles.scss';
 
 const meta = {
@@ -69,9 +68,9 @@ export const DefaultMenu: Story = {
   },
   render: args => (
     <Menu {...args}>
-      <MenuItem>首页</MenuItem>
-      <MenuItem>关于我们</MenuItem>
-      <MenuItem>联系我们</MenuItem>
+      <Menu.Item>首页</Menu.Item>
+      <Menu.Item>关于我们</Menu.Item>
+      <Menu.Item>联系我们</Menu.Item>
     </Menu>
   ),
 };
@@ -83,9 +82,9 @@ export const VerticalMenu: Story = {
   },
   render: args => (
     <Menu {...args}>
-      <MenuItem>首页</MenuItem>
-      <MenuItem>关于我们</MenuItem>
-      <MenuItem>联系我们</MenuItem>
+      <Menu.Item>首页</Menu.Item>
+      <Menu.Item>关于我们</Menu.Item>
+      <Menu.Item>联系我们</Menu.Item>
     </Menu>
   ),
 };
@@ -96,13 +95,13 @@ export const WithSubMenu: Story = {
   },
   render: args => (
     <Menu {...args}>
-      <MenuItem>首页</MenuItem>
-      <SubMenu title="产品介绍">
-        <MenuItem>产品1</MenuItem>
-        <MenuItem>产品2</MenuItem>
-        <MenuItem>产品3</MenuItem>
-      </SubMenu>
-      <MenuItem>联系我们</MenuItem>
+      <Menu.Item>首页</Menu.Item>
+      <Menu.SubMenu title="产品介绍">
+        <Menu.Item>产品1</Menu.Item>
+        <Menu.Item>产品2</Menu.Item>
+        <Menu.Item>产品3</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item>联系我们</Menu.Item>
     </Menu>
   ),
 };
@@ -113,9 +112,9 @@ export const DisabledMenuItem: Story = {
   },
   render: args => (
     <Menu {...args}>
-      <MenuItem>可点击项</MenuItem>
-      <MenuItem disabled>禁用项</MenuItem>
-      <MenuItem>可点击项</MenuItem>
+      <Menu.Item>可点击项</Menu.Item>
+      <Menu.Item disabled>禁用项</Menu.Item>
+      <Menu.Item>可点击项</Menu.Item>
     </Menu>
   ),
 };
@@ -128,38 +127,33 @@ export const VerticalWithSubMenu: Story = {
   },
   render: args => (
     <Menu {...args}>
-      <MenuItem>首页</MenuItem>
-      <SubMenu title="产品介绍">
-        <MenuItem>产品1</MenuItem>
-        <MenuItem>产品2</MenuItem>
-        <MenuItem>产品3</MenuItem>
-      </SubMenu>
-      <MenuItem>联系我们</MenuItem>
+      <Menu.Item>首页</Menu.Item>
+      <Menu.SubMenu title="产品介绍">
+        <Menu.Item>产品1</Menu.Item>
+        <Menu.Item>产品2</Menu.Item>
+        <Menu.Item>产品3</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item>联系我们</Menu.Item>
     </Menu>
   ),
 };
 
 export const MenuDisplay: Story = {
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    docs: { source: { type: 'code' } }, // 设置不出现在主文档中
-  },
-  render: () => (
+  render: _args => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* 默认水平菜单 */}
       <div>
         <h3>默认水平菜单</h3>
         <Menu defaultIndex="0">
-          <MenuItem>首页</MenuItem>
-          <MenuItem>关于我们</MenuItem>
-          <MenuItem disabled>禁用项</MenuItem>
-          <SubMenu title="产品介绍">
-            <MenuItem>产品1</MenuItem>
-            <MenuItem>产品2</MenuItem>
-            <MenuItem>产品3</MenuItem>
-          </SubMenu>
-          <MenuItem>联系我们</MenuItem>
+          <Menu.Item>首页</Menu.Item>
+          <Menu.Item>关于我们</Menu.Item>
+          <Menu.Item disabled>禁用项</Menu.Item>
+          <Menu.SubMenu title="产品介绍">
+            <Menu.Item>产品1</Menu.Item>
+            <Menu.Item>产品2</Menu.Item>
+            <Menu.Item>产品3</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.Item>联系我们</Menu.Item>
         </Menu>
       </div>
 
@@ -167,15 +161,15 @@ export const MenuDisplay: Story = {
       <div style={{ width: '256px' }}>
         <h3>垂直菜单</h3>
         <Menu defaultIndex="0" mode="vertical">
-          <MenuItem>首页</MenuItem>
-          <MenuItem>关于我们</MenuItem>
-          <MenuItem disabled>禁用项</MenuItem>
-          <SubMenu title="产品介绍">
-            <MenuItem>产品1</MenuItem>
-            <MenuItem>产品2</MenuItem>
-            <MenuItem>产品3</MenuItem>
-          </SubMenu>
-          <MenuItem>联系我们</MenuItem>
+          <Menu.Item>首页</Menu.Item>
+          <Menu.Item>关于我们</Menu.Item>
+          <Menu.Item disabled>禁用项</Menu.Item>
+          <Menu.SubMenu title="产品介绍">
+            <Menu.Item>产品1</Menu.Item>
+            <Menu.Item>产品2</Menu.Item>
+            <Menu.Item>产品3</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.Item>联系我们</Menu.Item>
         </Menu>
       </div>
 
@@ -183,15 +177,15 @@ export const MenuDisplay: Story = {
       <div style={{ width: '256px' }}>
         <h3>默认展开的垂直菜单</h3>
         <Menu defaultIndex="0" mode="vertical" defaultOpenSubMenus={['3']}>
-          <MenuItem>首页</MenuItem>
-          <MenuItem>关于我们</MenuItem>
-          <MenuItem disabled>禁用项</MenuItem>
-          <SubMenu title="产品介绍">
-            <MenuItem>产品1</MenuItem>
-            <MenuItem>产品2</MenuItem>
-            <MenuItem>产品3</MenuItem>
-          </SubMenu>
-          <MenuItem>联系我们</MenuItem>
+          <Menu.Item>首页</Menu.Item>
+          <Menu.Item>关于我们</Menu.Item>
+          <Menu.Item disabled>禁用项</Menu.Item>
+          <Menu.SubMenu title="产品介绍">
+            <Menu.Item>产品1</Menu.Item>
+            <Menu.Item>产品2</Menu.Item>
+            <Menu.Item>产品3</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.Item>联系我们</Menu.Item>
         </Menu>
       </div>
 
@@ -199,12 +193,12 @@ export const MenuDisplay: Story = {
       <div>
         <h3>不同状态的菜单项</h3>
         <Menu defaultIndex="1">
-          <MenuItem>普通菜单项</MenuItem>
-          <MenuItem disabled>禁用菜单项</MenuItem>
-          <SubMenu title="带子菜单">
-            <MenuItem>子菜单项1</MenuItem>
-            <MenuItem>子菜单项2</MenuItem>
-          </SubMenu>
+          <Menu.Item>普通菜单项</Menu.Item>
+          <Menu.Item disabled>禁用菜单项</Menu.Item>
+          <Menu.SubMenu title="带子菜单">
+            <Menu.Item>子菜单项1</Menu.Item>
+            <Menu.Item>子菜单项2</Menu.Item>
+          </Menu.SubMenu>
         </Menu>
       </div>
 
@@ -212,19 +206,19 @@ export const MenuDisplay: Story = {
       <div style={{ width: '256px' }}>
         <h3>多层嵌套的垂直菜单</h3>
         <Menu defaultIndex="0" mode="vertical" defaultOpenSubMenus={['1', '1-1']}>
-          <MenuItem>首页</MenuItem>
-          <SubMenu title="产品服务">
-            <MenuItem>产品列表</MenuItem>
-            <SubMenu title="解决方案">
-              <MenuItem>企业级</MenuItem>
-              <MenuItem>个人级</MenuItem>
-            </SubMenu>
-            <MenuItem>产品介绍</MenuItem>
-          </SubMenu>
-          <SubMenu title="关于我们">
-            <MenuItem>公司简介</MenuItem>
-            <MenuItem>联系方式</MenuItem>
-          </SubMenu>
+          <Menu.Item>首页</Menu.Item>
+          <Menu.SubMenu title="产品服务">
+            <Menu.Item>产品列表</Menu.Item>
+            <Menu.SubMenu title="解决方案">
+              <Menu.Item>企业级</Menu.Item>
+              <Menu.Item>个人级</Menu.Item>
+            </Menu.SubMenu>
+            <Menu.Item>产品介绍</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.SubMenu title="关于我们">
+            <Menu.Item>公司简介</Menu.Item>
+            <Menu.Item>联系方式</Menu.Item>
+          </Menu.SubMenu>
         </Menu>
       </div>
 
@@ -238,15 +232,21 @@ export const MenuDisplay: Story = {
             borderRadius: '4px',
           }}
         >
-          <MenuItem>首页</MenuItem>
-          <MenuItem>关于我们</MenuItem>
-          <SubMenu title="产品服务">
-            <MenuItem>产品1</MenuItem>
-            <MenuItem>产品2</MenuItem>
-          </SubMenu>
-          <MenuItem>联系我们</MenuItem>
+          <Menu.Item>首页</Menu.Item>
+          <Menu.Item>关于我们</Menu.Item>
+          <Menu.SubMenu title="产品服务">
+            <Menu.Item>产品1</Menu.Item>
+            <Menu.Item>产品2</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.Item>联系我们</Menu.Item>
         </Menu>
       </div>
     </div>
   ),
+
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+    docs: { source: { type: '' } },
+  },
 };
