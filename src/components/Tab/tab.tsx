@@ -34,7 +34,11 @@ export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
             'is-active': activeIndex === index,
             'is-disabled': disabled,
           })}
-          onClick={() => handleSelect(index)}
+          onClick={() => {
+            if (!disabled) {
+              handleSelect(index);
+            }
+          }}
         >
           {label}
         </li>
@@ -52,7 +56,7 @@ export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
   }
 
   return (
-    <div className={`tabs ${className}`} style={style}>
+    <div className={`tabs ${className}`} style={style} data-testid="test-tab">
       <ul
         className={classNames('tabs-nav', {
           'nav-line': type === 'line',
