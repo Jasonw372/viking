@@ -1,0 +1,124 @@
+.space {
+  display: inline-flex;
+  
+  &-vertical {
+    flex-direction: column;
+  }
+  
+  &-horizontal {
+    flex-direction: row;
+  }
+  
+  &-align-center {
+    align-items: center;
+  }
+  
+  &-align-start {
+    align-items: flex-start;
+  }
+  
+  &-align-end {
+    align-items: flex-end;
+  }
+  
+  &-align-baseline {
+    align-items: baseline;
+  }
+  
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  
+  &-item {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child) {
+      margin-right: var(--space-gap, 8px);
+    }
+    
+    .space-vertical & {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: var(--space-gap, 8px);
+      }
+    }
+  }
+  
+  &-split-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-gap, 8px);
+    margin: 0 calc(-1 * var(--space-gap, 8px)) 0 0;
+  }
+  
+  &-split {
+    color: #d9d9d9;
+  }
+  
+  // Compact 模式
+  &.space-compact {
+    .space-item {
+      margin: 0 !important;
+      
+      .space-split-wrapper {
+        display: none;
+      }
+      
+      > * {
+        border-radius: 0;
+        
+        &:hover {
+          position: relative;
+          z-index: 2;
+        }
+      }
+    }
+    
+    // 水平紧凑模式
+    &.space-horizontal {
+      .space-item {
+        &:not(:first-child) {
+          margin-left: -1px !important;
+        }
+        
+        &:first-child > * {
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+        }
+        
+        &:last-child > * {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+        }
+      }
+    }
+    
+    // 垂直紧凑模式
+    &.space-vertical {
+      width: fit-content;
+      
+      .space-item {
+        width: 100%;
+        
+        > * {
+          width: 100%;
+        }
+        
+        &:not(:first-child) {
+          margin-top: -1px !important;
+        }
+        
+        &:first-child > * {
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+        }
+        
+        &:last-child > * {
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+        }
+      }
+    }
+  }
+} 
