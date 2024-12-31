@@ -9,15 +9,16 @@ type SelectCallback = (selectedIndex: string) => void;
 export interface MenuProps {
   defaultIndex?: string;
   mode?: MenuMode;
-  onSelect?: SelectCallback;
+  onSelect?: SelectCallback; // 选择菜单项
+  onClick?: (index: string) => void; // 点击菜单项
   className?: string;
   style?: React.CSSProperties;
   defaultOpenSubMenus?: string[];
 }
-
 interface IMenuContext {
   index: string;
   onSelect?: SelectCallback;
+  onClick?: (index: string) => void;
   mode?: MenuMode;
   defaultOpenSubMenus?: string[];
 }
@@ -46,6 +47,8 @@ export const Menu: React.FC<PropsWithChildren<MenuProps>> = props => {
     defaultIndex = '0',
     defaultOpenSubMenus = [],
     onSelect,
+    onClick,
+    ...restProps
   } = props;
 
   const [activte, setActive] = useState(defaultIndex);
@@ -58,6 +61,7 @@ export const Menu: React.FC<PropsWithChildren<MenuProps>> = props => {
   const passedContext: IMenuContext = {
     index: activte,
     onSelect: handleSelect,
+    onClick,
     mode,
     defaultOpenSubMenus,
   };
@@ -68,7 +72,7 @@ export const Menu: React.FC<PropsWithChildren<MenuProps>> = props => {
   });
 
   return (
-    <ul className={classes} style={style} data-testid="test-menu">
+    <ul className={classes} style={style} data-testid="test-menu" {...restProps}>
       <MenuContext.Provider value={passedContext}>{renderChildren(children)}</MenuContext.Provider>
     </ul>
   );

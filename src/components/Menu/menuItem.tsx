@@ -11,7 +11,7 @@ export interface MenuItemProps {
 
 export const MenuItem: React.FC<PropsWithChildren<MenuItemProps>> = props => {
   const { className, index, disabled, style, children } = props;
-  const { index: currentActive, onSelect } = useContext(MenuContext);
+  const { index: currentActive, onSelect, onClick } = useContext(MenuContext);
 
   const classes = classNames('menu-item', className, {
     'is-disabled': disabled,
@@ -21,6 +21,10 @@ export const MenuItem: React.FC<PropsWithChildren<MenuItemProps>> = props => {
   const handleClick = () => {
     if (onSelect && !disabled && typeof index === 'string') {
       onSelect(index);
+    }
+
+    if (onClick && index) {
+      onClick(index);
     }
   };
   return (
