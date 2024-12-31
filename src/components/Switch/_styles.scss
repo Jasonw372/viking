@@ -1,0 +1,129 @@
+@use '../../styles/variables';
+
+.switch {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0;
+  vertical-align: middle;
+  border: 0;
+  border-radius: variables.$border-radius-pill;
+  background-color: rgba(variables.$black, 0.25);
+  cursor: if(variables.$enable-pointer-cursor-for-buttons, pointer, null);
+  transition: variables.$menu-transition;
+  
+  &:focus {
+    outline: none;
+    box-shadow: variables.$box-shadow-sm;
+  }
+  
+  &-handle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: variables.$border-radius-circle;
+    background-color: variables.$white;
+    transition: variables.$menu-transition;
+    
+    .switch-loading-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      margin: -6px;
+      border: 2px solid variables.$primary;
+      border-top-color: transparent;
+      border-radius: variables.$border-radius-circle;
+      animation: switch-loading 1s infinite linear;
+    }
+  }
+  
+  &-inner {
+    display: block;
+    margin: 0 7px 0 25px;
+    color: variables.$white;
+    font-size: variables.$font-size-sm;
+    transition: margin 0.2s;
+  }
+  
+  &-checked {
+    background-color: variables.$primary;
+    
+    .switch-handle {
+      left: calc(100% - 20px);
+    }
+    
+    .switch-inner {
+      margin: 0 25px 0 7px;
+    }
+  }
+  
+  &-disabled {
+    cursor: not-allowed;
+    opacity: variables.$btn-disabled-opacity;
+  }
+  
+  &-sm {
+    min-width: 28px;
+    height: 16px;
+    line-height: 16px;
+    
+    .switch-handle {
+      width: 12px;
+      height: 12px;
+    }
+    
+    .switch-inner {
+      margin: 0 5px 0 18px;
+      font-size: variables.$font-size-sm;
+    }
+    
+    &.switch-checked {
+      .switch-handle {
+        left: calc(100% - 14px);
+      }
+      
+      .switch-inner {
+        margin: 0 18px 0 5px;
+      }
+    }
+  }
+
+  &-lg {
+    min-width: 56px;
+    height: 28px;
+    line-height: 28px;
+    
+    .switch-handle {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .switch-inner {
+      margin: 0 9px 0 30px;
+      font-size: variables.$font-size-base;
+    }
+    
+    &.switch-checked {
+      .switch-handle {
+        left: calc(100% - 26px);
+      }
+      
+      .switch-inner {
+        margin: 0 30px 0 9px;
+      }
+    }
+  }
+}
+
+@keyframes switch-loading {
+  100% {
+    transform: rotate(360deg);
+  }
+} 
