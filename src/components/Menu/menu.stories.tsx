@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Menu from './index';
 
@@ -248,3 +249,74 @@ export const MenuDisplay: Story = {
     docs: { source: { type: '' } },
   },
 };
+
+export const ControlledMenu: Story = {
+  render: () => {
+    const [selected, setSelected] = useState('0');
+    return (
+      <Menu selectedIndex={selected} onSelect={index => setSelected(index)}>
+        <Menu.Item>首页</Menu.Item>
+        <Menu.Item>关于我们</Menu.Item>
+        <Menu.Item>联系我们</Menu.Item>
+      </Menu>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '这是一个受控的菜单示例，菜单的选中状态完全由父组件控制。',
+      },
+    },
+  },
+};
+
+ControlledMenu.storyName = '受控Menu组件';
+
+export const ControlledMenuWithSubmenu: Story = {
+  render: () => {
+    const [selected, setSelected] = useState('0');
+    return (
+      <Menu selectedIndex={selected} onSelect={index => setSelected(index)} mode="vertical">
+        <Menu.Item>首页</Menu.Item>
+        <Menu.SubMenu title="产品服务">
+          <Menu.Item>产品介绍</Menu.Item>
+          <Menu.Item>解决方案</Menu.Item>
+          <Menu.Item>技术支持</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu title="关于我们">
+          <Menu.Item>公司简介</Menu.Item>
+          <Menu.Item>发展历程</Menu.Item>
+          <Menu.Item>联系方式</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Item>帮助中心</Menu.Item>
+      </Menu>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '这是一个包含子菜单的受控菜单示例，展示了如何在受控组件中使用多级菜单结构。',
+      },
+      source: {
+        code: `const [selected, setSelected] = useState('0');
+
+<Menu selectedIndex={selected} onSelect={index => setSelected(index)} mode="vertical">
+  <Menu.Item>首页</Menu.Item>
+  <Menu.SubMenu title="产品服务">
+    <Menu.Item>产品介绍</Menu.Item>
+    <Menu.Item>解决方案</Menu.Item>
+    <Menu.Item>技术支持</Menu.Item>
+  </Menu.SubMenu>
+  <Menu.SubMenu title="关于我们">
+    <Menu.Item>公司简介</Menu.Item>
+    <Menu.Item>发展历程</Menu.Item>
+    <Menu.Item>联系方式</Menu.Item>
+  </Menu.SubMenu>
+  <Menu.Item>帮助中心</Menu.Item>
+</Menu>`,
+      },
+    },
+  },
+};
+
+ControlledMenuWithSubmenu.storyName = '带子菜单的受控组件';

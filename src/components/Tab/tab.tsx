@@ -8,6 +8,7 @@ export type TabType = 'card' | 'line';
 
 export interface TabProps {
   defaultIndex?: number;
+  activeIndex?: number;
   onSelect?: SelectCallback;
   className?: string;
   style?: React.CSSProperties;
@@ -15,11 +16,23 @@ export interface TabProps {
 }
 
 export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
-  const { defaultIndex = 0, onSelect, className, style, type = 'line', children } = props;
-  const [activeIndex, setActiveIndex] = useState(defaultIndex);
+  const {
+    defaultIndex = 0,
+    activeIndex,
+    onSelect,
+    className,
+    style,
+    type = 'line',
+    children,
+  } = props;
+  const [internalActiveIndex, setInternalActiveIndex] = useState(defaultIndex);
+
+  const currentActiveIndex = activeIndex !== undefined ? activeIndex : internalActiveIndex;
 
   const handleSelect = (index: number) => {
-    setActiveIndex(index);
+    if (activeIndex === undefined) {
+      setInternalActiveIndex(index);
+    }
     onSelect?.(index);
   };
 
@@ -31,7 +44,7 @@ export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
       return (
         <li
           className={classNames('tabs-nav-item', {
-            'is-active': activeIndex === index,
+            'is-active': currentActiveIndex === index,
             'is-disabled': disabled,
           })}
           onClick={() => {
@@ -48,7 +61,7 @@ export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
 
   function renderContent(children: React.ReactNode): React.ReactNode {
     return React.Children.map(children, (child, index) => {
-      if (index === activeIndex) {
+      if (index === currentActiveIndex) {
         return child;
       }
       return null;

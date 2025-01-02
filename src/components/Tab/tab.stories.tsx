@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Tab from './index';
 import './_styles.scss';
+import { useState } from 'react';
 
 const meta = {
   title: 'Components/Tab',
@@ -105,6 +106,34 @@ export const CustomStyledTab: Story = {
       <Tab.Item label="Tab 3">Content 3</Tab.Item>
     </Tab>
   ),
+};
+
+// 受控组件
+export const ControlledTab: Story = {
+  render: () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    return (
+      <Tab activeIndex={activeIndex} onSelect={index => setActiveIndex(index)}>
+        <Tab.Item label="Tab 1">Content 1</Tab.Item>
+        <Tab.Item label="Tab 2">Content 2</Tab.Item>
+        <Tab.Item label="Tab 3">Content 3</Tab.Item>
+      </Tab>
+    );
+  },
+};
+ControlledTab.storyName = '受控组件';
+ControlledTab.parameters = {
+  docs: {
+    source: {
+      code: `const [activeIndex, setActiveIndex] = useState(0);
+
+<Tab activeIndex={activeIndex} onSelect={index => setActiveIndex(index)}>
+  <Tab.Item label="Tab 1">Content 1</Tab.Item>
+  <Tab.Item label="Tab 2">Content 2</Tab.Item>
+  <Tab.Item label="Tab 3">Content 3</Tab.Item>
+</Tab>`,
+    },
+  },
 };
 
 export const TabDisplay: Story = {

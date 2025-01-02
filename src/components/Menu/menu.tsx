@@ -8,6 +8,7 @@ type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
   defaultIndex?: string;
+  selectedIndex?: string;
   mode?: MenuMode;
   onSelect?: SelectCallback; // 选择菜单项
   onClick?: (index: string) => void; // 点击菜单项
@@ -45,21 +46,26 @@ export const Menu: React.FC<PropsWithChildren<MenuProps>> = props => {
     style,
     children,
     defaultIndex = '0',
+    selectedIndex,
     defaultOpenSubMenus = [],
     onSelect,
     onClick,
     ...restProps
   } = props;
 
-  const [activte, setActive] = useState(defaultIndex);
+  const [active, setActive] = useState(defaultIndex);
+
+  const currentActive = selectedIndex !== undefined ? selectedIndex : active;
 
   const handleSelect = (index: string) => {
-    setActive(index);
+    if (selectedIndex === undefined) {
+      setActive(index);
+    }
     onSelect?.(index);
   };
 
   const passedContext: IMenuContext = {
-    index: activte,
+    index: currentActive,
     onSelect: handleSelect,
     onClick,
     mode,

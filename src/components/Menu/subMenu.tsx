@@ -12,14 +12,14 @@ export interface SubMenuProps {
 
 export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
   const { index, title, className, children } = props;
-  const context = useContext(MenuContext);
-  const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
+  const { mode, index: activedIndex, defaultOpenSubMenus } = useContext(MenuContext);
+  const openedSubMenus = defaultOpenSubMenus as Array<string>;
   const isOpened = index && context.mode === 'vertical' ? openedSubMenus.includes(index) : false;
   const [menuOpen, setOpen] = useState(isOpened);
   const classes = classNames('menu-item submenu-item', className, {
-    'is-active': context.index.startsWith(index || ''),
+    'is-active': activedIndex.startsWith(index || ''),
     'is-opened': menuOpen,
-    'is-vertical': context.mode === 'vertical',
+    'is-vertical': mode === 'vertical',
   });
 
   const handleClick = (e: React.MouseEvent) => {
@@ -35,13 +35,13 @@ export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
     }, 300);
   };
   const clickEvents =
-    context.mode === 'vertical'
+    mode === 'vertical'
       ? {
           onClick: handleClick,
         }
       : {};
   const hoverEvents =
-    context.mode !== 'vertical'
+    mode !== 'vertical'
       ? {
           onMouseEnter: (e: React.MouseEvent) => {
             handleMouse(e, true);
