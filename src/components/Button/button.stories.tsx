@@ -6,6 +6,11 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: '按钮组件，用于触发操作。',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

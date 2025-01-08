@@ -7,8 +7,13 @@ const meta = {
   component: Space,
   parameters: {
     layout: 'centered',
-    componentSubtitle: '间距组件',
+    docs: {
+      description: {
+        component: '间距组件，用于在组件之间添加间距。',
+      },
+    },
   },
+
   tags: ['autodocs'],
 } satisfies Meta<typeof Space>;
 

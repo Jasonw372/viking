@@ -7,6 +7,11 @@ const meta = {
   component: Switch,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: '开关组件，用于切换状态。',
+      },
+    },
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof Switch>;

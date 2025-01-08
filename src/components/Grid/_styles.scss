@@ -1,0 +1,120 @@
+.el-row {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.el-row.is-justify-start {
+  justify-content: flex-start;
+}
+
+.el-row.is-justify-center {
+  justify-content: center;
+}
+
+.el-row.is-justify-end {
+  justify-content: flex-end;
+}
+
+.el-row.is-justify-space-between {
+  justify-content: space-between;
+}
+
+.el-row.is-justify-space-around {
+  justify-content: space-around;
+}
+
+.el-row.is-align-top {
+  align-items: flex-start;
+}
+
+.el-row.is-align-middle {
+  align-items: center;
+}
+
+.el-row.is-align-bottom {
+  align-items: flex-end;
+}
+
+.el-col {
+  box-sizing: border-box;
+}
+
+/* 生成栅格列 */
+@for $i from 0 through 24 {
+  .el-col-#{$i} {
+    width: ($i / 24) * 100%;
+  }
+
+  .el-col-offset-#{$i} {
+    margin-left: ($i / 24) * 100%;
+  }
+
+  .el-col-pull-#{$i} {
+    position: relative;
+    right: ($i / 24) * 100%;
+  }
+
+  .el-col-push-#{$i} {
+    position: relative;
+    left: ($i / 24) * 100%;
+  }
+}
+
+/* 响应式布局 */
+@media only screen and (max-width: 767px) {
+  @for $i from 0 through 24 {
+    .el-col-xs-#{$i} {
+      width: ($i / 24) * 100%;
+    }
+    .el-col-xs-offset-#{$i} {
+      margin-left: ($i / 24) * 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  @for $i from 0 through 24 {
+    .el-col-sm-#{$i} {
+      width: ($i / 24) * 100%;
+    }
+    .el-col-sm-offset-#{$i} {
+      margin-left: ($i / 24) * 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  @for $i from 0 through 24 {
+    .el-col-md-#{$i} {
+      width: ($i / 24) * 100%;
+    }
+    .el-col-md-offset-#{$i} {
+      margin-left: ($i / 24) * 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  @for $i from 0 through 24 {
+    .el-col-lg-#{$i} {
+      width: ($i / 24) * 100%;
+    }
+    .el-col-lg-offset-#{$i} {
+      margin-left: ($i / 24) * 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  @for $i from 0 through 24 {
+    .el-col-xl-#{$i} {
+      width: ($i / 24) * 100%;
+    }
+    .el-col-xl-offset-#{$i} {
+      margin-left: ($i / 24) * 100%;
+    }
+  }
+} 
