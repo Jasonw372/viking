@@ -54,7 +54,7 @@ export default [
         useTabs: false,
         bracketSpacing: true,
         arrowParens: 'avoid',
-        endOfLine: 'lf',
+        endOfLine: 'auto',
       }],
     },
   }
