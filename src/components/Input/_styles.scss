@@ -1,0 +1,109 @@
+@use "../../styles/variables";
+
+.input-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+
+  .icon-wrapper{
+    position: absolute;
+    height: 100%;
+    width: 35px;
+    justify-content: center;
+    color: variables.$input-color;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+
+    svg{
+      color: variables.$input-placeholder-color;
+    }
+
+  }
+}
+
+.icon-wrapper+.input-inner{
+  padding-right: 35px;
+}
+
+.input-inner{
+  width: 100%;
+  padding: variables.$input-padding-y variables.$input-padding-x;
+  font-family: variables.$input-font-family;
+  font-size: variables.$input-font-size;
+  font-weight: variables.$input-font-weight;
+  line-height: variables.$input-line-height;
+  color: variables.$input-color;
+  background-color: variables.$input-bg;
+  border: variables.$input-border-width solid variables.$input-border-color;
+  border-radius: variables.$input-border-radius;
+  transition: variables.$input-transition;
+
+  &:focus{
+    color: variables.$input-focus-color;
+    background-color: variables.$input-focus-bg;
+    border-color: variables.$input-focus-border-color;
+    outline: 0;
+    box-shadow: variables.$input-focus-box-shadow;
+  }
+
+  &::placeholder{
+    opacity: 1;
+    color: variables.$input-placeholder-color;
+  }
+
+  &:disabled,
+  &[readonly]{
+    opacity: 1;
+    background-color: variables.$input-disabled-bg;
+    border-color: variables.$input-disabled-border-color;
+    cursor: not-allowed;
+  }
+}
+
+//.input-group-prepend,
+//.input-group-append{
+//  display: flex;
+//  align-items: center;
+//  padding: variables.$input-padding-y variables.$input-padding-x;
+//  margin-bottom: 0;
+//  font-size: variables.$input-font-size;
+//  font-weight: variables.$font-weight-normal;
+//  line-height: variables.$input-line-height;
+//  color: variables.$input-group-addon-color;
+//  text-align: center;
+//  white-space: nowrap;
+//  background-color: variables.$input-group-addon-bg;
+//  border: variables.$input-border-width solid variables.$input-group-addon-border-color;
+//  border-radius: variables.$input-border-radius;
+//}
+//
+//input-group-append+.btn {
+//  padding: 0;
+//  border: 0;
+//}
+//.input-group > .nested-prepend,
+//.input-group.input-group-append > .input-inner {
+//  border-bottom-right-radius: 0;
+//  border-top-right-radius: 0;
+//}
+//
+//.input-group > .nested-append,
+//.input-group.input-group-prepend > .input-inner {
+//  border-bottom-right-radius: 0;
+//  border-top-left-radius: 0;
+//}
+//
+//.input-size-sm .input-inner {
+//  padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
+//  font-size: variables.$input-font-size-sm;
+//  border-radius: variables.$input-border-radius-sm;
+//}
+//
+//.input-size-lg .input-inner {
+//  padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
+//  font-size: variables.$input-font-size-lg;
+//  border-radius: variables.$input-border-radius-lg;
+//}
