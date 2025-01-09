@@ -1,7 +1,7 @@
 import React, { type FC, type CSSProperties, type ReactNode } from 'react';
 import classNames from 'classnames';
 
-export type SpaceSize = 'small' | 'middle' | 'large' | number;
+export type SpaceSize = 'sm' | 'md' | 'lg' | number;
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
 export type SpaceDirection = 'vertical' | 'horizontal';
 
@@ -18,16 +18,16 @@ export interface SpaceProps {
 }
 
 const spaceSize = {
-  small: 8,
-  middle: 16,
-  large: 24,
+  sm: 8,
+  md: 16,
+  lg: 24,
 };
 
 export const Space: FC<SpaceProps> = props => {
   const {
     className,
     style,
-    size = 'small',
+    size = 'sm',
     align,
     direction = 'horizontal',
     wrap = false,

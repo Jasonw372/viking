@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type FlexGap = 'small' | 'middle' | 'large' | number;
+export type FlexGap = 'sm' | 'md' | 'lg' | number;
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 export type FlexAlign = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 export type FlexJustify =
@@ -56,9 +56,9 @@ const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
       }
       return (
         {
-          small: 8,
-          middle: 16,
-          large: 24,
+          sm: 8,
+          md: 16,
+          lg: 24,
         }[size] || 0
       );
     };

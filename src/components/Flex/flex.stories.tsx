@@ -44,7 +44,7 @@ const smallBoxWithOutMargin: React.CSSProperties = {
 
 export const Basic: Story = {
   render: () => (
-    <Flex gap="middle">
+    <Flex gap="md">
       <div style={boxStyle}>1</div>
       <div style={boxStyle}>2</div>
       <div style={boxStyle}>3</div>
@@ -55,13 +55,13 @@ export const Basic: Story = {
 export const Direction: Story = {
   render: () => (
     <div style={{ width: '100%' }}>
-      <Flex gap="middle" vertical>
-        <Flex gap="middle">
+      <Flex gap="md" vertical>
+        <Flex gap="md">
           <div style={boxStyle}>1</div>
           <div style={boxStyle}>2</div>
           <div style={boxStyle}>3</div>
         </Flex>
-        <Flex gap="middle" direction="row-reverse">
+        <Flex gap="md" direction="row-reverse">
           <div style={boxStyle}>1</div>
           <div style={boxStyle}>2</div>
           <div style={boxStyle}>3</div>
@@ -74,7 +74,7 @@ export const Direction: Story = {
 export const Wrap: Story = {
   render: () => (
     <div style={{ width: '100%' }}>
-      <Flex gap="middle" wrap="wrap">
+      <Flex gap="md" wrap="wrap">
         {Array.from({ length: 20 }, (_, i) => (
           <div key={i} style={boxStyle}>
             {i + 1}
@@ -88,7 +88,7 @@ export const Wrap: Story = {
 export const NoWrap: Story = {
   render: () => (
     <div style={{ width: '100%' }}>
-      <Flex gap="middle" wrap="nowrap">
+      <Flex gap="md" wrap="nowrap">
         {Array.from({ length: 20 }, (_, i) => (
           <div key={i} style={boxStyle}>
             {i + 1}
@@ -102,7 +102,7 @@ export const NoWrap: Story = {
 export const Justify: Story = {
   render: () => (
     <div style={{ width: '300px' }}>
-      <Flex gap="middle" vertical>
+      <Flex gap="md" vertical>
         <div>justify="start"</div>
         <Flex justify="start" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
           <div style={smallBox}>1</div>
@@ -147,7 +147,7 @@ export const Justify: Story = {
 export const Align: Story = {
   render: () => (
     <div style={{ width: '100%' }}>
-      <Flex gap="middle" vertical>
+      <Flex gap="md" vertical>
         <Flex align="start" style={{ backgroundColor: 'rgba(0,0,0,.1)', height: '100px' }}>
           <div style={smallBox}>1</div>
           <div style={smallBox}>2</div>
@@ -172,17 +172,17 @@ export const Gap: Story = {
   render: () => (
     <div style={{ width: '100%' }}>
       <Flex vertical gap={20}>
-        <Flex gap="small">
+        <Flex gap="sm">
           <div style={smallBox}>1</div>
           <div style={smallBox}>2</div>
           <div style={smallBox}>3</div>
         </Flex>
-        <Flex gap="middle">
+        <Flex gap="md">
           <div style={smallBox}>1</div>
           <div style={smallBox}>2</div>
           <div style={smallBox}>3</div>
         </Flex>
-        <Flex gap="large">
+        <Flex gap="lg">
           <div style={smallBox}>1</div>
           <div style={smallBox}>2</div>
           <div style={smallBox}>3</div>
@@ -213,7 +213,7 @@ export const Gap: Story = {
 
 export const Vertical: Story = {
   render: () => (
-    <Flex vertical gap="middle" style={{ width: '50%' }}>
+    <Flex vertical gap="md" style={{ width: '50%' }}>
       <div style={boxStyle}>1</div>
       <div style={boxStyle}>2</div>
       <div style={boxStyle}>3</div>

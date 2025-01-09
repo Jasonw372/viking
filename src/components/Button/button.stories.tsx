@@ -148,7 +148,7 @@ export const CustomButton: Story = {
   },
   render: _args => (
     <Button>
-      <Space size="small">
+      <Space size="sm">
         <Icon icon="spinner" spin />
         加载中
       </Space>
@@ -259,7 +259,7 @@ export const ButtonDisplay: Story = {
           <Icon icon="coffee"></Icon>
         </Button>
         <Button>
-          <Space size="small">
+          <Space size="sm">
             <Icon icon="spinner" spin />
             加载中
           </Space>
