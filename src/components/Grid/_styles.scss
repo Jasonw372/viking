@@ -45,21 +45,21 @@
 /* 生成栅格列 */
 @for $i from 0 through 24 {
   .el-col-#{$i} {
-    width: ($i / 24) * 100%;
+    width: calc($i / 24 * 100%);
   }
 
   .el-col-offset-#{$i} {
-    margin-left: ($i / 24) * 100%;
+    margin-left: calc($i / 24 * 100%);
   }
 
   .el-col-pull-#{$i} {
     position: relative;
-    right: ($i / 24) * 100%;
+    right: calc($i / 24 * 100%);
   }
 
   .el-col-push-#{$i} {
     position: relative;
-    left: ($i / 24) * 100%;
+    left: calc($i / 24 * 100%);
   }
 }
 
@@ -67,10 +67,10 @@
 @media only screen and (max-width: 767px) {
   @for $i from 0 through 24 {
     .el-col-xs-#{$i} {
-      width: ($i / 24) * 100%;
+      width: calc($i / 24 * 100%);
     }
     .el-col-xs-offset-#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24 * 100%);
     }
   }
 }
@@ -78,10 +78,10 @@
 @media only screen and (min-width: 768px) {
   @for $i from 0 through 24 {
     .el-col-sm-#{$i} {
-      width: ($i / 24) * 100%;
+      width: calc($i / 24 * 100%);
     }
     .el-col-sm-offset-#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24 * 100%);
     }
   }
 }
@@ -89,10 +89,10 @@
 @media only screen and (min-width: 992px) {
   @for $i from 0 through 24 {
     .el-col-md-#{$i} {
-      width: ($i / 24) * 100%;
+      width: calc($i / 24 * 100%);
     }
     .el-col-md-offset-#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24 * 100%);
     }
   }
 }
@@ -100,10 +100,10 @@
 @media only screen and (min-width: 1200px) {
   @for $i from 0 through 24 {
     .el-col-lg-#{$i} {
-      width: ($i / 24) * 100%;
+      width: calc($i / 24 * 100%);
     }
     .el-col-lg-offset-#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24 * 100%);
     }
   }
 }
@@ -111,10 +111,10 @@
 @media only screen and (min-width: 1920px) {
   @for $i from 0 through 24 {
     .el-col-xl-#{$i} {
-      width: ($i / 24) * 100%;
+      width: calc($i / 24 * 100%);
     }
     .el-col-xl-offset-#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24 * 100%);
     }
   }
-} 
+}
