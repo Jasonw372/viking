@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './button';
+import Icon from '../Icon';
+import Space from '../Space';
 
 const meta = {
   title: 'Components/Button',
@@ -139,6 +141,21 @@ export const Plain: Story = {
   },
 };
 
+// 自定义按钮
+export const CustomButton: Story = {
+  args: {
+    children: '自定义按钮',
+  },
+  render: _args => (
+    <Button>
+      <Space size="small">
+        <Icon icon="spinner" spin />
+        加载中
+      </Space>
+    </Button>
+  ),
+};
+
 // 按钮展示页
 export const ButtonDisplay: Story = {
   render: _args => (
@@ -233,6 +250,19 @@ export const ButtonDisplay: Story = {
         <Button btnType="primary">默认按钮</Button>
         <Button size="sm" btnType="primary">
           小号按钮
+        </Button>
+      </div>
+
+      {/* 自定义按钮 */}
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <Button size="lg">
+          <Icon icon="coffee"></Icon>
+        </Button>
+        <Button>
+          <Space size="small">
+            <Icon icon="spinner" spin />
+            加载中
+          </Space>
         </Button>
       </div>
     </div>

@@ -149,7 +149,6 @@ export const TabDisplay: Story = {
       >
         {/* 默认标签页 */}
         <div>
-          <h3>默认标签页</h3>
           <Tab defaultIndex={0}>
             <Tab.Item label="用户管理">用户管理内容</Tab.Item>
             <Tab.Item label="配置管理">配置管理内容</Tab.Item>
@@ -159,7 +158,6 @@ export const TabDisplay: Story = {
 
         {/* 卡片式标签页 */}
         <div>
-          <h3>卡片式标签页</h3>
           <Tab defaultIndex={0} type="card">
             <Tab.Item label="我的音乐">我的音乐列表</Tab.Item>
             <Tab.Item label="最近播放">最近播放记录</Tab.Item>
@@ -169,7 +167,6 @@ export const TabDisplay: Story = {
 
         {/* 禁用标签项 */}
         <div>
-          <h3>禁用标签项</h3>
           <Tab defaultIndex={0}>
             <Tab.Item label="进行中">当前进行的任务</Tab.Item>
             <Tab.Item label="已完成" disabled>
@@ -181,7 +178,6 @@ export const TabDisplay: Story = {
 
         {/* 自定义样式标签页 */}
         <div>
-          <h3>自定义样式标签页</h3>
           <Tab
             defaultIndex={0}
             style={{

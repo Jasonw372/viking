@@ -39,6 +39,11 @@
       display: flex;
       align-items: center;
       // padding-bottom:  variables.$menu-item-padding-y;
+
+      .arrow-icon {
+        margin-left: 3px;
+        transition: transform 0.3s ease;
+      }
     }
   }
 
@@ -82,14 +87,26 @@
     > .menu-item {
       padding: 8px 20px;
       border-bottom: variables.$menu-border-width solid variables.$menu-border-color;
-      
+
       &:hover {
         background-color: #f5f7fa;
       }
-      
+
       &:last-child {
         border-bottom: none;
       }
+    }
+  }
+
+  .submenu-item {
+    .submenu-title {
+      .arrow-icon {
+        transform: rotate(0deg);
+      }
+    }
+
+    &:hover .arrow-icon {
+      transform: rotate(180deg);
     }
   }
 }
@@ -118,9 +135,22 @@
     .menu-item {
       &.is-active,
       &:hover {
-        border-left: variables.$menu-item-active-border-width solid variables.$menu-item-active-color;
+        border-left: variables.$menu-item-active-border-width solid
+          variables.$menu-item-active-color;
         background-color: #ecf5ff;
       }
+    }
+  }
+
+  .submenu-item {
+    .submenu-title {
+      .arrow-icon {
+        transform: rotate(0deg);
+      }
+    }
+
+    &.is-opened .arrow-icon {
+      transform: rotate(180deg);
     }
   }
 }

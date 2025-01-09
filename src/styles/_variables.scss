@@ -1,5 +1,5 @@
-@use "sass:color";
-@use "mixin";
+@use 'sass:color';
+@use 'mixin';
 // 颜色变量
 // 使用这个默认调色板作为项目基础
 
@@ -31,24 +31,21 @@ $teal: #20c997 !default; // 青色
 $cyan: #17a2b8 !default; // 蓝绿色
 
 // 情境颜色 - Sass变量
-$primary-color: $blue !default;
-$secondary-color: $gray-600 !default;
-$success-color: $green !default;
-$info-color: $cyan !default;
-$warning-color: $yellow !default;
-$danger-color: $red !default;
-$light-color: $gray-100 !default;
-$dark-color: $gray-800 !default;
+$defaultColors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+);
 
 :root {
-  --primary: #{$primary-color};
-  --secondary: #{$secondary-color};
-  --success: #{$success-color};
-  --info: #{$info-color};
-  --warning: #{$warning-color};
-  --danger: #{$danger-color};
-  --light: #{$light-color};
-  --dark: #{$dark-color};
+  @each $name, $color in $defaultColors {
+    --#{$name}: #{$color};
+  }
 }
 
 // 情境颜色 - CSS变量
@@ -60,10 +57,9 @@ $warning: var(--warning) !default;
 $danger: var(--danger) !default;
 $light: var(--light) !default;
 $dark: var(--dark) !default;
-
 // 字体系统
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-"Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+  Arial, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
 $font-family-base: $font-family-sans-serif !default;
 
@@ -211,7 +207,9 @@ $btn-font-weight: $font-weight-normal !default;
 
 $btn-border-width: $border-width !default;
 
-$btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
+$btn-box-shadow:
+  inset 0 1px 0 rgba($white, 0.15),
+  0 1px 1px rgba($black, 0.075) !default;
 $btn-disabled-opacity: 0.65 !default;
 $btn-link-disabled-opacity: 0.65 !default;
 
@@ -229,8 +227,14 @@ $btn-danger: $danger;
 // Menu组件变量
 $menu-border-width: $border-width !default;
 $menu-border-color: $border-color !default;
-$menu-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
-$menu-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+$menu-box-shadow:
+  inset 0 1px 0 rgba($white, 0.15),
+  0 1px 1px rgba($black, 0.075) !default;
+$menu-transition:
+  color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out !default;
 
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
@@ -238,10 +242,12 @@ $menu-item-active-color: $primary !default;
 $menu-item-active-border-width: $active-border-width !default;
 $menu-item-disabled-color: $gray-600 !default;
 
-$submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+$submenu-box-shadow:
+  0 2px 4px 0 rgba(0, 0, 0, 0.12),
+  0 0 6px 0 rgba(0, 0, 0, 0.04);
 
 // Tab组件变量
-$nav-link-padding-y: .5rem !default;
+$nav-link-padding-y: 0.5rem !default;
 $nav-link-padding-x: 1rem !default;
 $nav-link-disabled-color: $gray-600 !default;
 

@@ -1,0 +1,18 @@
+@use '../../styles/variables.scss';
+
+.icon {
+  @each $name, $color in (
+    primary: variables.$primary,
+    secondary: variables.$secondary,
+    success: variables.$success,
+    info: variables.$info,
+    warning: variables.$warning,
+    danger: variables.$danger,
+    light: variables.$light,
+    dark: variables.$dark
+  ) {
+    &-#{$name} {
+      color: $color;
+    }
+  }
+}
