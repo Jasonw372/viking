@@ -16,7 +16,10 @@ const meta = {
       control: 'select',
       options: ['lg', 'sm', undefined],
     },
-    icon: {
+    prefixIcon: {
+      control: 'text',
+    },
+    suffixIcon: {
       control: 'text',
     },
     prepend: {
