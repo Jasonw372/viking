@@ -7,7 +7,8 @@ import { useState, forwardRef } from 'react';
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   disabled?: boolean;
   size?: 'lg' | 'sm';
-  icon?: IconProp;
+  prefixIcon?: IconProp;
+  suffixIcon?: IconProp;
   prepend?: React.ReactNode;
   append?: React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -15,11 +16,19 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   defaultValue?: string;
 }
 
+const wrapTextWithSpan = (content: React.ReactNode) => {
+  if (typeof content === 'string' || typeof content === 'number') {
+    return <span>{content}</span>;
+  }
+  return content;
+};
+
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     disabled,
     size,
-    icon,
+    prefixIcon,
+    suffixIcon,
     prepend,
     append,
     style,
@@ -45,25 +54,34 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     'input-group': prepend || append,
     'input-group-append': !!append,
     'input-group-prepend': !!prepend,
+    'input-prefix': !!prefixIcon,
+    'input-suffix': !!suffixIcon,
   });
 
   return (
     <div className={classes} style={style}>
-      {prepend && <div className="nested-prepend">{prepend}</div>}
-      {icon && (
-        <div className="icon-wrapper">
-          <Icon icon={icon} />
-        </div>
-      )}
-      <input
-        ref={ref}
-        className="input-inner"
-        disabled={disabled}
-        value={value !== undefined ? value : inputValue}
-        onChange={handleChange}
-        {...restProps}
-      />
-      {append && <div className="nested-append">{append}</div>}
+      {prepend && <div className="nested-prepend">{wrapTextWithSpan(prepend)}</div>}
+      <div className="input-inner-wrapper">
+        {prefixIcon && (
+          <div className="icon-prefix">
+            <Icon icon={prefixIcon} />
+          </div>
+        )}
+        <input
+          ref={ref}
+          className="input-inner"
+          disabled={disabled}
+          value={value !== undefined ? value : inputValue}
+          onChange={handleChange}
+          {...restProps}
+        />
+        {suffixIcon && (
+          <div className="icon-suffix">
+            <Icon icon={suffixIcon} />
+          </div>
+        )}
+      </div>
+      {append && <div className="nested-append">{wrapTextWithSpan(append)}</div>}
     </div>
   );
 });
