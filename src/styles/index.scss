@@ -4,6 +4,8 @@
 @use "reboot";
 // mixin
 @use "mixin";
+// 动画
+@use "animation";
 // 按钮样式
 @use "../components/Button/styles" as *;
 // 菜单样式

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 import type { MenuItemProps } from './menuItem';
 import Icon from '../Icon';
-
+import Transition from '../Transition';
 export interface SubMenuProps {
   index?: string;
   title: string;
@@ -19,7 +19,6 @@ export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
   const [menuOpen, setOpen] = useState(isOpened);
   const classes = classNames('menu-item submenu-item', className, {
     'is-active': activedIndex.startsWith(index || ''),
-    'is-opened': menuOpen,
     'is-vertical': mode === 'vertical',
   });
 
@@ -67,7 +66,11 @@ export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
         console.error('Warning: SubMenu has a child which is not a MenuItem component');
       }
     });
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    return (
+      <Transition in={menuOpen} timeout={300} classNames="zoom-in-top" appear unmountOnExit>
+        <ul className={subMenuClasses}>{childrenComponent}</ul>
+      </Transition>
+    );
   };
 
   return (

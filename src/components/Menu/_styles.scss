@@ -1,5 +1,6 @@
 @use '../../styles/variables';
 
+
 .menu {
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +49,7 @@
   }
 
   .submenu-container {
-    display: none;
+    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -61,9 +62,9 @@
         color: variables.$menu-item-active-color !important;
       }
     }
-    &.menu-opened {
-      display: block;
-    }
+    // &.menu-opened {
+    //   // display: block;
+    // }
   }
 }
 
@@ -82,7 +83,6 @@
     border-radius: 4px;
     border: variables.$menu-border-width solid variables.$menu-border-color;
     box-shadow: variables.$submenu-box-shadow;
-    transition: opacity 0.3s ease-in-out;
 
     > .menu-item {
       padding: 8px 20px;

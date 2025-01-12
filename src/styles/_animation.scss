@@ -1,0 +1,6 @@
+@use "./mixin";
+
+@include mixin.zoom-animation('top', scaleY(0), scaleY(1), center top);
+@include mixin.zoom-animation('left', scale(.45, .45), scale(1, 1), top left);
+@include mixin.zoom-animation('right', scale(.45, .45), scale(1, 1), top right);
+@include mixin.zoom-animation('bottom', scaleY(0), scaleY(1), center bottom);
