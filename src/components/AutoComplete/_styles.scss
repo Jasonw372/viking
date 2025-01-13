@@ -24,9 +24,9 @@
       transition: all 0.2s;
       color: variables.$body-color;
       
-      &:hover {
-        background-color: variables.$gray-100;
-        color: variables.$primary;
+      &.is-active {
+        background-color: variables.$primary;
+        color: variables.$white;
       }
 
       &:last-child {
