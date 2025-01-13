@@ -16,13 +16,6 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   defaultValue?: string;
 }
 
-const wrapTextWithSpan = (content: React.ReactNode) => {
-  if (typeof content === 'string' || typeof content === 'number') {
-    return <span>{content}</span>;
-  }
-  return content;
-};
-
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     disabled,
@@ -60,7 +53,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <div className={classes} style={style}>
-      {prepend && <div className="nested-prepend">{wrapTextWithSpan(prepend)}</div>}
+      {prepend && <div className="nested-prepend">{prepend}</div>}
       <div className="input-inner-wrapper">
         {prefixIcon && (
           <div className="icon-prefix">
@@ -81,7 +74,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           </div>
         )}
       </div>
-      {append && <div className="nested-append">{wrapTextWithSpan(append)}</div>}
+      {append && <div className="nested-append">{append}</div>}
     </div>
   );
 });

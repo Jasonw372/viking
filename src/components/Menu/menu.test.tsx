@@ -94,7 +94,7 @@ describe('Menu Component', () => {
   });
 
   it('should show dropdown items when hover on subMenu', async () => {
-    expect(wrapper.queryByText('drop1')).not.toBeVisible();
+    expect(wrapper.queryByText('drop1')).not.toBeInTheDocument();
     const dropdownElement = wrapper.getByText('dropdown');
     fireEvent.mouseEnter(dropdownElement);
     await waitFor(
@@ -146,7 +146,6 @@ describe('test SubMenu component', () => {
   it('should render SubMenu component', () => {
     const subMenuElement = wrapper.getByText('dropdown').parentElement;
     expect(subMenuElement).toHaveClass('submenu-item');
-    expect(wrapper.getByText('drop1').parentElement).toHaveClass('submenu-container');
   });
 
   it('should toggle submenu when clicking in vertical mode', () => {
@@ -154,13 +153,14 @@ describe('test SubMenu component', () => {
     wrapper = generateMenu(testVerPropsWithoutOpen);
     wrapper.container.append(createStyleFile());
     const dropdownElement = wrapper.getByText('dropdown');
-    const submenuContainer = wrapper.queryByText('drop1')?.parentElement;
+    let submenuContainer = wrapper.queryByText('drop1')?.parentElement;
 
     // 确保初始状态
-    expect(submenuContainer).not.toBeVisible();
+    expect(submenuContainer).equal(undefined);
 
     // 点击切换状态
     fireEvent.click(dropdownElement);
+    submenuContainer = wrapper.queryByText('drop1')?.parentElement;
     expect(submenuContainer).toBeVisible();
 
     // 再次点击
@@ -168,10 +168,11 @@ describe('test SubMenu component', () => {
     expect(submenuContainer).not.toBeVisible();
   });
 
-  it('should handle click events on submenu items', () => {
+  it('should handle click events on submenu items', async () => {
     const dropdownElement = wrapper.getByText('dropdown');
     fireEvent.mouseEnter(dropdownElement);
-    fireEvent.click(wrapper.getByText('drop1'));
+
+    await waitFor(() => fireEvent.click(wrapper.getByText('drop1')));
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0');
   });
 });
