@@ -3,34 +3,41 @@
 .auto-complete {
   position: relative;
   
+  .auto-complete-input {
+    position: relative;
+    
+    .auto-complete-loading {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      color: variables.$gray-600;
+    }
+  }
+
   .suggestion-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    border: variables.$border-width solid variables.$input-border-color;
-    border-top: none;
+    padding-left: 0;
+    white-space: nowrap;
     position: absolute;
+    background: variables.$white;
+    z-index: 100;
     top: 100%;
     left: 0;
-    right: 0;
-    z-index: 100;
-    background-color: variables.$white;
-    border-radius: 0 0 variables.$border-radius variables.$border-radius;
+    border: variables.$border-width solid variables.$input-border-color;
     box-shadow: variables.$submenu-box-shadow;
-    
-    li {
+    width: 100%;
+    .suggestion-item {
       padding: variables.$input-padding-y variables.$input-padding-x;
       cursor: pointer;
       transition: all 0.2s;
       color: variables.$body-color;
-      
       &.is-active {
         background-color: variables.$primary;
         color: variables.$white;
       }
-
-      &:last-child {
-        border-radius: 0 0 variables.$border-radius variables.$border-radius;
+      &:hover {
+        color: variables.$primary;
       }
     }
   }
