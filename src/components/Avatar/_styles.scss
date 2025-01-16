@@ -1,0 +1,52 @@
+@use "../../styles/variables";
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: variables.$white;
+  background-color: variables.$gray-400;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  outline: none;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-style: none;
+  }
+
+  // 形状
+  &.avatar-circle {
+    border-radius: 50%;
+  }
+
+  &.avatar-square {
+    border-radius: variables.$border-radius;
+  }
+
+  // 尺寸
+  &.avatar-large {
+    width: 40px;
+    height: 40px;
+    font-size: variables.$font-size-lg;
+  }
+
+  &.avatar-default {
+    width: 32px;
+    height: 32px;
+    font-size: variables.$font-size-base;
+  }
+
+  &.avatar-small {
+    width: 24px;
+    height: 24px;
+    font-size: variables.$font-size-sm;
+  }
+} 
