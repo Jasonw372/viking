@@ -32,6 +32,8 @@ export const Controlled: Story = {
     };
 
     const fetchSuggestions = (keyword: string) => {
+      console.log('fetching', keyword);
+
       const animals = ['dog', 'cat', 'dolphin', 'deer', 'dragon', 'elephant', 'eagle'];
       return animals
         .filter(item => item.toLowerCase().includes(keyword.toLowerCase()))
@@ -59,6 +61,8 @@ export const Uncontrolled: Story = {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     const fetchSuggestions = (keyword: string) => {
+      console.log('fetching', keyword);
+
       const animals = ['dog', 'cat', 'dolphin', 'deer', 'dragon', 'elephant', 'eagle'];
       return animals
         .filter(item => item.toLowerCase().includes(keyword.toLowerCase()))

@@ -6,6 +6,7 @@ import Transition from '../Transition';
 import classNames from 'classnames';
 import useClickOutside from '../../hooks/useClickOutside';
 import Icon from '../Icon';
+import useDebounce from '../../hooks/useDebounce';
 
 interface DataSourceObject {
   value: string;
@@ -28,7 +29,8 @@ const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps>((props, ref
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [loading, setLoading] = useState(false);
-
+  const triggerSearch = value !== undefined ? value : innerValue;
+  const debounceValue = useDebounce(triggerSearch, 500);
   const wrapperRef = useRef<HTMLUListElement>(null);
   useClickOutside(wrapperRef, () => {
     setShowDropdown(false);
@@ -46,31 +48,33 @@ const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps>((props, ref
     }
   }, [value]);
 
+  useEffect(() => {
+    if (!debounceValue) {
+      setSuggestions([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const results = fetchSuggestions(debounceValue);
+
+    if (results instanceof Promise) {
+      setLoading(true);
+      results.then(data => {
+        setLoading(false);
+        setSuggestions(data);
+        setShowDropdown(true);
+      });
+    } else {
+      setSuggestions(results);
+      setShowDropdown(true);
+    }
+  }, [debounceValue]);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
 
     // 非受控模式下更新内部值
     if (value === undefined) {
       setInnerValue(newValue);
-    }
-    // todo: 添加防抖
-    const results = fetchSuggestions(newValue);
-    if (newValue) {
-      if (results instanceof Promise) {
-        setLoading(true);
-
-        results.then(data => {
-          setLoading(false);
-          setSuggestions(data);
-        });
-      } else {
-        setSuggestions(results);
-      }
-
-      setShowDropdown(true);
-    } else {
-      setSuggestions([]);
-      setShowDropdown(false);
     }
 
     // 调用外部 onChange
