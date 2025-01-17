@@ -1,9 +1,8 @@
-import React from 'react';
 import { config } from 'react-transition-group';
 import type { RenderResult } from '@testing-library/react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import AutoComplete from './index';
-import type { AutoCompleteProps } from './AutoComplete';
+import type { AutoCompleteProps } from './autoComplete.tsx';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
 // Disable the timeout by default

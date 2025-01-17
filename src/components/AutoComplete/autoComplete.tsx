@@ -14,7 +14,7 @@ interface DataSourceObject {
 
 export type DataSourceType<T = object> = T & DataSourceObject;
 
-interface AutoCompleteProps extends Omit<InputProps, 'onSelect' | 'defaultValue'> {
+export interface AutoCompleteProps extends Omit<InputProps, 'onSelect' | 'defaultValue'> {
   fetchSuggestions: (keyWord: string) => DataSourceType[] | Promise<DataSourceObject[]>;
   onSelect?: (item: DataSourceType) => void;
   defaultValue?: string;

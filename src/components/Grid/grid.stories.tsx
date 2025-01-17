@@ -38,7 +38,8 @@ const lightBoxStyle: React.CSSProperties = {
 
 // 基础栅格
 export const Basic: Story = {
-  render: () => (
+  name: '基础栅格',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Row>
         <Col span={24}>
@@ -84,7 +85,8 @@ export const Basic: Story = {
 
 // 区块间隔
 export const Gutter: Story = {
-  render: () => (
+  name: '区块间隔',
+  render: _args => (
     <div
       style={{
         width: '100%',
@@ -115,7 +117,8 @@ export const Gutter: Story = {
 
 // 偏移
 export const Offset: Story = {
-  render: () => (
+  name: '偏移',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Row>
         <Col span={8}>
@@ -138,7 +141,8 @@ export const Offset: Story = {
 
 // 对齐方式
 export const Alignment: Story = {
-  render: () => (
+  name: '对齐方式',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Row justify="start">
         <Col span={4}>
@@ -201,7 +205,8 @@ export const Alignment: Story = {
 
 // 响应式布局
 export const Responsive: Story = {
-  render: () => (
+  name: '响应式布局',
+  render: _args => (
     <Row>
       <Col xs={24} sm={12} md={8} lg={6} xl={4}>
         <div style={boxStyle}>Col</div>

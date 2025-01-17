@@ -21,6 +21,7 @@ export default meta;
 type Story = StoryObj<typeof Space>;
 
 export const Basic: Story = {
+  name: '基础间隔',
   args: {
     children: [<Button>Button 1</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
     align: 'baseline',
@@ -32,14 +33,16 @@ export const Basic: Story = {
 };
 
 export const WithSize: Story = {
+  name: '带有间隔大小',
   args: {
-    size: 'large',
+    size: 'lg',
     children: [<Button>Button 1</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
     style: { height: '100px' },
   },
 };
 
 export const Vertical: Story = {
+  name: '垂直间隔',
   args: {
     direction: 'vertical',
     children: [<Button>Button 1000</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
@@ -48,6 +51,7 @@ export const Vertical: Story = {
 };
 
 export const WithSplit: Story = {
+  name: '带有分隔符',
   args: {
     split: '|',
     children: [<Button>Button 1</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
@@ -57,6 +61,7 @@ export const WithSplit: Story = {
 };
 
 export const Compact: Story = {
+  name: '紧凑间隔',
   args: {
     children: [<Button>Button 0001</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
     compact: true,
@@ -64,6 +69,7 @@ export const Compact: Story = {
 };
 
 export const CompactVertical: Story = {
+  name: '垂直紧凑间隔',
   args: {
     children: [<Button>Button 0001</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
     compact: true,
