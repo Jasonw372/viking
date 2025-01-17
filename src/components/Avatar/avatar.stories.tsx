@@ -58,7 +58,8 @@ export const Sizes = () => (
     <Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
     <Avatar size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-    <Avatar size={50} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size="xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size="2xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
     <Avatar size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
   </div>
 );
@@ -76,9 +77,9 @@ Shapes.storyName = '不同形状';
 // 文字头像
 export const TextAvatar = () => (
   <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-    <Avatar>U</Avatar>
-    <Avatar>USER</Avatar>
-    <Avatar>测试</Avatar>
+    <Avatar>BL</Avatar>
+    <Avatar>SN</Avatar>
+    <Avatar>JL</Avatar>
   </div>
 );
 TextAvatar.storyName = '文字头像';
@@ -87,7 +88,7 @@ TextAvatar.storyName = '文字头像';
 export const FallbackAvatar = () => (
   <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
     <Avatar src="invalid-image.png" onError={() => console.log('图片加载失败')}>
-      失败
+      err
     </Avatar>
   </div>
 );

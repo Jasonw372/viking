@@ -1,4 +1,4 @@
-@use "../../styles/variables";
+@use '../../styles/variables';
 
 .avatar {
   position: relative;
@@ -14,7 +14,7 @@
   text-align: center;
   vertical-align: middle;
   outline: none;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -49,4 +49,16 @@
     height: 24px;
     font-size: variables.$font-size-sm;
   }
-} 
+
+  &.avatar-xl {
+    width: 48px;
+    height: 48px;
+    font-size: variables.$font-size-xl;
+  }
+
+  &.avatar-2xl {
+    width: 56px;
+    height: 56px;
+    font-size: variables.$font-size-2xl;
+  }
+}

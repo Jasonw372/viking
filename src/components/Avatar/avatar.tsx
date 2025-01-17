@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+const sizes = ['large', 'default', 'small', 'xl', '2xl'];
+
 export interface AvatarProps {
   /** 头像尺寸 */
-  size?: 'large' | 'default' | 'small' | number;
+  size?: 'large' | 'default' | 'small' | 'xl' | '2xl' | number;
   /** 形状：圆形或方形 */
   shape?: 'circle' | 'square';
   /** 图片源地址 */
@@ -20,9 +22,8 @@ export interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = props => {
   const { size = 'default', shape = 'circle', src, alt, children, className, onError } = props;
-
   const classes = classNames('avatar', className, {
-    [`avatar-${size}`]: typeof size === 'string',
+    [`avatar-${size}`]: typeof size === 'string' && sizes.includes(size),
     [`avatar-${shape}`]: shape,
   });
 
