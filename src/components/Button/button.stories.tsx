@@ -3,7 +3,7 @@ import Button from './button';
 import Icon from '../Icon';
 import Space from '../Space';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
@@ -46,6 +46,7 @@ type Story = StoryObj<typeof meta>;
 
 // 默认按钮
 export const Default: Story = {
+  name: '默认按钮',
   args: {
     children: '默认按钮',
   },
@@ -53,6 +54,7 @@ export const Default: Story = {
 
 // 主要按钮
 export const Primary: Story = {
+  name: '主要按钮',
   args: {
     btnType: 'primary',
     children: '主要按钮',
@@ -61,6 +63,7 @@ export const Primary: Story = {
 
 // 信息按钮
 export const Info: Story = {
+  name: '信息按钮',
   args: {
     btnType: 'info',
     children: '信息按钮',
@@ -69,6 +72,7 @@ export const Info: Story = {
 
 // 成功按钮
 export const Success: Story = {
+  name: '成功按钮',
   args: {
     btnType: 'success',
     children: '成功按钮',
@@ -77,6 +81,7 @@ export const Success: Story = {
 
 // 警告按钮
 export const Warning: Story = {
+  name: '警告按钮',
   args: {
     btnType: 'warning',
     children: '警告按钮',
@@ -85,6 +90,7 @@ export const Warning: Story = {
 
 // 危险按钮
 export const Danger: Story = {
+  name: '危险按钮',
   args: {
     btnType: 'danger',
     children: '危险按钮',
@@ -93,6 +99,7 @@ export const Danger: Story = {
 
 // 链接按钮
 export const Link: Story = {
+  name: '链接按钮',
   args: {
     btnType: 'link',
     children: '链接按钮',
@@ -102,6 +109,7 @@ export const Link: Story = {
 
 // 大号按钮
 export const Large: Story = {
+  name: '大号按钮',
   args: {
     size: 'lg',
     children: '大号按钮',
@@ -110,6 +118,7 @@ export const Large: Story = {
 
 // 小号按钮
 export const Small: Story = {
+  name: '小号按钮',
   args: {
     size: 'sm',
     children: '小号按钮',
@@ -118,6 +127,7 @@ export const Small: Story = {
 
 // 禁用按钮
 export const Disabled: Story = {
+  name: '禁用按钮',
   args: {
     disabled: true,
     children: '禁用按钮',
@@ -126,6 +136,7 @@ export const Disabled: Story = {
 
 // 圆角按钮
 export const Circle: Story = {
+  name: '圆角按钮',
   args: {
     circle: true,
     children: '圆角按钮',
@@ -134,6 +145,7 @@ export const Circle: Story = {
 
 // 朴素按钮
 export const Plain: Story = {
+  name: '朴素按钮',
   args: {
     plain: true,
     btnType: 'primary',
@@ -143,6 +155,7 @@ export const Plain: Story = {
 
 // 自定义按钮
 export const CustomButton: Story = {
+  name: '自定义按钮',
   args: {
     children: '自定义按钮',
   },
@@ -158,6 +171,7 @@ export const CustomButton: Story = {
 
 // 按钮展示页
 export const ButtonDisplay: Story = {
+  name: '按钮展示页',
   render: _args => (
     <div
       style={{

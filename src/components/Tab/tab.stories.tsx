@@ -50,6 +50,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const DefaultTab: Story = {
+  name: '默认标签页',
   args: {
     defaultIndex: 0,
   },
@@ -63,6 +64,7 @@ export const DefaultTab: Story = {
 };
 
 export const CardTypeTab: Story = {
+  name: '卡片式标签页',
   args: {
     defaultIndex: 0,
     type: 'card',
@@ -77,6 +79,7 @@ export const CardTypeTab: Story = {
 };
 
 export const DisabledTabItem: Story = {
+  name: '禁用标签项',
   args: {
     defaultIndex: 0,
   },
@@ -92,6 +95,7 @@ export const DisabledTabItem: Story = {
 };
 
 export const CustomStyledTab: Story = {
+  name: '自定义样式标签页',
   args: {
     defaultIndex: 0,
     style: {
@@ -110,6 +114,7 @@ export const CustomStyledTab: Story = {
 
 // 受控组件
 export const ControlledTab: Story = {
+  name: '受控组件',
   render: () => {
     const [activeIndex, setActiveIndex] = useState(0);
     return (
@@ -121,22 +126,9 @@ export const ControlledTab: Story = {
     );
   },
 };
-ControlledTab.storyName = '受控组件';
-ControlledTab.parameters = {
-  docs: {
-    source: {
-      code: `const [activeIndex, setActiveIndex] = useState(0);
-
-<Tab activeIndex={activeIndex} onSelect={index => setActiveIndex(index)}>
-  <Tab.Item label="Tab 1">Content 1</Tab.Item>
-  <Tab.Item label="Tab 2">Content 2</Tab.Item>
-  <Tab.Item label="Tab 3">Content 3</Tab.Item>
-</Tab>`,
-    },
-  },
-};
 
 export const TabDisplay: Story = {
+  name: '标签页展示',
   render: _args => (
     <div>
       <h2>标签页展示</h2>

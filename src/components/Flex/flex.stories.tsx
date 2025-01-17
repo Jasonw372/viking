@@ -43,7 +43,8 @@ const smallBoxWithOutMargin: React.CSSProperties = {
 };
 
 export const Basic: Story = {
-  render: () => (
+  name: '基础的Flex',
+  render: _args => (
     <Flex gap="md">
       <div style={boxStyle}>1</div>
       <div style={boxStyle}>2</div>
@@ -53,7 +54,8 @@ export const Basic: Story = {
 };
 
 export const Direction: Story = {
-  render: () => (
+  name: '方向的Flex',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Flex gap="md" vertical>
         <Flex gap="md">
@@ -72,7 +74,8 @@ export const Direction: Story = {
 };
 
 export const Wrap: Story = {
-  render: () => (
+  name: '自动换行Flex',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Flex gap="md" wrap="wrap">
         {Array.from({ length: 20 }, (_, i) => (
@@ -86,7 +89,8 @@ export const Wrap: Story = {
 };
 
 export const NoWrap: Story = {
-  render: () => (
+  name: '不换行Flex',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Flex gap="md" wrap="nowrap">
         {Array.from({ length: 20 }, (_, i) => (
@@ -100,7 +104,8 @@ export const NoWrap: Story = {
 };
 
 export const Justify: Story = {
-  render: () => (
+  name: 'Justify的Flex',
+  render: _args => (
     <div style={{ width: '300px' }}>
       <Flex gap="md" vertical>
         <div>justify="start"</div>
@@ -145,7 +150,8 @@ export const Justify: Story = {
 };
 
 export const Align: Story = {
-  render: () => (
+  name: 'Align的Flex',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Flex gap="md" vertical>
         <Flex align="start" style={{ backgroundColor: 'rgba(0,0,0,.1)', height: '100px' }}>
@@ -169,7 +175,8 @@ export const Align: Story = {
 };
 
 export const Gap: Story = {
-  render: () => (
+  name: '间距的Flex',
+  render: _args => (
     <div style={{ width: '100%' }}>
       <Flex vertical gap={20}>
         <Flex gap="sm">
@@ -212,7 +219,8 @@ export const Gap: Story = {
 };
 
 export const Vertical: Story = {
-  render: () => (
+  name: '垂直的Flex',
+  render: _args => (
     <Flex vertical gap="md" style={{ width: '50%' }}>
       <div style={boxStyle}>1</div>
       <div style={boxStyle}>2</div>

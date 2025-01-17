@@ -3,7 +3,7 @@ import AutoComplete from './index';
 import { useState } from 'react';
 import React from 'react';
 import Button from '../Button';
-import type { DataSourceType } from './AutoComplete';
+import type { DataSourceType } from './autoComplete.tsx';
 
 const meta: Meta<typeof AutoComplete> = {
   title: 'Components/AutoComplete',
@@ -19,6 +19,7 @@ type Story = StoryObj<typeof AutoComplete>;
 
 // 受控组件示例
 export const Controlled: Story = {
+  name: '受控AutoComplete',
   render: () => {
     const [value, setValue] = useState('');
 
@@ -57,6 +58,7 @@ export const Controlled: Story = {
 
 // 非受控组件示例
 export const Uncontrolled: Story = {
+  name: '非受控AutoComplete',
   render: () => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -94,6 +96,7 @@ export const Uncontrolled: Story = {
 
 // Case insensitive search
 export const CitySearch: Story = {
+  name: '忽略大小写的AutoComplete',
   render: () => {
     const cities = ['New York', 'London', 'Tokyo', 'Paris', 'Los Angeles', 'Beijing', 'Berlin'];
     const fetchSuggestions = (keyword: string) => {
@@ -108,6 +111,7 @@ export const CitySearch: Story = {
 
 // With prefix icon
 export const WithIcon: Story = {
+  name: '带前缀的AutoComplete',
   render: () => {
     const fruits = ['apple', 'banana', 'orange', 'pear', 'grape', 'pineapple'];
     const fetchSuggestions = (keyword: string) => {
@@ -128,6 +132,7 @@ export const WithIcon: Story = {
 
 // Disabled state
 export const Disabled: Story = {
+  name: '不可用的AutoComplete',
   render: () => {
     const fetchSuggestions = (keyword: string) => {
       return ['dog', 'cat', 'fish']
@@ -143,6 +148,7 @@ export const Disabled: Story = {
 
 // 异步示例
 export const AsyncSearch: Story = {
+  name: '异步的AutoComplete',
   render: () => {
     const handleFetch = (query: string) => {
       return new Promise<DataSourceType[]>(resolve => {
@@ -179,6 +185,7 @@ export const AsyncSearch: Story = {
 
 // 带有自定义渲染的示例
 export const CustomRender: Story = {
+  name: '带有自定义渲染的AutoComplete',
   render: () => {
     interface ProgrammingLanguageItem {
       value: string;
