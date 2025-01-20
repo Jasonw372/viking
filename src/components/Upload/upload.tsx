@@ -188,7 +188,7 @@ export const Upload: React.FC<React.PropsWithChildren<UploadProps>> = props => {
 
   return (
     <div className="upload-component">
-      <div className="upload-input" onClick={handleClick}>
+      <div className="upload-input" data-testid="upload-input" onClick={handleClick}>
         {drag ? (
           <Dragger
             onFile={file => {

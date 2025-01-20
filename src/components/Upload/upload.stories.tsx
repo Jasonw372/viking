@@ -99,7 +99,7 @@ export const MultipleUpload: Story = {
 };
 
 export const DragUpload: Story = {
-  name: '默认上传',
+  name: '拖拽默认上传',
   args: {
     action: 'https://jsonplaceholder.typicode.com/posts/',
     defaultFileList,
