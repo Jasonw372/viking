@@ -1,4 +1,4 @@
-import React, { type FC, type CSSProperties, useRef } from 'react';
+import React, { type CSSProperties, useRef, forwardRef } from 'react';
 import classNames from 'classnames';
 
 export type SwitchSize = 'sm' | 'lg' | 'default';
@@ -22,7 +22,7 @@ export interface SwitchRef {
   blur: () => void;
 }
 
-export const Switch: FC<SwitchProps> = React.forwardRef<SwitchRef, SwitchProps>((props, ref) => {
+export const Switch = forwardRef<SwitchRef, SwitchProps>((props, ref) => {
   const {
     className,
     style,

@@ -1,5 +1,5 @@
-@use 'sass:color';
-@use 'mixin';
+@use "sass:color";
+@use "mixin";
 // 颜色变量
 // 使用这个默认调色板作为项目基础
 
@@ -31,21 +31,24 @@ $teal: #20c997 !default; // 青色
 $cyan: #17a2b8 !default; // 蓝绿色
 
 // 情境颜色 - Sass变量
-$defaultColors: (
-  primary: $blue,
-  secondary: $gray-600,
-  success: $green,
-  info: $cyan,
-  warning: $yellow,
-  danger: $red,
-  light: $gray-100,
-  dark: $gray-800
-);
+$primary-color: $blue !default;
+$secondary-color: $gray-600 !default;
+$success-color: $green !default;
+$info-color: $cyan !default;
+$warning-color: $yellow !default;
+$danger-color: $red !default;
+$light-color: $gray-100 !default;
+$dark-color: $gray-800 !default;
 
 :root {
-  @each $name, $color in $defaultColors {
-    --#{$name}: #{$color};
-  }
+  --primary: #{$primary-color};
+  --secondary: #{$secondary-color};
+  --success: #{$success-color};
+  --info: #{$info-color};
+  --warning: #{$warning-color};
+  --danger: #{$danger-color};
+  --light: #{$light-color};
+  --dark: #{$dark-color};
 }
 
 // 情境颜色 - CSS变量
@@ -57,9 +60,10 @@ $warning: var(--warning) !default;
 $danger: var(--danger) !default;
 $light: var(--light) !default;
 $dark: var(--dark) !default;
+
 // 字体系统
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-  Arial, sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
 $font-family-base: $font-family-sans-serif !default;
 
@@ -67,8 +71,6 @@ $font-family-base: $font-family-sans-serif !default;
 $font-size-base: 1rem !default; // 基础字体 16px
 $font-size-lg: $font-size-base * 1.25 !default; // 大字体 20px
 $font-size-sm: $font-size-base * 0.875 !default; // 小字体 14px
-$font-size-xl: $font-size-base * 1.5 !default; // 超大字体 24px
-$font-size-2xl: $font-size-base * 2 !default; // 超大字体 32px
 
 // 字体粗细
 $font-weight-lighter: lighter !default; // 更轻的字体
@@ -189,17 +191,9 @@ $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175) !default;
 $box-shadow-inset: inset 0 1px 2px rgba($black, 0.075) !default;
 
-$active-border-width: 2px !default;
-
 // Button组件变量
 $btn-padding-y: 0.375rem !default;
 $btn-padding-x: 0.75rem !default;
-
-$btn-padding-y-lg: $btn-padding-y * 1.25 !default;
-$btn-padding-x-lg: $btn-padding-x * 1.25 !default;
-
-$btn-padding-y-sm: $btn-padding-y * 0.75 !default;
-$btn-padding-x-sm: $btn-padding-x * 0.75 !default;
 
 $btn-font-size-base: $font-size-base !default;
 $btn-font-size-lg: $font-size-lg !default;
@@ -209,11 +203,8 @@ $btn-font-weight: $font-weight-normal !default;
 
 $btn-border-width: $border-width !default;
 
-$btn-box-shadow:
-  inset 0 1px 0 rgba($white, 0.15),
-  0 1px 1px rgba($black, 0.075) !default;
+$btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
 $btn-disabled-opacity: 0.65 !default;
-$btn-link-disabled-opacity: 0.65 !default;
 
 $btn-border-radius: $border-radius !default;
 $btn-border-radius-lg: $border-radius-lg !default;
@@ -225,98 +216,3 @@ $btn-success: $success;
 $btn-info: $info;
 $btn-warning: $warning;
 $btn-danger: $danger;
-
-// Menu组件变量
-$menu-border-width: $border-width !default;
-$menu-border-color: $border-color !default;
-$menu-box-shadow:
-  inset 0 1px 0 rgba($white, 0.15),
-  0 1px 1px rgba($black, 0.075) !default;
-$menu-transition:
-  color 0.15s ease-in-out,
-  background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out,
-  box-shadow 0.15s ease-in-out !default;
-
-$menu-item-padding-y: 0.5rem !default;
-$menu-item-padding-x: 1rem !default;
-$menu-item-active-color: $primary !default;
-$menu-item-active-border-width: $active-border-width !default;
-$menu-item-disabled-color: $gray-600 !default;
-
-$submenu-box-shadow:
-  0 2px 4px 0 rgba(0, 0, 0, 0.12),
-  0 0 6px 0 rgba(0, 0, 0, 0.04);
-
-// Tab组件变量
-$nav-link-padding-y: 0.5rem !default;
-$nav-link-padding-x: 1rem !default;
-$nav-link-disabled-color: $gray-600 !default;
-
-$nav-tabs-border-color: $gray-300 !default;
-$nav-tabs-border-width: $border-width !default;
-$nav-tabs-border-radius: $border-radius !default;
-$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
-$nav-tabs-link-hover-color: $primary !default;
-$nav-tabs-link-active-color: $primary !default;
-$nav-tabs-link-active-bg: $body-bg !default;
-$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
-$nav-tabs-content-margin: 1rem !default;
-
-// Input组件变量
-$input-padding-y: $btn-padding-y !default;
-$input-padding-x: $btn-padding-x !default;
-$input-font-family: $font-family-base !default;
-$input-font-size: $font-size-base !default;
-$input-font-weight: $font-weight-normal !default;
-$input-line-height: $line-height-base !default;
-
-$input-padding-y-sm: $btn-padding-y-sm !default;
-$input-padding-x-sm: $btn-padding-x-sm !default;
-$input-font-size-sm: $btn-font-size-sm !default;
-
-$input-padding-y-lg: $btn-padding-y-lg !default;
-$input-padding-x-lg: $btn-padding-x-lg !default;
-$input-font-size-lg: $btn-font-size-lg !default;
-
-$input-bg: $white !default;
-$input-disabled-bg: $gray-200 !default;
-$input-disabled-border-color: null !default;
-
-$input-color: $gray-700 !default;
-$input-border-color: $gray-400 !default;
-$input-border-width: $border-width !default;
-$input-box-shadow: $box-shadow-inset !default;
-
-$input-border-radius: $border-radius !default;
-$input-border-radius-lg: $border-radius-lg !default;
-$input-border-radius-sm: $border-radius-sm !default;
-
-$input-focus-bg: $input-bg !default;
-$input-focus-border-color: mixin.lighten-color($primary, 0.25) !default;
-$input-focus-width: .2rem !default;
-$input-focus-color: $input-color !default;
-$input-focus-shadow-color: rgba($primary, .25) !default;
-$input-focus-shadow-error-color: rgba($danger, .25) !default;
-$input-focus-box-shadow: 0 0 0 $input-focus-width $input-focus-shadow-color !default;
-$input-focus-box-shadow-error: 0 0 0 $input-focus-width $input-focus-shadow-error-color !default;
-
-$input-placeholder-color: $gray-600 !default;
-$input-plaintext-color: $body-color !default;
-
-$input-height-border: $input-border-width * 2 !default;
-
-$input-transition: border-color .3s ease-in-out, box-shadow .3s ease-in-out !default;
-
-$input-group-addon-color: $input-color !default;
-$input-group-addon-bg: $gray-200 !default;
-$input-group-addon-border-color: $input-border-color !default;
-
-$input-disabled-color: $gray-200 !default;
-
-// 进度条变量
-$progress-font-size: $font-size-base * .75 !default;
-$progress-bg: $gray-200 !default;
-$progress-border-radius: $border-radius !default;
-$progress-bar-color: $white !default;
-$progress-bar-transition: width .6s ease !default;
