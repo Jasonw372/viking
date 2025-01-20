@@ -4,20 +4,13 @@ import classNames from 'classnames';
 const sizes = ['large', 'default', 'small', 'xl', '2xl'];
 
 export interface AvatarProps {
-  /** 头像尺寸 */
-  size?: 'large' | 'default' | 'small' | 'xl' | '2xl' | number;
-  /** 形状：圆形或方形 */
-  shape?: 'circle' | 'square';
-  /** 图片源地址 */
-  src?: string;
-  /** 替代文本 */
-  alt?: string;
-  /** 头像中显示的文字 */
-  children?: React.ReactNode;
-  /** 自定义类名 */
-  className?: string;
-  /** 图片加载失败时的回调 */
-  onError?: () => void;
+  size?: 'large' | 'default' | 'small' | 'xl' | '2xl' | number; // 头像尺寸
+  shape?: 'circle' | 'square'; // 形状：圆形或方形
+  src?: string; // 图片源地址
+  alt?: string; // 替代文本
+  children?: React.ReactNode; // 头像中显示的文字
+  className?: string; // 自定义类名
+  onError?: () => void; // 图片加载失败时的回调
 }
 
 const Avatar: React.FC<AvatarProps> = props => {

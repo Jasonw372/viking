@@ -5,12 +5,12 @@ import React from 'react';
 import type { MenuItemProps } from './menuItem';
 import Icon from '../Icon';
 import Transition from '../Transition';
-export interface SubMenuProps {
-  index?: string;
-  title: string;
-  className?: string;
-}
 
+export interface SubMenuProps {
+  index?: string; // 可选的索引，用于标识子菜单
+  title: string; // 子菜单的标题
+  className?: string; // 可选的类名，用于自定义样式
+}
 export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
   const { index, title, className, children } = props;
   const { mode, index: activedIndex, defaultOpenSubMenus } = useContext(MenuContext);

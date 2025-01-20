@@ -5,15 +5,15 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { useState, forwardRef } from 'react';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  disabled?: boolean;
-  size?: 'lg' | 'sm';
-  prefixIcon?: IconProp;
-  suffixIcon?: IconProp;
-  prepend?: React.ReactNode;
-  append?: React.ReactNode;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
-  defaultValue?: string;
+  disabled?: boolean; // 是否禁用输入框
+  size?: 'lg' | 'sm'; // 输入框的大小，可选值为 'lg' 或 'sm'
+  prefixIcon?: IconProp; // 输入框前缀图标
+  suffixIcon?: IconProp; // 输入框后缀图标
+  prepend?: React.ReactNode; // 输入框前置内容
+  append?: React.ReactNode; // 输入框后置内容
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // 输入框内容变化时的回调函数
+  value?: string; // 输入框的值
+  defaultValue?: string; // 输入框的默认值
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {

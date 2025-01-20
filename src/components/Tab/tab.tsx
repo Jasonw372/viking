@@ -2,17 +2,17 @@ import classNames from 'classnames';
 import React, { useState, type PropsWithChildren } from 'react';
 import type { TabItemProps } from './tabItem';
 
-type SelectCallback = (selectedIndex: number) => void;
+type SelectCallback = (selectedIndex: number) => void; // 选择回调函数类型
 
-export type TabType = 'card' | 'line';
+export type TabType = 'card' | 'line'; // 标签类型
 
 export interface TabProps {
-  defaultIndex?: number;
-  activeIndex?: number;
-  onSelect?: SelectCallback;
-  className?: string;
-  style?: React.CSSProperties;
-  type?: TabType;
+  defaultIndex?: number; // 默认选中的标签索引
+  activeIndex?: number; // 当前活动的标签索引
+  onSelect?: SelectCallback; // 选择标签时的回调函数
+  className?: string; // 自定义样式类名
+  style?: React.CSSProperties; // 自定义样式
+  type?: TabType; // 标签类型
 }
 
 export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {

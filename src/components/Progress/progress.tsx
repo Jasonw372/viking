@@ -3,7 +3,7 @@ import React from 'react';
 import type { ThemeProps } from '../Icon/icon';
 
 export interface ProgressProps {
-  percent: number;
+  percent: number; // 进度条百分比
   strokeHeight?: number; // 进度条高度
   showText?: boolean; // 是否显示进度条文字
   styles?: React.CSSProperties; // 自定义样式

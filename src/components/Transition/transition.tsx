@@ -5,10 +5,10 @@ import type { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 type AnimationName = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-in-right';
 
 type TransitionProps = {
-  animation?: AnimationName;
-  wrapper?: boolean;
-  children: React.ReactNode;
-} & Omit<CSSTransitionProps, 'nodeRef'>;
+  animation?: AnimationName; // 动画名称，可选
+  wrapper?: boolean; // 是否使用包装器，可选
+  children: React.ReactNode; // 子节点，必需
+} & Omit<CSSTransitionProps, 'nodeRef'>; // 继承 CSSTransitionProps，但排除 nodeRef 属性
 
 const Transition: React.FC<TransitionProps> = props => {
   const {

@@ -7,15 +7,16 @@ export type MenuMode = 'horizontal' | 'vertical';
 type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
-  defaultIndex?: string;
-  selectedIndex?: string;
-  mode?: MenuMode;
-  onSelect?: SelectCallback; // 选择菜单项
-  onClick?: (index: string) => void; // 点击菜单项
-  className?: string;
-  style?: React.CSSProperties;
-  defaultOpenSubMenus?: string[];
+  defaultIndex?: string; // 默认选中的菜单项索引
+  selectedIndex?: string; // 当前选中的菜单项索引
+  mode?: MenuMode; // 菜单的显示模式：水平或垂直
+  onSelect?: SelectCallback; // 选择菜单项时的回调函数
+  onClick?: (index: string) => void; // 点击菜单项时的回调函数
+  className?: string; // 自定义样式类名
+  style?: React.CSSProperties; // 自定义样式
+  defaultOpenSubMenus?: string[]; // 默认展开的子菜单项索引数组
 }
+
 interface IMenuContext {
   index: string;
   onSelect?: SelectCallback;
