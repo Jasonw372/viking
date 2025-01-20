@@ -109,3 +109,25 @@ export const HideText: Story = {
     </div>
   ),
 };
+
+// 自定义样式
+export const CustomStyle: Story = {
+  name: '自定义样式',
+  args: {
+    percent: 70,
+    strokeHeight: 20,
+    styles: {
+      backgroundColor: 'yellow',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+    },
+  },
+  render: args => (
+    <div
+      style={{
+        width: '300px',
+      }}
+    >
+      <Progress {...args}></Progress>
+    </div>
+  ),
+};

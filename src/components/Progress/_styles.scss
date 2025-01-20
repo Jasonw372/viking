@@ -3,9 +3,9 @@
 .progress-bar {
   width: 100%;
   box-sizing: border-box;
+  border-radius: variables.$progress-border-radius;
+  background-color: variables.$progress-bg;
   .progress-bar-outer{
-    border-radius: variables.$progress-border-radius;
-    background-color: variables.$progress-bg;
     overflow: hidden;
     position: relative;
   }
