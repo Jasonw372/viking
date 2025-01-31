@@ -1,9 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * FlexGap - 间距类型
+ */
 export type FlexGap = 'sm' | 'md' | 'lg' | number;
+/**
+ * FlexWrap - 换行类型
+ */
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
+/**
+ * FlexAlign - 对齐类型
+ */
 export type FlexAlign = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
+/**
+ * FlexJustify - 间距类型
+ */
 export type FlexJustify =
   | 'start'
   | 'end'
@@ -11,8 +23,15 @@ export type FlexJustify =
   | 'space-around'
   | 'space-between'
   | 'space-evenly';
+
+/**
+ * FlexDirection - 排列类型
+ */
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 
+/**
+ * Flex属性
+ */
 export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   vertical?: boolean;
@@ -25,6 +44,9 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   direction?: FlexDirection;
 }
 
+/**
+ * Flex组件
+ */
 const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const {
     prefixCls = 'flex',

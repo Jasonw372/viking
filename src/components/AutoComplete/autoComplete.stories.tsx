@@ -12,6 +12,25 @@ const meta: Meta<typeof AutoComplete> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    fetchSuggestions: {
+      description:
+        'fetchSuggestions 是一个函数，接受一个字符串参数 keyWord，返回一个 DataSourceType 数组或一个 Promise 对象',
+      control: false,
+    },
+    onSelect: {
+      description: 'onSelect 是一个可选的回调函数，当用户选择某个选项时调用',
+      control: false,
+    },
+    defaultValue: {
+      description: 'defaultValue 是一个可选的字符串，表示输入框的默认值',
+      control: 'text',
+    },
+    renderOption: {
+      description: 'renderOption 是一个可选的函数，用于自定义选项的渲染',
+      control: false,
+    },
+  },
 };
 
 export default meta;
@@ -58,8 +77,13 @@ export const Controlled: Story = {
 
 // 非受控组件示例
 export const Uncontrolled: Story = {
+  args: {
+    defaultValue: 'dog',
+  },
+
   name: '非受控AutoComplete',
-  render: () => {
+
+  render: args => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     const fetchSuggestions = (keyword: string) => {
@@ -83,7 +107,7 @@ export const Uncontrolled: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <AutoComplete
           ref={inputRef}
-          defaultValue="dog"
+          defaultValue={args.defaultValue}
           placeholder=""
           fetchSuggestions={fetchSuggestions}
           onSelect={handleSelect}

@@ -1,6 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * 栅格布局行属性
+ * @interface
+ * @property {number | [number, number]} [gutter] - 栅格间隔
+ * @property {'start' | 'end' | 'center' | 'space-around' | 'space-between'} [justify] - 水平排列方式
+ * @property {'top' | 'middle' | 'bottom'} [align] - 垂直排列方式
+ * @property {React.ReactNode} [children] - 子元素
+ */
 interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | [number, number]; // 栅格间隔
   justify?: 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -8,6 +16,20 @@ interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
+/**
+ * 栅格布局列属性
+ * @interface
+ * @property {number} [span] - 栅格占据的列数
+ * @property {number} [offset] - 栅格左侧的间隔格数
+ * @property {number} [pull] - 栅格向左移动格数
+ * @property {number} [push] - 栅格向右移动格数
+ * @property {number | { span?: number; offset?: number }} [xs] - <576px 响应式栅格
+ * @property {number | { span?: number; offset?: number }} [sm] - ≥576px 响应式栅格
+ * @property {number | { span?: number; offset?: number }} [md] - ≥768px 响应式栅格
+ * @property {number | { span?: number; offset?: number }} [lg] - ≥992px 响应式栅格
+ * @property {number | { span?: number; offset?: number }} [xl] - ≥1200px 响应式栅格
+ * @property {React.ReactNode} [children] - 子元素
+ */
 interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number; // 栅格占据的列数
   offset?: number; // 栅格左侧的间隔格数
@@ -21,6 +43,9 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
+/**
+ * 栅格布局行组件
+ */
 export const Row: React.FC<RowProps> = ({
   children,
   gutter = 0,

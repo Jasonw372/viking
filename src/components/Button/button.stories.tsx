@@ -8,35 +8,47 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: '按钮组件，用于触发操作。',
-      },
-    },
+    docs: {},
   },
   tags: ['autodocs'],
   argTypes: {
+    disabled: {
+      description: '是否禁用',
+      control: 'boolean',
+      defaultValue: false,
+    },
     btnType: {
-      control: 'select',
-      options: ['default', 'primary', 'info', 'success', 'danger', 'warning', 'link'],
       description: '按钮类型',
+      control: {
+        type: 'select',
+        options: ['default', 'primary', 'info', 'success', 'danger', 'warning', 'link'],
+      },
+      defaultValue: 'default',
     },
     size: {
-      control: 'select',
-      options: ['lg', 'sm'],
       description: '按钮尺寸',
-    },
-    disabled: {
-      control: 'boolean',
-      description: '是否禁用',
+      control: {
+        type: 'select',
+        options: ['lg', 'sm'],
+      },
     },
     circle: {
+      description: '是否为圆形按钮',
       control: 'boolean',
-      description: '是否为圆角按钮',
+      defaultValue: false,
     },
     plain: {
+      description: '是否为朴素样式',
       control: 'boolean',
-      description: '是否为朴素按钮',
+      defaultValue: false,
+    },
+    href: {
+      description: '链接地址（当btnType为link时使用）',
+      control: 'text',
+    },
+    children: {
+      description: '按钮内容',
+      control: 'text',
     },
   },
 } satisfies Meta<typeof Button>;

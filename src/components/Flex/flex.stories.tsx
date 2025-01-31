@@ -1,230 +1,226 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import type { FlexJustify, FlexAlign } from './flex';
 import Flex from './flex';
+import Button from '../Button';
+import Space from '../Space';
 
-const meta = {
+const meta: Meta<typeof Flex> = {
   title: 'Components/Flex',
   component: Flex,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Flex组件，用于布局。',
+        component: 'Flex布局组件，用于创建灵活的布局容器。',
       },
     },
   },
   tags: ['autodocs'],
+  argTypes: {
+    direction: {
+      description: '主轴方向',
+      control: {
+        type: 'select',
+        options: ['row', 'column', 'row-reverse', 'column-reverse'],
+      },
+      defaultValue: 'row',
+    },
+    justify: {
+      description: '主轴对齐方式',
+      control: {
+        type: 'select',
+        options: ['start', 'end', 'center', 'space-between', 'space-around', 'space-evenly'],
+      },
+      defaultValue: 'start',
+    },
+    align: {
+      description: '交叉轴对齐方式',
+      control: {
+        type: 'select',
+        options: ['start', 'end', 'center', 'stretch', 'baseline'],
+      },
+      defaultValue: 'start',
+    },
+    wrap: {
+      description: '是否换行',
+      control: 'boolean',
+      defaultValue: false,
+    },
+    gap: {
+      description: '子元素间距',
+      control: {
+        type: 'number',
+        min: 0,
+        max: 100,
+        step: 4,
+      },
+      defaultValue: 0,
+    },
+    children: {
+      description: '子元素内容',
+      control: 'text',
+    },
+  },
 } satisfies Meta<typeof Flex>;
 
 export default meta;
-type Story = StoryObj<typeof Flex>;
+type Story = StoryObj<typeof meta>;
 
-// 用于演示的样式
-const boxStyle: React.CSSProperties = {
-  width: '100px',
-  height: '48px',
-  backgroundColor: '#1677ff',
-  color: '#fff',
-  lineHeight: '48px',
-  textAlign: 'center',
-  margin: '8px 4px',
-};
-
-const smallBox: React.CSSProperties = {
-  ...boxStyle,
-  width: '48px',
-  height: '48px',
-};
-
-const smallBoxWithOutMargin: React.CSSProperties = {
-  ...boxStyle,
-  width: '48px',
-  height: '48px',
-  margin: '0',
-};
-
+// 基础Flex布局
 export const Basic: Story = {
-  name: '基础的Flex',
-  render: _args => (
-    <Flex gap="md">
-      <div style={boxStyle}>1</div>
-      <div style={boxStyle}>2</div>
-      <div style={boxStyle}>3</div>
+  name: '基础Flex布局',
+  args: {
+    children: '基础Flex布局',
+  },
+  render: args => (
+    <Flex {...args} style={{ width: '400px', height: '200px', border: '1px solid #ddd' }}>
+      <div style={{ padding: '16px', background: '#f0f0f0' }}>Item 1</div>
+      <div style={{ padding: '16px', background: '#e0e0e0' }}>Item 2</div>
+      <div style={{ padding: '16px', background: '#d0d0d0' }}>Item 3</div>
     </Flex>
   ),
 };
 
-export const Direction: Story = {
-  name: '方向的Flex',
-  render: _args => (
-    <div style={{ width: '100%' }}>
-      <Flex gap="md" vertical>
-        <Flex gap="md">
-          <div style={boxStyle}>1</div>
-          <div style={boxStyle}>2</div>
-          <div style={boxStyle}>3</div>
-        </Flex>
-        <Flex gap="md" direction="row-reverse">
-          <div style={boxStyle}>1</div>
-          <div style={boxStyle}>2</div>
-          <div style={boxStyle}>3</div>
-        </Flex>
+// 不同方向
+export const Directions: Story = {
+  name: '不同方向',
+  render: () => (
+    <Space direction="vertical" size="lg">
+      <Flex direction="row" gap={8}>
+        <Button>Row</Button>
+        <Button>Row</Button>
+        <Button>Row</Button>
       </Flex>
-    </div>
+      <Flex direction="column" gap={8}>
+        <Button>Column</Button>
+        <Button>Column</Button>
+        <Button>Column</Button>
+      </Flex>
+      <Flex direction="row-reverse" gap={8}>
+        <Button>Row Reverse</Button>
+        <Button>Row Reverse</Button>
+        <Button>Row Reverse</Button>
+      </Flex>
+      <Flex direction="column-reverse" gap={8}>
+        <Button>Column Reverse</Button>
+        <Button>Column Reverse</Button>
+        <Button>Column Reverse</Button>
+      </Flex>
+    </Space>
   ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
 };
 
+// 主轴对齐
+export const JustifyContent: Story = {
+  name: '主轴对齐',
+  render: () => (
+    <Space direction="vertical" size="lg">
+      {['start', 'end', 'center', 'space-between', 'space-around', 'space-evenly'].map(justify => (
+        <div key={justify}>
+          <div style={{ marginBottom: 8 }}>{justify}</div>
+          <Flex
+            justify={justify as FlexJustify}
+            gap={8}
+            style={{ width: '400px', border: '1px solid #ddd', padding: 8 }}
+          >
+            <Button>Button</Button>
+            <Button>Button</Button>
+            <Button>Button</Button>
+          </Flex>
+        </div>
+      ))}
+    </Space>
+  ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
+// 交叉轴对齐
+export const AlignItems: Story = {
+  name: '交叉轴对齐',
+  render: () => (
+    <Space direction="vertical" size="lg">
+      {['start', 'end', 'center', 'stretch', 'baseline'].map(align => (
+        <div key={align}>
+          <div style={{ marginBottom: 8 }}>{align}</div>
+          <Flex
+            align={align as FlexAlign}
+            gap={8}
+            style={{ height: '100px', border: '1px solid #ddd', padding: 8 }}
+          >
+            <Button style={{ height: align === 'stretch' ? 'auto' : '40px' }}>Button</Button>
+            <Button style={{ height: '60px' }}>Button</Button>
+            <Button style={{ height: '80px' }}>Button</Button>
+          </Flex>
+        </div>
+      ))}
+    </Space>
+  ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
+// 换行
 export const Wrap: Story = {
-  name: '自动换行Flex',
-  render: _args => (
-    <div style={{ width: '100%' }}>
-      <Flex gap="md" wrap="wrap">
-        {Array.from({ length: 20 }, (_, i) => (
-          <div key={i} style={boxStyle}>
-            {i + 1}
-          </div>
+  name: '换行',
+  render: () => (
+    <Space direction="vertical">
+      <Flex wrap="wrap" gap={8} style={{ width: '400px', border: '1px solid #ddd', padding: 8 }}>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <Button key={i}>Button {i + 1}</Button>
         ))}
       </Flex>
-    </div>
-  ),
-};
 
-export const NoWrap: Story = {
-  name: '不换行Flex',
-  render: _args => (
-    <div style={{ width: '100%' }}>
-      <Flex gap="md" wrap="nowrap">
-        {Array.from({ length: 20 }, (_, i) => (
-          <div key={i} style={boxStyle}>
-            {i + 1}
-          </div>
+      <Flex wrap="nowrap" gap={8} style={{ width: '400px', border: '1px solid #ddd', padding: 8 }}>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <Button key={i}>Button {i + 1}</Button>
         ))}
       </Flex>
-    </div>
-  ),
-};
 
-export const Justify: Story = {
-  name: 'Justify的Flex',
-  render: _args => (
-    <div style={{ width: '300px' }}>
-      <Flex gap="md" vertical>
-        <div>justify="start"</div>
-        <Flex justify="start" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <div>justify="center"</div>
-        <Flex justify="center" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <div>justify="end"</div>
-        <Flex justify="end" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <div>justify="space-between"</div>
-        <Flex justify="space-between" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <div>justify="space-around"</div>
-        <Flex justify="space-around" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <div>justify="space-evenly"</div>
-        <Flex justify="space-evenly" style={{ backgroundColor: 'rgba(0,0,0,.1)', width: '100%' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
+      <Flex
+        wrap="wrap-reverse"
+        gap={8}
+        style={{ width: '400px', border: '1px solid #ddd', padding: 8 }}
+      >
+        {Array.from({ length: 10 }).map((_, i) => (
+          <Button key={i}>Button {i + 1}</Button>
+        ))}
       </Flex>
-    </div>
+    </Space>
   ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
 };
 
-export const Align: Story = {
-  name: 'Align的Flex',
-  render: _args => (
-    <div style={{ width: '100%' }}>
-      <Flex gap="md" vertical>
-        <Flex align="start" style={{ backgroundColor: 'rgba(0,0,0,.1)', height: '100px' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex align="center" style={{ backgroundColor: 'rgba(0,0,0,.1)', height: '100px' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex align="end" style={{ backgroundColor: 'rgba(0,0,0,.1)', height: '100px' }}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-      </Flex>
-    </div>
-  ),
-};
-
+// 间距
 export const Gap: Story = {
-  name: '间距的Flex',
-  render: _args => (
-    <div style={{ width: '100%' }}>
-      <Flex vertical gap={20}>
-        <Flex gap="sm">
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex gap="md">
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex gap="lg">
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex gap={50}>
-          <div style={smallBox}>1</div>
-          <div style={smallBox}>2</div>
-          <div style={smallBox}>3</div>
-        </Flex>
-        <Flex
-          gap={[10, 20]}
-          wrap="wrap"
-          style={{
-            width: '200px',
-            backgroundColor: 'rgba(0,0,0,.1)',
-          }}
-        >
-          {Array.from({ length: 12 }, (_, i) => (
-            <div key={i} style={smallBoxWithOutMargin}>
-              {i + 1}
-            </div>
-          ))}
-        </Flex>
-      </Flex>
-    </div>
+  name: '间距',
+  render: () => (
+    <Space direction="vertical" size="lg">
+      {[0, 8, 16, 24, 32].map(gap => (
+        <div key={gap}>
+          <div style={{ marginBottom: 8 }}>gap: {gap}px</div>
+          <Flex gap={gap} style={{ border: '1px solid #ddd', padding: 8 }}>
+            <Button>Button</Button>
+            <Button>Button</Button>
+            <Button>Button</Button>
+          </Flex>
+        </div>
+      ))}
+    </Space>
   ),
-};
-
-export const Vertical: Story = {
-  name: '垂直的Flex',
-  render: _args => (
-    <Flex vertical gap="md" style={{ width: '50%' }}>
-      <div style={boxStyle}>1</div>
-      <div style={boxStyle}>2</div>
-      <div style={boxStyle}>3</div>
-    </Flex>
-  ),
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
 };

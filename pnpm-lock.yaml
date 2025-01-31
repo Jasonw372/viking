@@ -57,6 +57,9 @@ importers:
       '@storybook/addon-actions':
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.5.0(prettier@3.4.2))
+      '@storybook/addon-docs':
+        specifier: ^8.5.0
+        version: 8.5.0(@types/react@18.3.18)(storybook@8.5.0(prettier@3.4.2))
       '@storybook/addon-essentials':
         specifier: ^8.5.0
         version: 8.5.0(@types/react@18.3.18)(storybook@8.5.0(prettier@3.4.2))

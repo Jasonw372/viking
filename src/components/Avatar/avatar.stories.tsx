@@ -6,37 +6,8 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   parameters: {
     layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    src: {
-      control: 'text',
-      description: '头像图片的源地址',
-    },
-    alt: {
-      control: 'text',
-      description: '头像的替代文本',
-    },
-    size: {
-      control: {
-        type: 'text',
-      },
-      description: '头像的尺寸',
-    },
-    shape: {
-      control: {
-        type: 'select',
-        options: ['circle', 'square'],
-      },
-      description: '头像的形状',
-    },
-    className: {
-      control: 'text',
-      description: '自定义类名',
-    },
-    onError: {
-      action: '图片加载失败',
-      description: '图片加载失败时的回调',
+    controls: {
+      disabled: false,
     },
   },
 };

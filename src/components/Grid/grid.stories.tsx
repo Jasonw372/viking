@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Row, Col } from './grid';
-import './_styles.scss';
+import Flex from '../Flex';
 
 const meta = {
   title: 'Components/Grid',
@@ -87,14 +87,20 @@ export const Basic: Story = {
 export const Gutter: Story = {
   name: '区块间隔',
   render: _args => (
-    <div
+    <Flex
+      direction="column"
+      align="center"
       style={{
         width: '100%',
-        background: '#f5f5f5',
-        padding: '10px',
       }}
     >
-      <h5>gutter: [16, 0]</h5>
+      <div
+        style={{
+          marginBottom: '16px',
+        }}
+      >
+        gutter: [16, 0]
+      </div>
       <Row gutter={[16, 0]}>
         {[...Array(12)].map((_, index) => (
           <Col key={index} span={6}>
@@ -103,7 +109,13 @@ export const Gutter: Story = {
         ))}
       </Row>
 
-      <h5>gutter: [16, 24]</h5>
+      <div
+        style={{
+          marginBottom: '16px',
+        }}
+      >
+        gutter: [16, 24]
+      </div>
       <Row gutter={[16, 24]}>
         {[...Array(8)].map((_, index) => (
           <Col key={index} span={6}>
@@ -111,7 +123,7 @@ export const Gutter: Story = {
           </Col>
         ))}
       </Row>
-    </div>
+    </Flex>
   ),
 };
 

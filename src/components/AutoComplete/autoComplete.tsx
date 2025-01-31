@@ -8,11 +8,13 @@ import useClickOutside from '../../hooks/useClickOutside';
 import Icon from '../Icon';
 import useDebounce from '../../hooks/useDebounce';
 
+// DataSourceObject 是一个接口，表示数据源中的对象应该具有的结构
 interface DataSourceObject {
   value: string;
 }
 
 export type DataSourceType<T = object> = T & DataSourceObject;
+
 export interface AutoCompleteProps extends Omit<InputProps, 'onSelect' | 'defaultValue'> {
   // fetchSuggestions 是一个函数，接受一个字符串参数 keyWord，返回一个 DataSourceType 数组或一个 Promise 对象
   fetchSuggestions: (keyWord: string) => DataSourceType[] | Promise<DataSourceObject[]>;
@@ -23,6 +25,10 @@ export interface AutoCompleteProps extends Omit<InputProps, 'onSelect' | 'defaul
   // renderOption 是一个可选的函数，用于自定义选项的渲染
   renderOption?: (item: DataSourceType) => React.ReactNode;
 }
+
+/**
+ * AutoComplete 自动完成组件
+ */
 const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps>((props, ref) => {
   const { fetchSuggestions, value, defaultValue, onSelect, onChange, renderOption, ...restProps } =
     props;
