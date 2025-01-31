@@ -13,6 +13,8 @@ const meta: Meta<typeof Icon> = {
         component: 'Icon组件，优化展示效果',
       },
     },
+    controls: { disable: true },
+    actions: { disable: true },
   },
   tags: ['autodocs'],
   argTypes: {},

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Input from './input';
 import { useState } from 'react';
-import Button from '../Button';
 
 const meta = {
   title: 'Components/Input',
@@ -37,6 +36,7 @@ export const Default: Story = {
   args: {
     placeholder: '请输入内容',
     disabled: false,
+    defaultValue: '123',
   },
   name: '默认输入框',
 };
@@ -46,6 +46,7 @@ export const Password: Story = {
     placeholder: '请输入内容',
     disabled: false,
     type: 'password',
+    defaultValue: '123',
   },
   name: '密码输入框',
 };
@@ -84,6 +85,8 @@ export const WithSuffixIcon: Story = {
   args: {
     suffixIcon: 'search',
     placeholder: '带后缀图标的输入框',
+    prefixIcon: '',
+    value: '123',
   },
   name: '带后缀图标的输入框',
 };
@@ -106,8 +109,10 @@ export const P: Story = {
 
 export const ComplexAddons: Story = {
   args: {
-    prepend: <Button size="lg">Click</Button>,
+    prepend: '123',
     append: 'Status',
+    size: 'lg',
+    defaultValue: '12343142',
   },
   name: '复杂前后缀的输入框',
 };
@@ -117,6 +122,10 @@ export const Controlled = () => {
   return <Input value={value} onChange={e => setValue(e.target.value)} />;
 };
 Controlled.storyName = '受控输入框';
+Controlled.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+};
 
 // 带前后缀和图标的
 export const WithIconsAndAddons: Story = {
@@ -126,6 +135,7 @@ export const WithIconsAndAddons: Story = {
     prepend: 'https://',
     append: '.com',
     placeholder: '请输入搜索内容',
+    defaultValue: 'baidu',
   },
   name: '带前后缀和图标的输入框',
 };

@@ -11,6 +11,8 @@ const meta = {
       description: {
         component: 'Form组件, 用于表单布局。',
       },
+      controls: { disable: true },
+      actions: { disable: true },
     },
   },
   tags: ['autodocs'],

@@ -14,6 +14,8 @@ const meta: Meta<typeof Flex> = {
         component: 'Flex布局组件，用于创建灵活的布局容器。',
       },
     },
+    controls: { disable: true },
+    actions: { disable: true },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -108,10 +110,6 @@ export const Directions: Story = {
       </Flex>
     </Space>
   ),
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };
 
 // 主轴对齐
@@ -135,10 +133,6 @@ export const JustifyContent: Story = {
       ))}
     </Space>
   ),
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };
 
 // 交叉轴对齐
@@ -162,10 +156,6 @@ export const AlignItems: Story = {
       ))}
     </Space>
   ),
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };
 
 // 换行
@@ -196,10 +186,6 @@ export const Wrap: Story = {
       </Flex>
     </Space>
   ),
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };
 
 // 间距
@@ -219,8 +205,4 @@ export const Gap: Story = {
       ))}
     </Space>
   ),
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };

@@ -10,6 +10,8 @@ const meta: Meta<typeof AutoComplete> = {
   component: AutoComplete,
   parameters: {
     layout: 'centered',
+    controls: { disable: true },
+    actions: { disable: true },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -83,7 +85,7 @@ export const Uncontrolled: Story = {
 
   name: '非受控AutoComplete',
 
-  render: args => {
+  render: _args => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     const fetchSuggestions = (keyword: string) => {
@@ -107,7 +109,6 @@ export const Uncontrolled: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <AutoComplete
           ref={inputRef}
-          defaultValue={args.defaultValue}
           placeholder=""
           fetchSuggestions={fetchSuggestions}
           onSelect={handleSelect}
@@ -136,6 +137,7 @@ export const CitySearch: Story = {
 // With prefix icon
 export const WithIcon: Story = {
   name: '带前缀的AutoComplete',
+
   render: () => {
     const fruits = ['apple', 'banana', 'orange', 'pear', 'grape', 'pineapple'];
     const fetchSuggestions = (keyword: string) => {

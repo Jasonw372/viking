@@ -8,6 +8,8 @@ const meta = {
   component: Row,
   parameters: {
     layout: 'centered',
+    controls: { disable: true },
+    actions: { disable: true },
   },
   tags: ['autodocs'],
   decorators: [

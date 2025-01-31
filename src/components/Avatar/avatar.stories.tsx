@@ -6,9 +6,8 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   parameters: {
     layout: 'centered',
-    controls: {
-      disabled: false,
-    },
+    controls: { disabled: false },
+    actions: { disable: true },
   },
 };
 

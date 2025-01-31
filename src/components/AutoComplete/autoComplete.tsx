@@ -33,11 +33,13 @@ const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps>((props, ref
   const { fetchSuggestions, value, defaultValue, onSelect, onChange, renderOption, ...restProps } =
     props;
   const [innerValue, setInnerValue] = useState(defaultValue || '');
+
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [loading, setLoading] = useState(false);
   const triggerSearch = value !== undefined ? value : innerValue;
+
   const debounceValue = useDebounce(triggerSearch, 500);
   const wrapperRef = useRef<HTMLUListElement>(null);
   useClickOutside(wrapperRef, () => {
@@ -140,6 +142,7 @@ const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps>((props, ref
         <Input
           ref={ref}
           value={value !== undefined ? value : innerValue}
+          defaultValue=""
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           {...restProps}
