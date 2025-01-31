@@ -58,7 +58,7 @@ TextAvatar.storyName = '文字头像';
 // 图片加载失败
 export const FallbackAvatar = () => (
   <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-    <Avatar src="invalid-image.png" onError={() => console.log('图片加载失败')}>
+    <Avatar src="invalid-image.png" onError={() => console.warn('图片加载失败')}>
       err
     </Avatar>
   </div>
