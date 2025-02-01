@@ -96,4 +96,16 @@ describe('Button Component', () => {
 
     expect(element).toHaveClass('custom-class');
   });
+
+  test('combines multiple properties correctly', () => {
+    const wrapper = render(
+      <Button btnType="primary" size="lg" disabled className="custom">
+        Complex Button
+      </Button>,
+    );
+    const element = wrapper.getByText('Complex Button');
+
+    expect(element).toHaveClass('btn-primary', 'btn-lg', 'custom');
+    expect(element).toBeDisabled();
+  });
 });
