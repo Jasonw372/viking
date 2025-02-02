@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import type React from 'react';
 
+// 主题色类型
 export type ThemeProps =
   | 'primary'
   | 'secondary'

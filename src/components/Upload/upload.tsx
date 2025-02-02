@@ -4,17 +4,19 @@ import { v4 as uuidv4 } from 'uuid';
 import { UploadList } from './uploadList';
 import Dragger from './dragger';
 
+// 上传状态
 export type UploadStatus = 'ready' | 'uploading' | 'success' | 'error';
 
+// 上传文件类型
 export interface UploadFile {
-  uid: string;
-  size: number;
-  name: string;
-  status?: UploadStatus;
-  percent?: number;
-  raw?: File;
-  response?: unknown;
-  error?: Error;
+  uid: string; // 文件唯一标识
+  size: number; // 文件大小
+  name: string; // 文件名
+  status?: UploadStatus; // 文件状态
+  percent?: number; // 上传进度
+  raw?: File; // 原始文件
+  response?: unknown; // 上传成功的响应
+  error?: Error; // 上传失败的错误
 }
 
 export interface UploadProps {

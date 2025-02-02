@@ -137,9 +137,10 @@ export const Col: React.FC<ColProps> = ({
 
       if (typeof prop === 'number') {
         acc[`el-col-${size}-${prop}`] = true;
-      } else {
-        if (prop.span) acc[`el-col-${size}-${prop.span}`] = true;
-        if (prop.offset) acc[`el-col-${size}-offset-${prop.offset}`] = true;
+      } else if (typeof prop === 'object') {
+        const responsiveProp = prop as { span?: number; offset?: number };
+        if (responsiveProp.span) acc[`el-col-${size}-${responsiveProp.span}`] = true;
+        if (responsiveProp.offset) acc[`el-col-${size}-offset-${responsiveProp.offset}`] = true;
       }
       return acc;
     },
