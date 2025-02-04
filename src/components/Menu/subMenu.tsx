@@ -13,12 +13,12 @@ export interface SubMenuProps {
 }
 export const SubMenu: React.FC<PropsWithChildren<SubMenuProps>> = props => {
   const { index, title, className, children } = props;
-  const { mode, index: activedIndex, defaultOpenSubMenus } = useContext(MenuContext);
+  const { mode, index: activatedIndex, defaultOpenSubMenus } = useContext(MenuContext);
   const openedSubMenus = defaultOpenSubMenus as Array<string>;
   const isOpened = index && mode === 'vertical' ? openedSubMenus.includes(index) : false;
   const [menuOpen, setOpen] = useState(isOpened);
   const classes = classNames('menu-item submenu-item', className, {
-    'is-active': activedIndex.startsWith(index || ''),
+    'is-active': activatedIndex.startsWith(index || ''),
     'is-vertical': mode === 'vertical',
   });
 
