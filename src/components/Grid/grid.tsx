@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
+type ResponsiveValue = number | { span?: number; offset?: number };
+
 /**
  * 栅格布局行属性
  * @interface
@@ -35,11 +37,11 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   offset?: number; // 栅格左侧的间隔格数
   pull?: number; // 栅格向左移动格数
   push?: number; // 栅格向右移动格数
-  xs?: number | { span?: number; offset?: number };
-  sm?: number | { span?: number; offset?: number };
-  md?: number | { span?: number; offset?: number };
-  lg?: number | { span?: number; offset?: number };
-  xl?: number | { span?: number; offset?: number };
+  xs?: ResponsiveValue;
+  sm?: ResponsiveValue;
+  md?: ResponsiveValue;
+  lg?: ResponsiveValue;
+  xl?: ResponsiveValue;
   children?: React.ReactNode;
 }
 
@@ -65,10 +67,13 @@ export const Row: React.FC<RowProps> = ({
 
   const rowStyle: React.CSSProperties = {
     ...(restProps.style || {}),
+    display: 'flex',
+    flexWrap: 'wrap',
   };
 
   if (Array.isArray(gutter)) {
-    const [horizontalGap, verticalGap] = gutter;
+    const [horizontalGap, verticalGap] = gutter.map(Math.abs); // 确保间距为正数
+
     rowStyle.marginLeft = `-${horizontalGap / 2}px`;
     rowStyle.marginRight = `-${horizontalGap / 2}px`;
     rowStyle.rowGap = `${verticalGap}px`;
@@ -129,12 +134,19 @@ export const Col: React.FC<ColProps> = ({
     className,
   );
 
+  if (span && (span < 0 || span > 24)) {
+    console.warn('span should be between 0 and 24');
+  }
+
+  if (offset && (offset < 0 || offset > 24)) {
+    console.warn('offset should be between 0 and 24');
+  }
+
   // 响应式布局类名
   const responsiveClasses = ['xs', 'sm', 'md', 'lg', 'xl'].reduce(
     (acc, size) => {
       const prop = { xs, sm, md, lg, xl }[size as keyof typeof xs];
       if (!prop) return acc;
-
       if (typeof prop === 'number') {
         acc[`el-col-${size}-${prop}`] = true;
       } else if (typeof prop === 'object') {
