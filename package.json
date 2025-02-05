@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "viking is a react component library for building web applications",
+  "keywords": [
+    "react",
+    "component",
+    "library",
+    "ui"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
