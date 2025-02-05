@@ -39,7 +39,12 @@ export const Basic: Story = {
         <Input type="password" />
       </Form.Item>
       <Flex align="center" gap={10}>
-        <Form.Item name="agreement">
+        <Form.Item
+          name="agreement"
+          valuePropName="checked"
+          trigger="onChange"
+          getValueFromEvent={e => e.target.checked}
+        >
           <Input type="checkbox" />
         </Form.Item>
         <span>

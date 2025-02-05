@@ -4,10 +4,20 @@ import { FormContext } from './form';
 export interface FormItemProps {
   name: string;
   label?: string;
+  valuePropName?: string; // 需要监听的属性名
+  trigger?: string; // 触发时机
+  getValueFromEvent?: (event: React.ChangeEvent<HTMLInputElement>) => any; // 获取值的函数
 }
 
 export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props => {
-  const { label, name, children } = props;
+  const {
+    label,
+    name,
+    children,
+    valuePropName = 'value',
+    trigger = 'onChange',
+    getValueFromEvent = e => e.target.value,
+  } = props;
   const { dispatch, fields } = useContext(FormContext);
   const classes = classNames('form-item', {
     'no-label': !label,
@@ -17,16 +27,30 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
   const value = fieldState?.value;
 
   const controlProps: Record<string, any> = {};
-  // todo: 需要优化
-  controlProps.value = value;
-  controlProps.onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    dispatch({ type: 'updateField', payload: { name, value: e.target.value } });
+  controlProps[valuePropName] = value;
+  controlProps[trigger] = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = getValueFromEvent(e);
+    dispatch({ type: 'updateField', payload: { name, value } });
   };
 
   const childList = React.Children.toArray(children);
-  // todo: 判断children类型，显示警告
+
+  if (childList.length > 1) {
+    console.warn('FormItem only accepts one child.');
+    return null;
+  }
+
+  if (!childList.length) {
+    console.error('FormItem must have one child.');
+    return null;
+  }
+
   const child = childList[0] as React.ReactElement;
+
+  if (React.isValidElement(child)) {
+    console.error('Child Component must be a valid React element.');
+  }
+
   const returnChildNode = React.cloneElement(child, {
     ...child.props,
     ...controlProps,
