@@ -85,7 +85,6 @@ export const WithSuffixIcon: Story = {
   args: {
     suffixIcon: 'search',
     placeholder: '带后缀图标的输入框',
-    prefixIcon: '',
     value: '123',
   },
   name: '带后缀图标的输入框',
