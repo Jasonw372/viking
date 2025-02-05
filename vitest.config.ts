@@ -10,6 +10,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'json-summary'],
       reportsDirectory: './coverage',
+      reportOnFailure: true,
       exclude: ['**/*.stories.tsx', ...coverageConfigDefaults.exclude],
       thresholds: {
         lines: 60,
