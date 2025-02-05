@@ -9,6 +9,12 @@ export default defineConfig({
       enabled: true,
       reporter: ['text', 'json', 'html'],
       exclude: [ '**/*.stories.tsx',...coverageConfigDefaults.exclude],
+      thresholds: {
+        lines: 60,
+        branches: 60,
+        functions: 60,
+        statements: 60
+      }
     }
   }
 });
