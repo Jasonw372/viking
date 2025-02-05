@@ -36,3 +36,10 @@ jobs:
 
     - name: Run Vitest
       run: pnpm run test
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: vitest-results
+
+    
