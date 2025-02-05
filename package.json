@@ -20,6 +20,7 @@
     "lint": "pnpm lint-staged",
     "preview": "vite preview",
     "test": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "css-build": "sass ./src/styles/index.scss ./dist/index.css",
     "sass-miragte": "npx sass-migrator module --verbose --migrate-deps ./src/styles/index.scss",
     "storybook": "storybook dev -p 6006",

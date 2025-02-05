@@ -7,8 +7,10 @@ export default defineConfig({
     setupFiles: './vitest.setup.ts', // Optional: path to setup file
     coverage: {
       enabled: true,
-      reporter: ['text', 'json', 'html'],
-      exclude: [ '**/*.stories.tsx',...coverageConfigDefaults.exclude],
+      provider: 'v8',
+      reporter: ['text', 'json', 'html', 'json-summary'],
+      reportsDirectory: './coverage',
+      exclude: ['**/*.stories.tsx', ...coverageConfigDefaults.exclude],
       thresholds: {
         lines: 60,
         branches: 60,
