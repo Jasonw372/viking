@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 import React, { useContext, useEffect } from 'react';
 import { FormContext } from './form';
+
 export interface FormItemProps {
   name: string;
   label?: string;
   valuePropName?: string; // 需要监听的属性名
   trigger?: string; // 触发时机
-  getValueFromEvent?: (event: React.ChangeEvent<HTMLInputElement>) => any; // 获取值的函数
+  getValueFromEvent?: (event: React.ChangeEvent<any>) => any; // 获取值的函数
+  initialValue?: any;
 }
 
 export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props => {
@@ -17,8 +19,9 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     valuePropName = 'value',
     trigger = 'onChange',
     getValueFromEvent = e => e.target.value,
+    initialValue = '',
   } = props;
-  const { dispatch, fields } = useContext(FormContext);
+  const { dispatch, fields, initialValues } = useContext(FormContext);
   const classes = classNames('form-item', {
     'no-label': !label,
   });
@@ -47,7 +50,8 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
 
   const child = childList[0] as React.ReactElement;
 
-  if (React.isValidElement(child)) {
+  // 修改：如果 child 不是有效的 React 元素则报错
+  if (!React.isValidElement(child)) {
     console.error('Child Component must be a valid React element.');
   }
 
@@ -55,6 +59,8 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     ...child.props,
     ...controlProps,
   });
+
+  const defaultValue = initialValues?.[name] ?? initialValue;
 
   useEffect(() => {
     dispatch({
@@ -64,7 +70,7 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
         value: {
           label,
           name,
-          value: '',
+          value: defaultValue,
         },
       },
     });

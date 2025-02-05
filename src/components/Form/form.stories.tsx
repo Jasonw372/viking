@@ -31,6 +31,7 @@ export const Basic: Story = {
         flexDirection: 'column',
         gap: '10px',
       }}
+      initialValues={{ name: 'hello', password: 'word' }}
     >
       <Form.Item name="name" label="用户名">
         <Input type="text" />
@@ -44,6 +45,7 @@ export const Basic: Story = {
           valuePropName="checked"
           trigger="onChange"
           getValueFromEvent={e => e.target.checked}
+          initialValue={false}
         >
           <Input type="checkbox" />
         </Form.Item>
