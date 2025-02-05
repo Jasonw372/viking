@@ -15,7 +15,7 @@ export interface UploadFile {
   status?: UploadStatus; // 文件状态
   percent?: number; // 上传进度
   raw?: File; // 原始文件
-  response?: unknown; // 上传成功的响应
+  response?: any; // 上传成功的响应
   error?: Error; // 上传失败的错误
 }
 
@@ -24,14 +24,14 @@ export interface UploadProps {
   drag?: boolean; // 是否支持拖拽上传
   name?: string; // 发到后台的文件参数名
   defaultFileList?: UploadFile[]; // 默认文件列表
-  headers?: { [key: string]: unknown }; // 请求头
+  headers?: { [key: string]: any }; // 请求头
   withCredentials?: boolean; // 是否携带 cookie
-  data?: { [key: string]: unknown }; // 上传所需额外参数
+  data?: { [key: string]: any }; // 上传所需额外参数
   accept?: string; // 接受上传的文件类型
   multiple?: boolean; // 是否支持多选文件
   beforeUpload?: (file: File) => boolean | Promise<File>; // 上传前的钩子函数
   onProgress?: (percentage: number, file: UploadFile) => void; // 上传进度的钩子函数
-  onSuccess?: (data: unknown, file: UploadFile) => void; // 上传成功的钩子函数
+  onSuccess?: (data: any, file: UploadFile) => void; // 上传成功的钩子函数
   onError?: (err: Error, file: UploadFile) => void; // 上传失败的钩子函数
   onChange?: (file: UploadFile) => void; // 上传文件改变的钩子函数
   onRemove?: (file: UploadFile) => void; // 移除文件的钩子函数

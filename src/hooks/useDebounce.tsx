@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // 自定义 Hook：useDebounce，用于防抖处理
-export default function useDebounce(value: unknown, delay = 300) {
+export default function useDebounce(value: any, delay = 300) {
   // 定义状态：debouncedValue，初始值为传入的 value
   const [debouncedValue, setDebouncedValue] = useState(value);
 
