@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Form from '../Form';
 import Input from '../Input';
+import { action } from '@storybook/addon-actions';
+import Button from '../Button';
 
 const meta = {
   title: 'Components/Form',
@@ -24,7 +26,13 @@ type Story = StoryObj<typeof Form>;
 
 export const Basic: Story = {
   render: _args => (
-    <Form>
+    <Form
+      style={{
+        width: '500px',
+      }}
+      onFinish={action('onFinish')}
+      onFinishFailed={action('onFinishFailed')}
+    >
       <Form.Item
         name="name"
         label="用户名"
@@ -79,17 +87,37 @@ export const Basic: Story = {
       >
         <Input type="password" />
       </Form.Item>
-      <div className="agreement-section" style={{ display: 'flex', justifyContent: 'center' }}>
+      <div
+        className="agreement-section"
+        style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+      >
         <Form.Item
           name="agreement"
           valuePropName="checked"
           getValueFromEvent={e => e.target.checked}
+          rules={[
+            () => ({
+              asyncValidator: (_, value) => {
+                return new Promise((resolve, reject) => {
+                  if (value !== true) {
+                    reject('请同意用户协议');
+                  }
+                  resolve();
+                });
+              },
+            }),
+          ]}
         >
           <Input type="checkbox" />
         </Form.Item>
         <span className="agree-text">
           &nbsp;注册即代表你同意<a href="#">用户协议</a>
         </span>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button type="submit" btnType="primary">
+          Submit
+        </Button>
       </div>
     </Form>
   ),

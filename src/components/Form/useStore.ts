@@ -1,6 +1,7 @@
 import { useReducer, useState } from 'react';
 import type { RuleItem, ValidateError } from 'async-validator';
 import Schema from 'async-validator';
+import { each, mapValues } from 'lodash-es';
 
 export type CustomRuleFunc = (context: { getFieldValue: (name: string) => string }) => RuleItem;
 
@@ -20,6 +21,8 @@ export interface FieldsState {
 
 export interface FormState {
   isValid: boolean;
+  isSubmitting: boolean; // 是否正在提交表单
+  errors: Record<string, ValidateError[]>; // 所有字段的错误信息
 }
 
 export interface FieldsAction {
@@ -68,7 +71,7 @@ function fieldReducer(state: FieldsState, action: FieldsAction): FieldsState {
 }
 
 function useStore() {
-  const [form] = useState<FormState>({ isValid: false });
+  const [form, setForm] = useState<FormState>({ isValid: false, isSubmitting: false, errors: {} });
 
   const [fields, dispatch] = useReducer(fieldReducer, {});
 
@@ -116,11 +119,68 @@ function useStore() {
     }
   };
 
+  const validateAllFields = async () => {
+    let isValid = true;
+    let errors: Record<string, ValidateError[]> = {};
+
+    const valueMap = mapValues(fields, item => item.value);
+    const descriptor = mapValues(fields, item => transformRules(item.rules));
+    const validator = new Schema(descriptor);
+    setForm({
+      ...form,
+      isSubmitting: true,
+    });
+    try {
+      await validator.validate(valueMap);
+    } catch (e) {
+      isValid = false;
+      const err = e as ValidateErrorType;
+      errors = err.fields;
+      each(fields, (value, name) => {
+        if (errors[name]) {
+          const itemErrors = errors[name];
+          dispatch({
+            type: 'updateValidateResult',
+            payload: {
+              name,
+              value: {
+                isValidate: false,
+                errors: itemErrors,
+              },
+            },
+          });
+        } else if (value.rules.length > 0 && !errors[name]) {
+          dispatch({
+            type: 'updateValidateResult',
+            payload: {
+              name,
+              value: {
+                isValidate: true,
+              },
+            },
+          });
+        }
+      });
+    } finally {
+      setForm({
+        ...form,
+        isSubmitting: false,
+        isValid,
+        errors,
+      });
+      return {
+        isValid,
+        errors,
+        values: valueMap,
+      };
+    }
+  };
   return {
     form,
     fields,
     dispatch,
     validateField,
+    validateAllFields,
     getFieldValue,
   };
 }
