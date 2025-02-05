@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useContext, useEffect } from 'react';
 import { FormContext } from './form';
-import type { RuleItem } from 'async-validator';
+import type { CustomRule } from './useStore';
 
 export interface FormItemProps {
   name: string;
@@ -9,7 +9,7 @@ export interface FormItemProps {
   valuePropName?: string; // 需要监听的属性名
   trigger?: string; // 触发时机
   initialValue?: any;
-  rules?: RuleItem[];
+  rules?: CustomRule[];
   validateTrigger?: string; // 验证时机
   getValueFromEvent?: (event: React.ChangeEvent<any>) => any; // 获取值的函数
 }

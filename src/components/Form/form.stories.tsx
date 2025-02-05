@@ -41,7 +41,42 @@ export const Basic: Story = {
       >
         <Input type="text" />
       </Form.Item>
-      <Form.Item name="password" label="密码">
+      <Form.Item
+        name="password"
+        label="密码"
+        rules={[
+          {
+            required: true,
+            message: '密码是必填的',
+          },
+          {
+            min: 6,
+            message: '密码长度不能小于6位',
+          },
+        ]}
+      >
+        <Input type="password" />
+      </Form.Item>
+      <Form.Item
+        name="repassword"
+        label="重复密码"
+        rules={[
+          {
+            required: true,
+            message: '请再次输入密码',
+          },
+          ({ getFieldValue }) => ({
+            asyncValidator: (_, value) => {
+              return new Promise((resolve, reject) => {
+                if (value !== getFieldValue('password')) {
+                  reject('两次密码输入不一致');
+                }
+                resolve();
+              });
+            },
+          }),
+        ]}
+      >
         <Input type="password" />
       </Form.Item>
       <div className="agreement-section" style={{ display: 'flex', justifyContent: 'center' }}>
