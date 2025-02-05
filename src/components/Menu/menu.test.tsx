@@ -1,9 +1,7 @@
 import type { RenderResult } from '@testing-library/react';
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import Menu from './menu';
-import MenuItem from './menuItem';
-import SubMenu from './subMenu';
+import Menu from './index';
 import type { MenuProps } from './menu';
 
 const testProps: MenuProps = {
@@ -27,14 +25,14 @@ const testVerPropsWithoutOpen: MenuProps = {
 const generateMenu = (props: MenuProps) => {
   return render(
     <Menu {...props}>
-      <MenuItem>item1</MenuItem>
-      <MenuItem disabled>item2</MenuItem>
-      <MenuItem>item3</MenuItem>
-      <SubMenu title="dropdown">
-        <MenuItem>drop1</MenuItem>
-        <MenuItem>drop2</MenuItem>
-      </SubMenu>
-      <MenuItem>item4</MenuItem>
+      <Menu.Item>item1</Menu.Item>
+      <Menu.Item disabled>item2</Menu.Item>
+      <Menu.Item>item3</Menu.Item>
+      <Menu.SubMenu title="dropdown">
+        <Menu.Item>drop1</Menu.Item>
+        <Menu.Item>drop2</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item>item4</Menu.Item>
     </Menu>,
   );
 };
@@ -182,7 +180,7 @@ describe('test Menu with invalid children', () => {
     const consoleError = vi.spyOn(console, 'error');
     render(
       <Menu>
-        <MenuItem>valid item</MenuItem>
+        <Menu.Item>valid item</Menu.Item>
         <div>invalid child</div>
       </Menu>,
     );
@@ -193,10 +191,10 @@ describe('test Menu with invalid children', () => {
     const consoleError = vi.spyOn(console, 'error');
     render(
       <Menu>
-        <SubMenu title="test">
-          <MenuItem>valid item</MenuItem>
+        <Menu.SubMenu title="test">
+          <Menu.Item>valid item</Menu.Item>
           <div>invalid child</div>
-        </SubMenu>
+        </Menu.SubMenu>
       </Menu>,
     );
     expect(consoleError).toHaveBeenCalled();

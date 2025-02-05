@@ -37,4 +37,10 @@ describe('test Input component', () => {
     expect(queryByText('https://')).toBeInTheDocument();
     expect(queryByText('.com')).toBeInTheDocument();
   });
+
+  it('should render the icon component on prefixIcon/suffixIcon property', () => {
+    const wrapper = render(<Input placeholder="icon" prefixIcon="search" suffixIcon="search" />);
+    const testContainer = wrapper.container.querySelector('.input-wrapper');
+    expect(testContainer).toHaveClass('input-wrapper input-prefix input-suffix');
+  });
 });

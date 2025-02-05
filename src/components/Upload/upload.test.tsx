@@ -2,7 +2,7 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import type { UploadProps } from './upload';
-import Upload from './upload';
+import Upload from './index';
 import type { Mocked } from 'vitest';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 

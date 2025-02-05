@@ -24,7 +24,7 @@ const Icon: React.FC<IconProps> = props => {
     [`icon-${theme}`]: theme,
   });
 
-  return <FontAwesomeIcon className={classes} {...restProps} />;
+  return <FontAwesomeIcon className={classes} {...restProps} data-testid="icon" />;
 };
 
 export default Icon;
