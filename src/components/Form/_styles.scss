@@ -1,0 +1,67 @@
+@use "../../styles/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  .row {
+    display: flex;
+    align-items: center;
+    &.row-no-label {
+      flex-direction: row-reverse;
+    }
+    .form-item-label {
+      flex-basis: 20%;
+      text-align: right;
+      padding-right: 20px;
+
+      > label {
+        margin-bottom: 0;
+      }
+
+      > label.form-item-required:before {
+        content: "*";
+        display: inline-block;
+        color: variables.$danger;
+        font-size: 14px;
+        margin-right: 4px;
+        line-height: 1;
+        font-family: SimSun, sans-serif;
+
+      }
+    }
+
+    .form-item {
+      flex-basis: 80%;
+      position: relative;
+
+      .input-wrapper {
+        margin-bottom: 0;
+      }
+
+      .form-item-has-error.form-item-control {
+        .input-inner {
+          border-color: variables.$danger;
+
+          &:focus {
+            box-shadow: variables.$input-focus-box-shadow-error;
+          }
+        }
+      }
+
+      .form-item-explain {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        line-height: 25px;
+        color: variables.$danger;
+      }
+    }
+  }
+
+  .form-submit-area {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+}

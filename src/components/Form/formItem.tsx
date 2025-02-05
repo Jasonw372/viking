@@ -1,14 +1,17 @@
 import classNames from 'classnames';
 import React, { useContext, useEffect } from 'react';
 import { FormContext } from './form';
+import type { RuleItem } from 'async-validator';
 
 export interface FormItemProps {
   name: string;
   label?: string;
   valuePropName?: string; // 需要监听的属性名
   trigger?: string; // 触发时机
-  getValueFromEvent?: (event: React.ChangeEvent<any>) => any; // 获取值的函数
   initialValue?: any;
+  rules?: RuleItem[];
+  validateTrigger?: string; // 验证时机
+  getValueFromEvent?: (event: React.ChangeEvent<any>) => any; // 获取值的函数
 }
 
 export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props => {
@@ -20,21 +23,38 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     trigger = 'onChange',
     getValueFromEvent = e => e.target.value,
     initialValue = '',
+    rules = [],
+    validateTrigger = 'onBlur',
   } = props;
-  const { dispatch, fields, initialValues } = useContext(FormContext);
-  const classes = classNames('form-item', {
+  const { dispatch, fields, initialValues, validateField } = useContext(FormContext);
+  const classes = classNames('row', {
     'no-label': !label,
   });
 
   const fieldState = fields[name];
   const value = fieldState?.value;
+  const errors = fieldState?.errors;
+  const isRequired = rules?.some(rule => typeof rule !== 'function' && rule.required);
+  const hasError = errors && errors.length > 0;
+
+  const labelClass = classNames({
+    'form-item-required': isRequired,
+  });
+  const itemClass = classNames('form-item-control', {
+    'form-item-has-error': hasError,
+  });
 
   const controlProps: Record<string, any> = {};
-  controlProps[valuePropName] = value;
+  controlProps[valuePropName] = value ?? '';
   controlProps[trigger] = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = getValueFromEvent(e);
     dispatch({ type: 'updateField', payload: { name, value } });
   };
+  if (rules.length > 0) {
+    controlProps[validateTrigger] = async () => {
+      await validateField(name);
+    };
+  }
 
   const childList = React.Children.toArray(children);
 
@@ -50,7 +70,6 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
 
   const child = childList[0] as React.ReactElement;
 
-  // 修改：如果 child 不是有效的 React 元素则报错
   if (!React.isValidElement(child)) {
     console.error('Child Component must be a valid React element.');
   }
@@ -60,7 +79,7 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     ...controlProps,
   });
 
-  const defaultValue = initialValues?.[name] ?? initialValue;
+  const defaultValue = initialValue !== undefined ? initialValue : (initialValues?.[name] ?? '');
 
   useEffect(() => {
     dispatch({
@@ -71,14 +90,31 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
           label,
           name,
           value: defaultValue,
+          rules,
+          errors: [],
+          isValid: true,
         },
       },
     });
   }, []);
+
   return (
     <div className={classes}>
-      <div className="form-item-label">{label && <label title={label}>{label}</label>}</div>
-      <div className="form-item">{returnChildNode}</div>
+      <div className="form-item-label">
+        {label && (
+          <label title={label} className={labelClass}>
+            {label}
+          </label>
+        )}
+      </div>
+      <div className="form-item">
+        <div className={itemClass}>{returnChildNode}</div>
+        {hasError && (
+          <div className="form-item-explain">
+            <span>{errors[0].message}</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -6,18 +6,21 @@ export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   initialValues?: Record<string, any>;
 }
 
-export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'fields'> &
+export type IFormContext = Pick<
+  ReturnType<typeof useStore>,
+  'dispatch' | 'fields' | 'validateField'
+> &
   Pick<FormProps, 'initialValues'>;
 export const FormContext = createContext<IFormContext>({} as IFormContext);
 export const Form: React.FC<React.PropsWithChildren<FormProps>> = props => {
   const { name = 'form', children, initialValues, ...reset } = props;
-  const { form, fields, dispatch } = useStore();
-  const passedContext: IFormContext = { dispatch, fields, initialValues };
+  const { form, fields, dispatch, validateField } = useStore();
+  const passedContext: IFormContext = { dispatch, fields, initialValues, validateField };
 
   return (
     <>
       <FormContext.Provider value={passedContext}>
-        <form name={name} {...reset}>
+        <form name={name} {...reset} className="form">
           {children}
         </form>
       </FormContext.Provider>
