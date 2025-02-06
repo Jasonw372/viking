@@ -61,14 +61,6 @@ export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
           {childrenNode}
         </form>
       </FormContext.Provider>
-      <div>
-        <pre>
-          <code>{JSON.stringify(fields, null, 2)}</code>
-        </pre>
-        <pre>
-          <code>{JSON.stringify(form, null, 2)}</code>
-        </pre>
-      </div>
     </>
   );
 });
