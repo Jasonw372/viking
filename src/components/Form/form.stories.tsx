@@ -335,14 +335,15 @@ export const BasicRef: Story = {
           <Button type="submit" btnType="primary">
             Submit
           </Button>
-          <Button
-            onClick={() => {
-              formRef.current?.resetFields();
-            }}
-          >
-            Reset
-          </Button>
         </div>
+        <Button
+          type="reset"
+          onClick={() => {
+            formRef.current?.resetFields();
+          }}
+        >
+          Reset
+        </Button>
       </Form>
     );
   },
