@@ -4,7 +4,7 @@ import Form from './form';
 import type { FormItemProps } from './formItem';
 import FormItem from './formItem';
 
-export type IFormComponent = FC<PropsWithChildren<FormProps>> & {
+export type IFormComponent = FC<FormProps> & {
   Item: FC<PropsWithChildren<FormItemProps>>;
 };
 
