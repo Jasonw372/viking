@@ -8,7 +8,6 @@ export interface FormItemProps {
   label?: string;
   valuePropName?: string; // 需要监听的属性名
   trigger?: string; // 触发时机
-  initialValue?: any;
   rules?: CustomRule[];
   validateTrigger?: string; // 验证时机
   getValueFromEvent?: (event: React.ChangeEvent<any>) => any; // 获取值的函数
@@ -22,7 +21,6 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     valuePropName = 'value',
     trigger = 'onChange',
     getValueFromEvent = e => e.target.value,
-    initialValue = '',
     rules = [],
     validateTrigger = 'onBlur',
   } = props;
@@ -48,7 +46,7 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
   controlProps[valuePropName] = value ?? '';
   controlProps[trigger] = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = getValueFromEvent(e);
-    dispatch({ type: 'updateField', payload: { name, value } });
+    dispatch({ type: 'updateValue', payload: { name, value } });
   };
   if (rules.length > 0) {
     controlProps[validateTrigger] = async () => {
@@ -79,7 +77,7 @@ export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = props 
     ...controlProps,
   });
 
-  const defaultValue = initialValue !== undefined ? initialValue : (initialValues?.[name] ?? '');
+  const defaultValue = initialValues?.[name] ?? '';
 
   useEffect(() => {
     dispatch({

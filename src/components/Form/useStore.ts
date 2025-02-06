@@ -26,7 +26,7 @@ export interface FormState {
 }
 
 export interface FieldsAction {
-  type: 'addField' | 'updateField' | 'updateValidateResult';
+  type: 'addField' | 'updateValue' | 'updateValidateResult' | 'updateField';
   payload: {
     name: string;
     value: any;
@@ -43,7 +43,6 @@ function fieldReducer(state: FieldsState, action: FieldsAction): FieldsState {
 
   switch (action.type) {
     case 'addField': {
-      // 确保完整地构造新字段，避免后续访问缺失属性
       return {
         ...state,
         [name]: {
@@ -52,7 +51,7 @@ function fieldReducer(state: FieldsState, action: FieldsAction): FieldsState {
         },
       };
     }
-    case 'updateField': {
+    case 'updateValue': {
       return {
         ...state,
         [name]: { ...state[name], value },
@@ -65,18 +64,42 @@ function fieldReducer(state: FieldsState, action: FieldsAction): FieldsState {
         [name]: { ...state[name], isValid, errors },
       };
     }
+    case 'updateField': {
+      return {
+        ...state,
+        [name]: { ...state[name], ...value },
+      };
+    }
     default:
       return state;
   }
 }
 
-function useStore() {
+function useStore(initialValues?: Record<string, any>) {
   const [form, setForm] = useState<FormState>({ isValid: false, isSubmitting: false, errors: {} });
 
   const [fields, dispatch] = useReducer(fieldReducer, {});
 
   const getFieldValue = (key: string) => {
     return fields[key]?.value;
+  };
+
+  const getFieldsValue = () => {
+    return mapValues(fields, item => item.value);
+  };
+
+  const setFieldValue = (key: string, value: any) => {
+    if (fields[key]) {
+      dispatch({
+        type: 'updateValue',
+        payload: {
+          name: key,
+          value: {
+            value,
+          },
+        },
+      });
+    }
   };
 
   const transformRules = (rules: CustomRule[]): RuleItem[] => {
@@ -175,6 +198,34 @@ function useStore() {
       };
     }
   };
+
+  const resetFields = () => {
+    if (!initialValues) {
+      return;
+    }
+    each(fields, (_, name) => {
+      dispatch({
+        type: 'updateField',
+        payload: {
+          name,
+          value: {
+            value: initialValues[name] || '',
+            isValid: true,
+            errors: [],
+          },
+        },
+      });
+    });
+
+    setTimeout(() => {
+      setForm({
+        isValid: false,
+        isSubmitting: true,
+        errors: {},
+      });
+    }, 0);
+  };
+
   return {
     form,
     fields,
@@ -182,6 +233,9 @@ function useStore() {
     validateField,
     validateAllFields,
     getFieldValue,
+    getFieldsValue,
+    setFieldValue,
+    resetFields,
   };
 }
 

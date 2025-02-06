@@ -1,12 +1,12 @@
 import type { FormEvent, FormHTMLAttributes, ReactNode } from 'react';
-import React, { createContext } from 'react';
+import { createContext, forwardRef, useImperativeHandle } from 'react';
 import type { FormState } from './useStore.ts';
 import useStore from './useStore.ts';
 import type { ValidateError } from 'async-validator';
 
 export type RenderProps = (form: FormState) => ReactNode;
 
-export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface FormProps extends Omit<FormHTMLAttributes<HTMLFormElement>, 'children'> {
   name?: string;
   initialValues?: Record<string, any>;
   onFinish?: (values: Record<string, any>) => void;
@@ -19,10 +19,15 @@ export type IFormContext = Pick<
   'dispatch' | 'fields' | 'validateField'
 > &
   Pick<FormProps, 'initialValues'>;
+
+export type IFormRef = Omit<ReturnType<typeof useStore>, 'fields' | 'dispatch' | 'form'>;
+
 export const FormContext = createContext<IFormContext>({} as IFormContext);
-export const Form: React.FC<FormProps> = props => {
+
+export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
   const { name = 'form', children, initialValues, onFinish, onFinishFailed, ...reset } = props;
-  const { form, fields, dispatch, validateField, validateAllFields } = useStore();
+  const { form, fields, dispatch, ...resetProps } = useStore(initialValues);
+  const { validateField, validateAllFields } = resetProps;
   const passedContext: IFormContext = { dispatch, fields, initialValues, validateField };
 
   let childrenNode: ReactNode;
@@ -43,6 +48,12 @@ export const Form: React.FC<FormProps> = props => {
     }
   };
 
+  useImperativeHandle(ref, () => {
+    return {
+      ...resetProps,
+    };
+  });
+
   return (
     <>
       <FormContext.Provider value={passedContext}>
@@ -60,6 +71,6 @@ export const Form: React.FC<FormProps> = props => {
       </div>
     </>
   );
-};
+});
 
 export default Form;
