@@ -127,7 +127,6 @@ function useStore(initialValues?: Record<string, any>) {
       });
     } catch (e) {
       const { errors } = e as ValidateErrorType;
-      console.log(errors);
 
       dispatch({
         type: 'updateValidateResult',
