@@ -1,7 +1,7 @@
 import type { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import type React from 'react';
+import React from 'react';
 
 // 主题色类型
 export type ThemeProps =

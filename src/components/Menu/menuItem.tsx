@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, type PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu';

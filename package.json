@@ -15,8 +15,9 @@
     "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "scripts": {
-    "dev": "vite",
+    "clean": "rimraf ./dist",
     "build": "tsc -b && vite build",
+    "build-ts": "tsc -p tsconfig.build.json",
     "lint": "pnpm lint-staged",
     "preview": "vite preview",
     "test": "vitest --ui",
@@ -78,6 +79,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
     "storybook": "^8.5.0",
     "typescript": "~5.6.3",
     "typescript-eslint": "^8.18.2",

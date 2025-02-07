@@ -1,3 +1,4 @@
+import React from 'react';
 import type { PropsWithChildren } from 'react';
 
 // 定义 TabItemProps 接口，用于描述 TabItem 组件的属性

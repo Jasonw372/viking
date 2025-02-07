@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import useClickOutside from '../../hooks/useClickOutside';
 import Icon from '../Icon';
 import useDebounce from '../../hooks/useDebounce';
+import React from 'react';
 
 // DataSourceObject 是一个接口，表示数据源中的对象应该具有的结构
 interface DataSourceObject {

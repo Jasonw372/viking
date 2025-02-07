@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import Icon from '../Icon';
 import classNames from 'classnames';
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';

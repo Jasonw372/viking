@@ -1,3 +1,3 @@
-import Avatar from './avatar.tsx';
+import Avatar from './avatar';
 
 export default Avatar;

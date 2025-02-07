@@ -1,0 +1,15 @@
+{
+  // 编译选项
+  "compilerOptions": {
+    "outDir": "./build", // 输出目录
+    "module": "ESNext", // 模块规范
+    "target": "ES5", // 目标语言版本
+    "declaration": true, // 生成声明文件
+    "jsx": "react-jsx", // jsx 语法
+    "moduleResolution": "node", // 模块解析策略
+    "allowSyntheticDefaultImports": true, // 允许默认导入
+    "lib": ["DOM", "ES2016", "ES2015.Promise"]
+  },
+  "include": ["src"], // 包含的文件
+  "exclude": ["src/**/*.test.tsx", "src/**/*.stories.tsx"] // 排除的文件
+}

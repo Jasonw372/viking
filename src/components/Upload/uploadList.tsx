@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { UploadFile } from './upload';
 import Icon from '../Icon';
 import Progress from '../Progress';

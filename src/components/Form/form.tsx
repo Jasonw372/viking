@@ -1,7 +1,7 @@
 import type { FormEvent, FormHTMLAttributes, ReactNode } from 'react';
 import { createContext, forwardRef, useImperativeHandle } from 'react';
-import type { FormState } from './useStore.ts';
-import useStore from './useStore.ts';
+import type { FormState } from './useStore';
+import useStore from './useStore';
 import type { ValidateError } from 'async-validator';
 
 export type RenderProps = (form: FormState) => ReactNode;
