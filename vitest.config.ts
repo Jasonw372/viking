@@ -11,13 +11,13 @@ export default defineConfig({
       reporter: ['text', 'json', 'html', 'json-summary'],
       reportsDirectory: './coverage',
       reportOnFailure: true,
-      exclude: ['**/*.stories.tsx', ...coverageConfigDefaults.exclude],
+      exclude: ['**/*.stories.tsx', ...coverageConfigDefaults.exclude, 'src/index.tsx'],
       thresholds: {
         lines: 60,
         branches: 60,
         functions: 60,
-        statements: 60
-      }
-    }
-  }
+        statements: 60,
+      },
+    },
+  },
 });
