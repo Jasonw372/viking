@@ -1,11 +1,11 @@
 {
-  "name": "viking",
+  "name": "viking-design",
   "version": "1.0.0",
   "type": "module",
   "description": "viking is a react component library for building web applications",
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "react",
     "component",
@@ -17,10 +17,10 @@
     "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "scripts": {
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./dist",
     "build": "pnpm clean && pnpm build-ts && pnpm build-css && pnpm copy-scss",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "sass ./src/styles/index.scss ./build/index.css",
+    "build-css": "sass ./src/styles/index.scss ./dist/index.css",
     "copy-scss": "copyfiles -u 2 src/components/**/_styles.scss build/components && copyfiles -u 1 src/styles/* build",
     "lint": "pnpm lint-staged",
     "preview": "vite preview",
@@ -32,7 +32,6 @@
     "prepare": "husky"
   },
   "files": [
-    "build",
     "dist"
   ],
   "publishConfig": {

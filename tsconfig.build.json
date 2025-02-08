@@ -1,7 +1,7 @@
 {
   // 编译选项
   "compilerOptions": {
-    "outDir": "./build", // 输出目录
+    "outDir": "dist", // 输出目录
     "module": "ESNext", // 模块规范
     "target": "ES5", // 目标语言版本
     "declaration": true, // 生成声明文件
