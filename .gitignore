@@ -24,6 +24,6 @@ dist-ssr
 *.sln
 *.sw?
 
-storybook-static/*
-coverage/*
-build/*
+storybook-static
+coverage
+build
