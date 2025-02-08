@@ -11,7 +11,12 @@ export default defineConfig({
       reporter: ['text', 'json', 'html', 'json-summary'],
       reportsDirectory: './coverage',
       reportOnFailure: true,
-      exclude: ['**/*.stories.tsx', ...coverageConfigDefaults.exclude, 'src/index.tsx'],
+      exclude: [
+        '**/*.stories.tsx',
+        ...coverageConfigDefaults.exclude,
+        'src/index.tsx',
+        'storybook-static',
+      ],
       thresholds: {
         lines: 60,
         branches: 60,
