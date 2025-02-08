@@ -30,7 +30,8 @@
     "sass-miragte": "npx sass-migrator module --verbose --migrate-deps ./src/styles/index.scss",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "pnpm build"
   },
   "files": [
     "dist"
