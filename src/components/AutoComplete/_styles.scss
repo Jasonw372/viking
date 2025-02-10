@@ -11,7 +11,7 @@
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
-      color: variables.$gray-600;
+      color: variables.$text-muted;
     }
   }
 
@@ -20,7 +20,7 @@
     padding-left: 0;
     white-space: nowrap;
     position: absolute;
-    background: variables.$white;
+    background: var(--component-bg);
     z-index: 100;
     top: 100%;
     left: 0;
@@ -34,10 +34,10 @@
       color: variables.$body-color;
       &.is-active {
         background-color: variables.$primary;
-        color: variables.$white;
+        color: var(--color-text-primary);
       }
       &:hover {
-        color: variables.$primary;
+        background-color: variables.$menu-hover-bg;
       }
     }
   }
