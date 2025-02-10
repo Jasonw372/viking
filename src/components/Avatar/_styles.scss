@@ -1,4 +1,5 @@
 @use '../../styles/variables';
+@use '../../styles/colors';
 
 .avatar {
   position: relative;
@@ -8,12 +9,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: variables.$white;
-  background-color: variables.$gray-400;
+  color: colors.$gray-200;
+  background-color: colors.$gray-500;
   white-space: nowrap;
   text-align: center;
   vertical-align: middle;
   outline: none;
+
+  [data-theme="dark"] & {
+    color: colors.$white;
+  }
 
   img {
     width: 100%;

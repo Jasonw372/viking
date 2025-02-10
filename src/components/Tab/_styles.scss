@@ -3,6 +3,8 @@
 .tabs {
   .tabs-nav { 
     display: flex;
+    color: variables.$body-color;
+    background-color: variables.$body-bg;
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
@@ -53,5 +55,7 @@
 }
 
 .tabs-content {
-  margin-top: variables.$nav-tabs-content-margin;
+  padding: variables.$nav-tabs-content-margin;
+  color: variables.$body-color;
+  background-color: variables.$body-bg;
 }

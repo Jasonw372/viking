@@ -1,13 +1,14 @@
 @use "../../styles/variables";
 @use "../../styles/mixin";
+@use "sass:color";
 
 // 使用 CSS 变量重新定义按钮类型映射
 $btn-types: (
-  "primary": variables.$btn-primary,
-  "danger": variables.$btn-danger,
-  "warning": variables.$btn-warning,
-  "success": variables.$btn-success,
-  "info": variables.$btn-info
+  "primary": var(--color-primary),
+  "danger": var(--color-danger),
+  "warning": var(--color-warning),
+  "success": var(--color-success),
+  "info": var(--color-info)
 );
 
 .btn {
@@ -22,20 +23,20 @@ $btn-types: (
   font-weight: variables.$btn-font-weight;
   border: variables.$btn-border-width solid transparent;
   box-shadow: variables.$btn-box-shadow;
-  background: variables.$body-bg;
-  color: variables.$body-color;
+  background: var(--component-bg);
+  color: var(--color-text-primary);
 
   // 统一处理所有状态
   &:hover,
   &:focus,
   &.hover {
-    color: variables.$btn-primary;
-    background: mixin.lighten-color(variables.$btn-primary, 0.9);
+    color: var(--color-primary);
+    background: var(--component-hover-bg);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(variables.$btn-primary, 0.25);
+    box-shadow: 0 0 0 0.2rem var(--color-shadow);
   }
 
   // 尺寸变体
@@ -60,7 +61,7 @@ $btn-types: (
   // 生成不同类型的按钮样式
   @each $type, $color in $btn-types {
     &-#{$type} {
-      @include mixin.button-variant(variables.$white, $color);
+      @include mixin.button-variant(var(--color-text-white), $color);
 
       &.btn-plain {
         @include mixin.button-plain-variant($color);
@@ -70,9 +71,9 @@ $btn-types: (
 
   // Default 样式
   &-default {
-    border: variables.$btn-border-width solid variables.$btn-primary;
+    border: variables.$btn-border-width solid var(--color-primary);
     &.hover{
-      background-color: mixin.lighten-color(variables.$btn-primary, 0.9);
+      background-color: var(--component-hover-bg);
     }
 
     &.btn-plain {
@@ -94,16 +95,34 @@ $btn-types: (
   &.disabled,
   &[disabled] {
     @include mixin.button-disabled(variables.$btn-disabled-opacity);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-muted);
   }
 
   // Link 按钮
   &-link {
     @include mixin.button-link;
+    color: var(--color-primary);
+    background: transparent;
+
+    &:hover,
+    &:focus,
+    &.hover {
+      color: mixin.lighten-color(var(--color-primary), 0.1);
+      
+    }
 
     &.disabled,
     &[disabled] {
       @include mixin.button-disabled(variables.$btn-link-disabled-opacity);
+      color: var(--color-text-muted);
+      background: transparent;
+      &:hover,
+      &:focus,
+      &.hover {
+        // 取消下划线
+        text-decoration: none;
+      }
     }
   }
-
 }

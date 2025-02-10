@@ -1,5 +1,7 @@
 // 变量
 @use "variables";
+// 颜色
+@use "colors";
 // 重置样式
 @use "reboot";
 // mixin
@@ -12,25 +14,25 @@
 @use "../components/Menu/styles" as *;
 // Tab样式
 @use "../components/Tab/styles" as *;
-// Space样式
-@use "../components/Space/styles" as *;
-// Switch样式
-@use "../components/Switch/styles" as *;
+// // Space样式
+// @use "../components/Space/styles" as *;
+// // Switch样式
+// @use "../components/Switch/styles" as *;
 // Avatar样式
 @use "../components/Avatar/styles" as *;
-// Flex样式
+// // Flex样式
 @use "../components/Flex/styles" as *;
-// Grid样式
+// // Grid样式
 @use "../components/Grid/styles" as *;
-// Icon样式
-@use "../components/Icon/styles" as *;
-// Input样式
-@use "../components/Input/styles" as *;
-// AutoComplete样式
-@use "../components/AutoComplete/styles" as *;
-// Progress样式
-@use "../components/Progress/styles" as *;
-// Upload样式
-@use "../components/Upload/styles" as *;
-// Form样式
-@use "../components/Form/styles" as *;
+// // Icon样式
+// @use "../components/Icon/styles" as *;
+// // Input样式
+// @use "../components/Input/styles" as *;
+// // AutoComplete样式
+// @use "../components/AutoComplete/styles" as *;
+// // Progress样式
+// @use "../components/Progress/styles" as *;
+// // Upload样式
+// @use "../components/Upload/styles" as *;
+// // Form样式
+// @use "../components/Form/styles" as *;

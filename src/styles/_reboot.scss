@@ -31,11 +31,11 @@ body {
   font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-normal;
   line-height: variables.$line-height-base;
-  color: variables.$body-color;
+  // color: variables.$body-color;
   text-align: variables.$body-text-align;
-  background-color: variables.$body-bg; // 2
+  // background-color: variables.$body-bg; // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba(variables.$black, 0); // 4
+  -webkit-tap-highlight-color: transparent; // 4
 }
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline

@@ -12,7 +12,7 @@ export interface TabItemProps {
 }
 
 export const TabItem: React.FC<PropsWithChildren<TabItemProps>> = ({ children }) => {
-  return <div className="tab-panel">{children}</div>;
+  return children;
 };
 
 TabItem.displayName = 'Tab.Item';

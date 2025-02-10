@@ -62,24 +62,29 @@ export const Tab: React.FC<PropsWithChildren<TabProps>> = props => {
   function renderContent(children: React.ReactNode): React.ReactNode {
     return React.Children.map(children, (child, index) => {
       if (index === currentActiveIndex) {
-        return child;
+        const childElement = child as React.FunctionComponentElement<TabItemProps>;
+        if (React.isValidElement(childElement)) {
+          return <div className="tabs-content">{childElement}</div>;
+        }
+        return null;
       }
       return null;
     });
   }
 
   return (
-    <div className={`tabs ${className}`} style={style} data-testid="test-tab">
+    <div className={`tabs ${className}`} data-testid="test-tab">
       <ul
         className={classNames('tabs-nav', {
           'nav-line': type === 'line',
           'nav-card': type === 'card',
         })}
+        style={style}
       >
         {renderNav(children)}
       </ul>
 
-      <div className="tabs-content">{renderContent(children)}</div>
+      {renderContent(children)}
     </div>
   );
 };

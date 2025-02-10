@@ -1,12 +1,13 @@
 @use '../../styles/variables';
 
-
 .menu {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 30px;
   list-style: none;
+  background: variables.$menu-bg;
+  color: variables.$menu-color;
   border-bottom: variables.$menu-border-width solid variables.$menu-border-color;
   box-shadow: variables.$menu-box-shadow;
 
@@ -28,7 +29,7 @@
 
     &.is-active,
     &:hover {
-      color: variables.$menu-item-active-color;
+      // color: variables.$menu-item-active-color;
       border-bottom: variables.$menu-item-active-border-width solid
         variables.$menu-item-active-color;
     }
@@ -60,6 +61,7 @@
       &.is-active,
       &:hover {
         color: variables.$menu-item-active-color !important;
+        background: variables.$menu-hover-bg;
       }
     }
     // &.menu-opened {
@@ -75,7 +77,7 @@
 
   .submenu-container {
     position: absolute;
-    background: variables.$white;
+    background: variables.$menu-bg;
     z-index: 100;
     top: calc(100% + 8px);
     left: 0;
@@ -89,7 +91,7 @@
       border-bottom: variables.$menu-border-width solid variables.$menu-border-color;
 
       &:hover {
-        background-color: #f5f7fa;
+        background-color: transparent;
       }
 
       &:last-child {
@@ -124,20 +126,27 @@
     &:hover {
       border-bottom: 0;
       border-left: variables.$menu-item-active-border-width solid variables.$menu-item-active-color;
-    }
+    } 
   }
 
   .submenu-container {
     padding: 0;
     overflow: hidden;
-    background: variables.$white;
+    background: variables.$menu-bg;
 
     .menu-item {
+      &:hover {
+        background-color: transparent;
+      }
+
       &.is-active,
       &:hover {
         border-left: variables.$menu-item-active-border-width solid
           variables.$menu-item-active-color;
-        background-color: #ecf5ff;
+      }
+
+      &:is-active {
+        background-color: variables.$menu-hover-bg;
       }
     }
   }

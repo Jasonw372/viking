@@ -1,6 +1,6 @@
 {
   "name": "viking-design",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "type": "module",
   "description": "viking is a react component library for building web applications",
   "main": "dist/index.js",

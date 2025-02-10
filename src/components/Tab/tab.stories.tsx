@@ -174,11 +174,20 @@ export const TabDisplay: Story = {
             defaultIndex={0}
             style={{
               backgroundColor: '#f7f7f7',
+              color: 'red',
               borderRadius: '8px',
-              padding: '1rem',
+              // padding: '1rem',
             }}
           >
-            <Tab.Item label="项目概览">项目基本信息展示</Tab.Item>
+            <Tab.Item label="项目概览">
+              <div
+                style={{
+                  background: 'red',
+                }}
+              >
+                自定义样式
+              </div>
+            </Tab.Item>
             <Tab.Item label="团队成员">团队成员列表</Tab.Item>
             <Tab.Item label="项目进度">项目进度追踪</Tab.Item>
           </Tab>

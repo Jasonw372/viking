@@ -233,6 +233,7 @@ export const MenuDisplay: Story = {
           defaultIndex="0"
           style={{
             backgroundColor: '#f0f2f5',
+            color: '#333',
             borderRadius: '4px',
           }}
         >

@@ -2,7 +2,7 @@
 @use 'mixin';
 @use './colors' as *;
 
-// 情境颜色 - Sass变量
+// 情境颜色 - Sass变量 (现在直接使用 CSS 变量)
 $defaultColors: (
   primary: var(--color-primary),
   secondary: var(--color-secondary),
@@ -11,22 +11,6 @@ $defaultColors: (
   warning: var(--color-warning),
   danger: var(--color-danger),
 );
-
-:root {
-  @each $name, $color in $defaultColors {
-    --#{$name}: #{$color};
-  }
-}
-
-// 情境颜色 - CSS变量
-$primary: var(--color-primary) !default;
-$secondary: var(--color-secondary) !default;
-$success: var(--color-success) !default;
-$info: var(--color-info) !default;
-$warning: var(--color-warning) !default;
-$danger: var(--color-danger) !default;
-$light: var(--color-light) !default;
-$dark: var(--color-dark) !default;
 
 // 字体系统
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
@@ -62,15 +46,18 @@ $h5-font-size: $font-size-base * 1.25 !default; // h5标题大小
 $h6-font-size: $font-size-base !default; // h6标题大小
 
 // 链接
-$link-color: var(--primary) !default; // 链接颜色
+$link-color: var(--color-primary) !default; // 链接颜色
 $link-decoration: none !default; // 链接装饰
-$link-hover-color: mixin.lighten-color($link-color, 0.15) !default; // 链接悬停颜色
+$link-hover-color: color.scale($link-color, $lightness: 15%) !default; // 链接悬停颜色
 $link-hover-decoration: underline !default; // 链接悬停装饰
 
 // 背景颜色
 $body-bg: var(--color-bg-primary) !default;
 $body-color: var(--color-text-primary) !default;
 $body-text-align: null !default; // 文本对齐方式
+$component-bg: var(--component-bg) !default;
+$component-hover-bg: var(--color-bg-light) !default;
+$component-active-bg: var(--color-bg-light) !default;
 
 // Spacing
 $spacer: 1rem !default;
@@ -109,7 +96,7 @@ $text-muted: var(--color-text-muted) !default;
 
 $initialism-font-size: $small-font-size !default;
 
-$blockquote-small-color: $gray-600 !default;
+$blockquote-small-color: var(--color-text-muted) !default;
 $blockquote-small-font-size: $small-font-size !default;
 $blockquote-font-size: $font-size-base * 1.25 !default;
 
@@ -198,9 +185,6 @@ $btn-warning: $warning;
 $btn-danger: $danger;
 
 // Menu组件变量
-$menu-bg: var(--component-bg) !default;
-$menu-color: $body-color !default;
-$menu-hover-bg: var(--component-hover-bg) !default;
 $menu-border-width: $border-width !default;
 $menu-border-color: $border-color !default;
 $menu-box-shadow:
@@ -214,9 +198,9 @@ $menu-transition:
 
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
-$menu-item-active-color: var(--color-primary) !default;
+$menu-item-active-color: $primary !default;
 $menu-item-active-border-width: $active-border-width !default;
-$menu-item-disabled-color: var(--color-text-muted) !default;
+$menu-item-disabled-color: $gray-600 !default;
 
 $submenu-box-shadow:
   0 2px 4px 0 rgba(0, 0, 0, 0.12),
@@ -227,7 +211,7 @@ $nav-link-padding-y: 0.5rem !default;
 $nav-link-padding-x: 1rem !default;
 $nav-link-disabled-color: $gray-600 !default;
 
-$nav-tabs-border-color: $component-active-bg !default;
+$nav-tabs-border-color: $gray-300 !default;
 $nav-tabs-border-width: $border-width !default;
 $nav-tabs-border-radius: $border-radius !default;
 $nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
@@ -267,11 +251,11 @@ $input-border-radius-lg: $border-radius-lg !default;
 $input-border-radius-sm: $border-radius-sm !default;
 
 $input-focus-bg: $input-bg !default;
-$input-focus-border-color: mixin.lighten-color($primary, 0.25) !default;
-$input-focus-width: .2rem !default;
+$input-focus-border-color: color.scale($primary, $lightness: 25%) !default;
+$input-focus-width: 0.2rem !default;
 $input-focus-color: $input-color !default;
-$input-focus-shadow-color: rgba($primary, .25) !default;
-$input-focus-shadow-error-color: rgba($danger, .25) !default;
+$input-focus-shadow-color: rgba($primary, 0.25) !default;
+$input-focus-shadow-error-color: rgba($danger, 0.25) !default;
 $input-focus-box-shadow: 0 0 0 $input-focus-width $input-focus-shadow-color !default;
 $input-focus-box-shadow-error: 0 0 0 $input-focus-width $input-focus-shadow-error-color !default;
 
@@ -280,7 +264,7 @@ $input-plaintext-color: $body-color !default;
 
 $input-height-border: $input-border-width * 2 !default;
 
-$input-transition: border-color .3s ease-in-out, box-shadow .3s ease-in-out !default;
+$input-transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out !default;
 
 $input-group-addon-color: $input-color !default;
 $input-group-addon-bg: $gray-200 !default;
@@ -289,8 +273,8 @@ $input-group-addon-border-color: $input-border-color !default;
 $input-disabled-color: $gray-200 !default;
 
 // 进度条变量
-$progress-font-size: $font-size-base * .75 !default;
+$progress-font-size: $font-size-base * 0.75 !default;
 $progress-bg: var(--color-bg-light) !default;
 $progress-border-radius: $border-radius !default;
 $progress-bar-color: var(--color-text-primary) !default;
-$progress-bar-transition: width .6s ease !default;
+$progress-bar-transition: width 0.6s ease !default; 
