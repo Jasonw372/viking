@@ -52,6 +52,7 @@ export const ThemeIcons: StoryObj<typeof meta> = {
       <Icon icon="times" size="2x" theme="danger" />
       <Icon icon="question-circle" size="2x" theme="secondary" />
       <Icon icon="moon" size="2x" theme="dark" />
+      <Icon icon="sun" size="2x" theme="light" />
     </Flex>
   ),
 };

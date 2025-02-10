@@ -12,6 +12,7 @@ $defaultColors: (
   danger: var(--color-danger),
 );
 
+
 :root {
   @each $name, $color in $defaultColors {
     --#{$name}: #{$color};
@@ -25,8 +26,8 @@ $success: var(--color-success) !default;
 $info: var(--color-info) !default;
 $warning: var(--color-warning) !default;
 $danger: var(--color-danger) !default;
-$light: var(--color-light) !default;
-$dark: var(--color-dark) !default;
+$light: $white !default;
+$dark: $black !default;
 
 // 字体系统
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
@@ -223,18 +224,20 @@ $submenu-box-shadow:
   0 0 6px 0 rgba(0, 0, 0, 0.04);
 
 // Tab组件变量
+$nav-active-bg: var(--component-active-bg) !default;
+$nav-hover-bg: var(--component-hover-bg) !default;
+
 $nav-link-padding-y: 0.5rem !default;
 $nav-link-padding-x: 1rem !default;
 $nav-link-disabled-color: $gray-600 !default;
-
-$nav-tabs-border-color: $component-active-bg !default;
+$nav-tabs-border-color: $nav-active-bg !default;
 $nav-tabs-border-width: $border-width !default;
 $nav-tabs-border-radius: $border-radius !default;
-$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
+$nav-tabs-link-hover-border-color: $nav-hover-bg $nav-hover-bg $nav-tabs-border-color !default;
 $nav-tabs-link-hover-color: $primary !default;
 $nav-tabs-link-active-color: $primary !default;
 $nav-tabs-link-active-bg: $body-bg !default;
-$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
+$nav-tabs-link-active-border-color: $nav-active-bg $nav-active-bg $nav-tabs-link-active-bg !default;
 $nav-tabs-content-margin: 1rem !default;
 
 // Input组件变量
@@ -294,3 +297,6 @@ $progress-bg: var(--color-bg-light) !default;
 $progress-border-radius: $border-radius !default;
 $progress-bar-color: var(--color-text-primary) !default;
 $progress-bar-transition: width .6s ease !default;
+
+// Switch组件变量
+$switch-circle-bg :$white !default;

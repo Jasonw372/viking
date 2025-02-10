@@ -11,7 +11,7 @@
   vertical-align: middle;
   border: 0;
   border-radius: variables.$border-radius-pill;
-  background-color: rgba(variables.$black, 0.25);
+  background-color: var(--color-bg-light);
   cursor: if(variables.$enable-pointer-cursor-for-buttons, pointer, null);
   transition: variables.$menu-transition;
   
@@ -27,7 +27,7 @@
     width: 18px;
     height: 18px;
     border-radius: variables.$border-radius-circle;
-    background-color: variables.$white;
+    background-color: variables.$switch-circle-bg;
     transition: variables.$menu-transition;
     
     .switch-loading-icon {
@@ -47,7 +47,7 @@
   &-inner {
     display: block;
     margin: 0 7px 0 25px;
-    color: variables.$white;
+    color: var(--color-text-primary);
     font-size: variables.$font-size-sm;
     transition: margin 0.2s;
   }

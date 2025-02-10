@@ -1,6 +1,8 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react';
 import '../src/styles/index.scss';
 import { useTheme } from '../src/utils/theme';
+import React from 'react';
+import './style.scss';
 
 const preview: Preview = {
   parameters: {
@@ -31,7 +33,7 @@ const preview: Preview = {
       const { theme } = context.globals;
       const { setTheme } = useTheme();
       setTheme(theme);
-      return Story();
+      return <div className="storybook-preview">{Story()}</div>;
     },
   ],
 

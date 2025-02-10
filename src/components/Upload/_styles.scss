@@ -8,8 +8,8 @@
 }
 
 .uploader-dragger {
-  background: variables.$gray-100;
-  border: 1px dashed variables.$gray-300;
+  background: var(--color-bg-light);
+  border: 1px dashed var(--color-border);
   border-radius: 4px;
   cursor: pointer;
   padding: 20px;
@@ -42,7 +42,7 @@
     margin-right: 40px;
     svg {
       margin-right: 5px;
-      color: variables.$gray-500;
+      color: var(--color-text-secondary);
     }
 	}
 	.file-name-error {
@@ -68,7 +68,7 @@
     cursor: pointer;
   }
   &:hover {
-    background-color: variables.$gray-200;
+    background-color: var(--color-bg-secondary);
     .file-status {
       display: none;
     }

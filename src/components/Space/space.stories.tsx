@@ -28,7 +28,6 @@ export const Basic: Story = {
     direction: 'horizontal',
     wrap: true,
     split: '',
-    style: { height: '100px' },
   },
 };
 
@@ -37,7 +36,6 @@ export const WithSize: Story = {
   args: {
     size: 'lg',
     children: [<Button>Button 1</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
-    style: { height: '100px' },
   },
 };
 
@@ -46,7 +44,6 @@ export const Vertical: Story = {
   args: {
     direction: 'vertical',
     children: [<Button>Button 1000</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
-    style: { height: '100px' },
   },
 };
 
@@ -56,7 +53,6 @@ export const WithSplit: Story = {
     split: '|',
     children: [<Button>Button 1</Button>, <Button>Button 2</Button>, <Button>Button 3</Button>],
     size: 20,
-    style: { height: '100px' },
   },
 };
 

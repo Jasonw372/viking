@@ -55,7 +55,7 @@
   }
   
   &-split {
-    color: variables.$gray-300;
+    color: var(--color-text-secondary);
   }
   
   // Compact 模式
