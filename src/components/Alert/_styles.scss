@@ -1,0 +1,75 @@
+@use "../../styles/_mixin" as *;
+@use "../../styles/_colors";
+
+$alert-types: (
+  "danger": var(--color-danger),
+  "warning": var(--color-warning),
+  "success": var(--color-success),
+  "info": var(--color-info)
+);
+
+.alert {
+  display: flex;
+  align-items: start;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  min-width: 100px;
+  .alert-icon {
+    margin-right: 12px;
+    font-size: 1rem;
+    
+    .alert-title + & {
+      font-size: 1.2rem;
+    }
+  }
+
+  .alert-close {
+    color: var(--color-text-secondary);
+    margin-left: 12px;
+    cursor: pointer;
+  }
+
+  .alert-message{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .alert-title {
+      font-size: 1.2rem;
+    }
+
+    .alert-content {
+      font-size: 1rem;
+    }
+  }
+
+  @each $type, $color in $alert-types {
+    &-#{$type} {
+      color: $color;
+      background-color: lighten-color($color, 0.9);
+      border-color: $color;
+      
+      [data-theme="dark"] & {
+        color: colors.$gray-100;
+        background-color: lighten-color($color, 0.2);
+      }
+     
+      .alert-icon {
+        color: $color;
+
+        [data-theme="dark"] & {
+          color: colors.$gray-100;
+        }
+      }
+
+
+    }
+  }
+}
+
+.alert-action {
+  // margin-top: 12px;
+  margin-left: 20px;
+}
