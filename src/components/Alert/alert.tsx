@@ -4,7 +4,7 @@ import Icon from '../Icon';
 
 type AlertType = 'success' | 'info' | 'error' | 'warning';
 
-interface AlertProps {
+export interface AlertProps {
   title?: string;
   message: string;
   type: AlertType;
