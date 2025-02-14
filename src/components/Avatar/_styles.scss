@@ -25,15 +25,18 @@
     height: 100%;
     object-fit: cover;
     border-style: none;
+  
   }
 
   // 形状
   &.avatar-circle {
     border-radius: 50%;
+    overflow: hidden;
   }
 
   &.avatar-square {
     border-radius: variables.$border-radius;
+    overflow: hidden;
   }
 
   // 尺寸
