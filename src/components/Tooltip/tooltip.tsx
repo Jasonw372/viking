@@ -15,6 +15,8 @@ export interface TooltipProps {
   children: React.ReactElement;
   /** 自定义类名 */
   className?: string;
+  /** 自定义样式 */
+  style?: React.CSSProperties;
   /** 是否可见 */
   visible?: boolean;
   /** 鼠标移入后延时多少才显示 */
@@ -37,21 +39,25 @@ const Tooltip: React.FC<TooltipProps> = ({
   placement = 'top',
   children,
   className,
+  style = {},
   visible,
   mouseEnterDelay = 0.1,
   mouseLeaveDelay = 0.1,
   onVisibleChange,
   color,
 }) => {
+  const resetColor = color ? color : style['backgroundColor'];
+
   const overlay = (
     <div
       className={classNames('tooltip-content', className)}
       style={
-        color
+        resetColor
           ? ({
-              ['--tooltip-color' as string]: color,
+              ['--tooltip-color' as string]: resetColor,
+              ...style,
             } as React.CSSProperties)
-          : undefined
+          : style
       }
     >
       {title}
@@ -81,25 +87,25 @@ const Tooltip: React.FC<TooltipProps> = ({
       builtinPlacements={{
         top: {
           points: ['bc', 'tc'],
-          offset: [0, -4],
+          offset: [0, -10],
           overflow: { adjustX: true, adjustY: true },
           targetOffset: [0, 0],
         },
         bottom: {
           points: ['tc', 'bc'],
-          offset: [0, 4],
+          offset: [0, 10],
           overflow: { adjustX: true, adjustY: true },
           targetOffset: [0, 0],
         },
         left: {
           points: ['cr', 'cl'],
-          offset: [-4, 0],
+          offset: [-10, 0],
           overflow: { adjustX: true, adjustY: true },
           targetOffset: [0, 0],
         },
         right: {
           points: ['cl', 'cr'],
-          offset: [4, 0],
+          offset: [10, 0],
           overflow: { adjustX: true, adjustY: true },
           targetOffset: [0, 0],
         },

@@ -1,2 +1,3 @@
-export { default } from './tooltip';
-export type { TooltipProps } from './tooltip';
+import Tooltip from './tooltip.tsx';
+
+export default Tooltip;

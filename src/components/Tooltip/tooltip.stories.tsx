@@ -58,7 +58,16 @@ export const TriggerTypes: Story = {
 
 export const CustomStyle: Story = {
   render: () => (
-    <Tooltip title="自定义样式" className="custom-tooltip" placement="top">
+    <Tooltip
+      title="自定义样式"
+      style={{
+        backgroundColor: 'red',
+        color: 'yellow',
+        border: '1px solid #f50',
+        borderRadius: '4px',
+      }}
+      placement="top"
+    >
       <Button>自定义样式</Button>
     </Tooltip>
   ),
