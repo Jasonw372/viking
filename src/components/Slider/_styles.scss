@@ -1,0 +1,47 @@
+.slider {
+  width: 100%;
+  position: relative;
+  .slider-input {
+    position: relative;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0;
+    background-color: #ebecf1;
+    background:
+      -webkit-linear-gradient(#2492fc, #2492fc) no-repeat,
+      #ebecf1;
+    border: 0px;
+    object-fit: contain;
+    border-radius: 5px;
+    /*可以修改容器的若干样式*/
+    // ::-webkit-slider-container {
+    // }
+    /*可以修改轨道的若干样式*/
+    &::-webkit-slider-runnable-track {
+      height: 10px;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    /*可以修改滑块的若干样式*/
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 100px;
+      box-shadow: 0 4px 8px 0 rgba(36, 146, 252, 0.2);
+      border: solid 3px #fff;
+      background-color: #2492fc;
+      margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+      position: relative;
+      &:hover {
+        cursor: grab;
+      }
+    }
+  }
+}
