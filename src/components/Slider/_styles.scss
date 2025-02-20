@@ -1,6 +1,17 @@
+/*
+  滑块组件的根容器样式
+  - 设置宽度为100%，并使用相对定位以便内部元素进行绝对定位
+*/
 .slider {
   width: 100%;
   position: relative;
+
+  /*
+    滑块输入框样式
+    - 使用相对定位，确保滑块和轨道在其内部正确布局
+    - 移除默认样式并设置自定义背景颜色和渐变效果
+    - 设置圆角边框以匹配设计要求
+  */
   .slider-input {
     position: relative;
     -webkit-appearance: none;
@@ -8,26 +19,41 @@
     margin: 0;
     background-color: #ebecf1;
     background:
-      -webkit-linear-gradient(#2492fc, #2492fc) no-repeat,
-      #ebecf1;
+            -webkit-linear-gradient(#2492fc, #2492fc) no-repeat,
+            #ebecf1;
     border: 0px;
     object-fit: contain;
     border-radius: 5px;
-    /*可以修改容器的若干样式*/
-    // ::-webkit-slider-container {
-    // }
-    /*可以修改轨道的若干样式*/
+
+    /*
+      轨道样式
+      - 设置轨道高度和圆角边框
+      - 鼠标悬停时显示指针光标
+    */
     &::-webkit-slider-runnable-track {
       height: 10px;
       border-radius: 5px;
+
       &:hover {
         cursor: pointer;
       }
     }
+
+    /*
+      焦点状态样式
+      - 移除默认的焦点轮廓线
+    */
     &:focus {
       outline: none;
     }
-    /*可以修改滑块的若干样式*/
+
+    /*
+      滑块样式
+      - 移除默认样式并设置自定义外观
+      - 设置滑块大小、阴影效果和背景颜色
+      - 通过负值外边距使滑块在轨道上居中对齐
+      - 设置鼠标悬停时的抓手光标
+    */
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -37,8 +63,9 @@
       box-shadow: 0 4px 8px 0 rgba(36, 146, 252, 0.2);
       border: solid 3px #fff;
       background-color: #2492fc;
-      margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+      margin-top: -5px;
       position: relative;
+
       &:hover {
         cursor: grab;
       }
