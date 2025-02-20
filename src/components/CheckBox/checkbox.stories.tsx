@@ -74,7 +74,7 @@ export const Controlled: Story = {
 export const Groups: Story = {
   name: '选项组',
   render: _args => {
-    const onChange = checkedValues => {
+    const onChange = (checkedValues: Array<string | number>) => {
       console.log('checked = ', checkedValues);
     };
 
