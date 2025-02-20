@@ -1,0 +1,19 @@
+.checkbox {
+  display: flex;
+  gap: 10px;
+
+  &.is-disabled{
+    cursor:not-allowed;
+
+    > .checkbox-label{
+      color:var(--color-text-muted)
+    }
+  }
+}
+
+
+.check-group{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
