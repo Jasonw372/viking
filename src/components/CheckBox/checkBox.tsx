@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import React, {
-  InputHTMLAttributes,
-  useState,
-  useEffect,
   forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+  useEffect,
   useImperativeHandle,
   useRef,
-  ReactNode,
+  useState,
 } from 'react';
 
 export interface CheckboxProps
@@ -32,7 +32,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     props;
   const isControlled = checked !== undefined;
   const [innerChecked, setInnerChecked] = useState(defaultChecked || false);
-  const classes = classNames('checkbox', className, {
+  const classes = classNames('checkbox', {
     'is-disabled': disabled,
   });
   const classesInner = classNames('checkbox-inner', className);

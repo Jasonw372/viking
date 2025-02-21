@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Flex from '../Flex';
 import Button from '../Button';
-import Checkbox from './checkBox';
-import CheckboxGroup from './checkGroup';
+import Checkbox from './index';
 import { Col, Row } from '../Grid';
+import { CheckboxRef } from './checkBox.tsx';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'components/Checkbox',
@@ -65,8 +65,33 @@ export const Controlled: Story = {
           <Button btnType="primary" size="sm" onClick={toggleDisable}>
             {!disabled ? 'Disable' : 'Enable'}
           </Button>
+          <Button btnType="primary" size="sm" onClick={focus}>
+            Focus
+          </Button>
         </Flex>
       </Flex>
+    );
+  },
+};
+
+export const Ref: Story = {
+  name: 'ref测试',
+  render: _args => {
+    const checkboxRef = useRef<CheckboxRef>(null);
+
+    const handleFocus = () => {
+      checkboxRef.current?.focus();
+    };
+
+    const handleBlur = () => {
+      checkboxRef.current?.blur();
+    };
+    return (
+      <div>
+        <Checkbox ref={checkboxRef} label="Checkbox" />
+        <Button onClick={handleFocus}>Focus Checkbox</Button>
+        <Button onClick={handleBlur}>Blur Checkbox</Button>
+      </div>
     );
   },
 };
@@ -91,13 +116,17 @@ export const Groups: Story = {
     ];
     return (
       <>
-        <CheckboxGroup options={options} defaultValue={['Pear']} onChange={onChange} />
+        <Checkbox.Group options={options} defaultValue={['Pear']} onChange={onChange} />
         <br />
         <br />
-        <CheckboxGroup options={optionsWithDisabled} defaultValue={['Apple']} onChange={onChange} />
+        <Checkbox.Group
+          options={optionsWithDisabled}
+          defaultValue={['Apple']}
+          onChange={onChange}
+        />
         <br />
         <br />
-        <CheckboxGroup disabled options={options} defaultValue={['Apple']} onChange={onChange} />
+        <Checkbox.Group disabled options={options} defaultValue={['Apple']} onChange={onChange} />
       </>
     );
   },
@@ -107,7 +136,7 @@ export const CustomStyle: Story = {
   name: '自定义选项组',
   render: _args => {
     return (
-      <CheckboxGroup
+      <Checkbox.Group
         style={{
           width: '300px',
         }}
@@ -129,7 +158,7 @@ export const CustomStyle: Story = {
             <Checkbox value="E">E</Checkbox>
           </Col>
         </Row>
-      </CheckboxGroup>
+      </Checkbox.Group>
     );
   },
 };
