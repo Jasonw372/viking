@@ -1,19 +1,43 @@
 .checkbox {
   display: flex;
+  align-items: center;  // 新增垂直居中
   gap: 10px;
 
-  &.is-disabled{
-    cursor:not-allowed;
+  // 合并禁用状态的嵌套规则
+  &.is-disabled {
+    cursor: not-allowed;
+    
+    .checkbox-label {
+      color: var(--color-text-muted);
+    }
+  }
 
-    > .checkbox-label{
-      color:var(--color-text-muted)
+  // 新增焦点状态
+  &:focus-within {
+    .checkbox-label {
+      box-shadow: 0 0 0 2px var(--color-primary);
+      border-radius: 4px;
+      transition: box-shadow 0.2s ease;
+    }
+  }
+
+  // 确保禁用状态不响应焦点
+  &.is-disabled {
+    &:focus-within {
+      .checkbox-label {
+        box-shadow: none;
+      }
     }
   }
 }
 
-
-.check-group{
+.check-group {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  
+  // 新增响应式间距
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 }
