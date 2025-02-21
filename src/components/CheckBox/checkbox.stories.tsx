@@ -87,11 +87,17 @@ export const Ref: Story = {
       checkboxRef.current?.blur();
     };
     return (
-      <div>
+      <Flex gap={15} direction="column">
         <Checkbox ref={checkboxRef} label="Checkbox" />
-        <Button onClick={handleFocus}>Focus Checkbox</Button>
-        <Button onClick={handleBlur}>Blur Checkbox</Button>
-      </div>
+        <Flex gap={10}>
+          <Button onClick={handleFocus} btnType={'primary'} size={'sm'}>
+            Focus
+          </Button>
+          <Button onClick={handleBlur} btnType={'primary'} size={'sm'}>
+            Blur
+          </Button>
+        </Flex>
+      </Flex>
     );
   },
 };
