@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Tooltip from './tooltip';
 import Button from '../Button';
+import Flex from '../Flex';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
@@ -23,20 +24,24 @@ export const Basic: Story = {
 
 export const Placement: Story = {
   render: () => (
-    <div style={{ padding: '60px', display: 'flex', gap: '20px' }}>
-      <Tooltip placement="top" title="顶部提示">
-        <Button>上</Button>
-      </Tooltip>
-      <Tooltip placement="bottom" title="底部提示">
-        <Button>下</Button>
-      </Tooltip>
-      <Tooltip placement="left" title="左侧提示">
-        <Button>左</Button>
-      </Tooltip>
-      <Tooltip placement="right" title="右侧提示">
-        <Button>右</Button>
-      </Tooltip>
-    </div>
+    <Flex direction="column" gap={50}>
+      <Flex gap={30}>
+        <Tooltip placement="top" title="顶部提示">
+          <Button>上</Button>
+        </Tooltip>
+        <Tooltip placement="bottom" title="底部提示">
+          <Button>下</Button>
+        </Tooltip>
+      </Flex>
+      <Flex gap={30}>
+        <Tooltip placement="left" title="左侧提示">
+          <Button>左</Button>
+        </Tooltip>
+        <Tooltip placement="right" title="右侧提示">
+          <Button>右</Button>
+        </Tooltip>
+      </Flex>
+    </Flex>
   ),
 };
 
