@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Tooltip from '../Tooltip';
 
 export interface SliderProps extends Omit<React.HTMLAttributes<HTMLInputElement>, 'type'> {
@@ -19,6 +19,7 @@ const Slider: React.FC<SliderProps> = props => {
     tooltipVisible,
     onChange,
     className,
+    style,
     ...restProps
   } = props;
 
@@ -31,9 +32,28 @@ const Slider: React.FC<SliderProps> = props => {
     onChange?.(e);
   };
 
+  const sliderRef = useRef<HTMLInputElement>(null);
+
   const classes = classNames('slider', className, {});
 
   const showTooltip = tooltipVisible || isHovering;
+  const thumbWidth = 20;
+  const updateTooltipPosition = () => {
+    if (sliderRef.current) {
+      const { width } = sliderRef.current.getBoundingClientRect();
+      const percent = ((value - min) / (max - min)) * 100;
+      const tooltipLeft = ((width - thumbWidth) * percent) / 100 - (width - thumbWidth) / 2;
+      document.documentElement.style.setProperty('--slider-tooltip-left', `${tooltipLeft}px`);
+    }
+  };
+
+  React.useEffect(() => {
+    updateTooltipPosition();
+  }, [value]);
+
+  const handleMouseMove = () => {
+    updateTooltipPosition();
+  };
 
   return (
     <div
@@ -41,8 +61,17 @@ const Slider: React.FC<SliderProps> = props => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <Tooltip visible={showTooltip} title={value} placement="top">
+      <Tooltip
+        visible={showTooltip}
+        title={value}
+        placement="top"
+        style={{
+          left: 'calc(var(--slider-tooltip-left))',
+          top: '-10px',
+        }}
+      >
         <input
+          ref={sliderRef}
           type="range"
           className="slider-input"
           min={min}
@@ -50,7 +79,15 @@ const Slider: React.FC<SliderProps> = props => {
           step={step}
           value={value}
           onChange={handleChange}
+          onMouseMove={handleMouseMove}
           {...restProps}
+          style={
+            {
+              ...style,
+              // 设置css变量
+              '--slider-thumb-size': `${thumbWidth}px`,
+            } as React.CSSProperties
+          }
         />
       </Tooltip>
     </div>
