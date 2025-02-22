@@ -16,6 +16,7 @@ export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 export const Basic: Story = {
+  name: '基本提示',
   args: {
     title: '这是一个提示文本',
     children: <Button>鼠标悬停查看提示</Button>,
@@ -23,6 +24,7 @@ export const Basic: Story = {
 };
 
 export const Placement: Story = {
+  name: '不同位置的提示',
   render: () => (
     <Flex direction="column" gap={50}>
       <Flex gap={30}>
@@ -46,6 +48,7 @@ export const Placement: Story = {
 };
 
 export const TriggerTypes: Story = {
+  name: '不同触发方式的提示',
   render: () => (
     <div style={{ display: 'flex', gap: '20px' }}>
       <Tooltip trigger="hover" title="悬停触发">
@@ -62,6 +65,7 @@ export const TriggerTypes: Story = {
 };
 
 export const CustomStyle: Story = {
+  name: '自定义样式的提示',
   render: () => (
     <Tooltip
       title="自定义样式"
@@ -79,6 +83,7 @@ export const CustomStyle: Story = {
 };
 
 export const LongContent: Story = {
+  name: '长文本提示',
   render: () => (
     <Tooltip
       title="这是一段很长的提示文本，用来测试文本换行的情况。这是一段很长的提示文本，用来测试文本换行的情况。"
@@ -90,6 +95,7 @@ export const LongContent: Story = {
 };
 
 export const CustomColors: Story = {
+  name: '自定义颜色的提示',
   render: () => (
     <div style={{ display: 'flex', gap: '20px' }}>
       <Tooltip title="默认颜色" placement="top">
