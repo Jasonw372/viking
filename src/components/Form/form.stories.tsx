@@ -27,6 +27,7 @@ export default meta;
 type Story = StoryObj<typeof Form>;
 
 export const Basic: Story = {
+  name: '基本表单',
   render: _args => (
     <Form
       style={{
@@ -131,6 +132,7 @@ export const Basic: Story = {
 };
 
 export const RenderProps: Story = {
+  name: 'Render Props的表单',
   render: _args => (
     <Form
       style={{
@@ -234,6 +236,7 @@ export const RenderProps: Story = {
 };
 
 export const BasicRef: Story = {
+  name: '基本表单Ref',
   render: _args => {
     const formRef = useRef<IFormRef>(null);
     return (

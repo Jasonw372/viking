@@ -23,6 +23,7 @@ type Story = StoryObj<typeof Alert>;
 
 // 基础 Alert
 export const Default: Story = {
+  name: '基础提示',
   args: {
     message: '这是一条默认的信息提示',
     type: 'info',
@@ -32,6 +33,7 @@ export const Default: Story = {
 
 // 成功类型
 export const Success: Story = {
+  name: '成功提示',
   args: {
     message: '恭喜！操作成功',
     type: 'success',
@@ -41,6 +43,7 @@ export const Success: Story = {
 
 // 警告类型
 export const Warning: Story = {
+  name: '警告提示',
   args: {
     title: '警告',
     message: '当前页面存在异常，请刷新',
@@ -51,6 +54,7 @@ export const Warning: Story = {
 
 // 错误类型
 export const Error: Story = {
+  name: '错误提示',
   args: {
     message: '错误！操作失败',
     type: 'error',
@@ -60,6 +64,7 @@ export const Error: Story = {
 
 // 可关闭的 Alert
 export const Closable: Story = {
+  name: '可关闭提示',
   args: {
     message: '这是一条可以关闭的提示',
     type: 'info',
@@ -74,6 +79,7 @@ export const Closable: Story = {
 
 // 不带图标
 export const WithoutIcon: Story = {
+  name: '不带图标提示',
   args: {
     message: '这是一条不带图标的提示',
     type: 'info',
@@ -83,6 +89,7 @@ export const WithoutIcon: Story = {
 
 // 添加一个新的带关闭回调的示例
 export const WithCloseCallback: Story = {
+  name: '带关闭回调的提示',
   args: {
     message: '点击关闭按钮试试看,点击关闭按钮试试看,点击关闭按钮试试看',
     type: 'success',
@@ -105,6 +112,7 @@ export const WithCloseCallback: Story = {
 
 // 带操作按钮的 Alert
 export const WithAction: Story = {
+  name: '带操作按钮的提示',
   args: {
     message: '这是一条带操作按钮的提示',
     action: (
