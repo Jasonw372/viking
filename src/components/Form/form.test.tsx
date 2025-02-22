@@ -1,10 +1,10 @@
-import type { FormProps } from './form.tsx';
+import type { FormProps } from './form';
 import { beforeEach, describe, vitest, it, expect } from 'vitest';
-import Form from './index.tsx';
+import Form from './index';
 import { fireEvent, render, screen, waitFor, act } from '@testing-library/react';
 import Button from '../Button';
 import Input from '../Input';
-import type { IFormRef } from './form.tsx';
+import type { IFormRef } from './form';
 import { createRef } from 'react';
 
 const testProps: FormProps = {

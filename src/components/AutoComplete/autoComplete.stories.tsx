@@ -3,7 +3,7 @@ import AutoComplete from './index';
 import { useState } from 'react';
 import React from 'react';
 import Button from '../Button';
-import type { DataSourceType } from './autoComplete.tsx';
+import type { DataSourceType } from './autoComplete';
 
 const meta: Meta<typeof AutoComplete> = {
   title: 'Components/AutoComplete',

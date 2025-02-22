@@ -4,7 +4,7 @@ import Flex from '../Flex';
 import Button from '../Button';
 import Checkbox from './index';
 import { Col, Row } from '../Grid';
-import { CheckboxRef } from './checkBox.tsx';
+import { CheckboxRef } from './checkBox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'components/Checkbox',

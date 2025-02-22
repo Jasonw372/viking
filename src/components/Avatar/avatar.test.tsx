@@ -1,5 +1,5 @@
 import { describe, expect, test, vitest } from 'vitest';
-import Avatar from './index.tsx';
+import Avatar from './index';
 import type { RenderResult } from '@testing-library/react';
 import { fireEvent, render } from '@testing-library/react';
 

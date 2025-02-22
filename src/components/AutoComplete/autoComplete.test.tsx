@@ -2,7 +2,7 @@ import { config } from 'react-transition-group';
 import type { RenderResult } from '@testing-library/react';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import AutoComplete from './index';
-import type { AutoCompleteProps } from './autoComplete.tsx';
+import type { AutoCompleteProps } from './autoComplete';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 import { useState } from 'react';
 
