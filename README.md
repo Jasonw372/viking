@@ -58,7 +58,7 @@ function App() {
 
 ```bash
 # 克隆项目
-git clone https://github.com/yourusername/viking-design.git
+git clone https://github.com/Jasonw372/viking.git
 
 # 安装依赖
 pnpm install
