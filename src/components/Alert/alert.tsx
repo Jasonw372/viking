@@ -64,17 +64,21 @@ const Alert: React.FC<AlertProps> = props => {
 
   return (
     <div className={className}>
-      {showIcon && <span className="alert-icon">{getIconByType(type)}</span>}
-      <div className="alert-message">
-        {title && <div className="alert-title">{title}</div>}
-        <div className="alert-content">{message}</div>
+      <div className="alert-left">
+        {showIcon && <span className="alert-icon">{getIconByType(type)}</span>}
+        <div className="alert-message">
+          {title && <div className="alert-title">{title}</div>}
+          <div className="alert-content">{message}</div>
+        </div>
       </div>
-      {closable && (
-        <span className="alert-close" onClick={handleClose}>
-          <Icon icon="times" className="close-icon" />
-        </span>
-      )}
-      {action && <div className="alert-action">{action}</div>}
+      <div className="alert-right">
+        {closable && (
+          <span className="alert-close" onClick={handleClose}>
+            <Icon icon="times" className="close-icon" />
+          </span>
+        )}
+        {action && <div className="alert-action">{action}</div>}
+      </div>
     </div>
   );
 };
