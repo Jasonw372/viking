@@ -1,4 +1,5 @@
-import type {ReactNode} from 'react';
+import {ReactNode} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
