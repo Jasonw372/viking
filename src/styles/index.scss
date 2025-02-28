@@ -1,46 +1,53 @@
+@use '~rc-trigger/assets/index.css' as *;
 // 变量
-@use "variables";
+@use 'variables';
 // 颜色
-@use "colors";
+@use 'colors';
 // 重置样式
-@use "reboot";
+@use 'reboot';
 // mixin
-@use "mixin";
+@use 'mixin';
 // 动画
-@use "animation";
+@use 'animation';
 // 按钮样式
-@use "../components/Button/styles" as *;
+@use '../components/Button/styles' as *;
 // 菜单样式
-@use "../components/Menu/styles" as *;
+@use '../components/Menu/styles' as *;
 // Tab样式
-@use "../components/Tab/styles" as *;
+@use '../components/Tab/styles' as *;
 // Space样式
-@use "../components/Space/styles" as *;
+@use '../components/Space/styles' as *;
 // Switch样式
-@use "../components/Switch/styles" as *;
+@use '../components/Switch/styles' as *;
 // Avatar样式
-@use "../components/Avatar/styles" as *;
+@use '../components/Avatar/styles' as *;
 // Flex样式
-@use "../components/Flex/styles" as *;
+@use '../components/Flex/styles' as *;
 // Grid样式
-@use "../components/Grid/styles" as *;
+@use '../components/Grid/styles' as *;
 // Icon样式
-@use "../components/Icon/styles" as *;
+@use '../components/Icon/styles' as *;
 // Input样式
-@use "../components/Input/styles" as *;
+@use '../components/Input/styles' as *;
 // AutoComplete样式
-@use "../components/AutoComplete/styles" as *;
+@use '../components/AutoComplete/styles' as *;
 // Progress样式
-@use "../components/Progress/styles" as *;
+@use '../components/Progress/styles' as *;
 // Upload样式
-@use "../components/Upload/styles" as *;
+@use '../components/Upload/styles' as *;
 // Form样式
-@use "../components/Form/styles" as *;
+@use '../components/Form/styles' as *;
 // Alert样式
-@use "../components/Alert/styles" as *;
+@use '../components/Alert/styles' as *;
 // Tooltip样式
-@use "../components/Tooltip/styles" as *;
+@use '../components/Tooltip/styles' as *;
 // Slider样式
-@use "../components/Slider/styles" as *;
+@use '../components/Slider/styles' as *;
 // Checkbox样式
-@use "../components/CheckBox/styles" as *;
+@use '../components/CheckBox/styles' as *;
+
+// Example SCSS content (or leave it as just a comment if you want an empty file)
+body {
+  margin: 0;
+  padding: 0;
+}
