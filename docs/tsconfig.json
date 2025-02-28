@@ -3,7 +3,12 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "viking-design": [
+        "../src/index.tsx"
+      ],
+    }
   },
   "exclude": [
     ".docusaurus",

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: 组件库介绍
+title: 总览
 ---
 
 # Viking Design
