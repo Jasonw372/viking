@@ -1,6 +1,6 @@
 {
   "name": "viking-design",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "viking is a react component library for building web applications",
   "main": "dist/index.js",
@@ -18,7 +18,6 @@
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "copy-scss": "copyfiles -u 2 src/components/**/_styles.scss dist/components && copyfiles -u 1 src/styles/* dist",
     "lint": "pnpm lint-staged",
     "preview": "vite preview",
     "test": "vitest --ui",
