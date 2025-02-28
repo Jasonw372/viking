@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import sass from 'rollup-plugin-sass';
 import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
 
 const config = {
   input: 'src/index.tsx',
@@ -19,6 +20,9 @@ const config = {
     },
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     nodeResolve(), // 解析第三方模块
     commonjs({
       include: 'node_modules/**', // 包含 node_modules 中的 CommonJS 模块
