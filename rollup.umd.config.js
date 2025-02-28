@@ -1,17 +1,13 @@
-import typescript from 'rollup-plugin-typescript2';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import json from '@rollup/plugin-json';
-import sass from 'rollup-plugin-sass';
+import commonConfig from './rollup.config.js';
 import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
 
 const config = {
-  input: 'src/index.tsx',
+  ...commonConfig,
   output: {
     name: 'VikingDesign',
-    file: 'dist/index.umd.js', // 输出 JavaScript 文件
-    format: 'umd', // ES 模块格式
+    file: 'dist/index.umd.js',
+    format: 'umd',
     exports: 'named',
     globals: {
       'react': 'React',
@@ -23,18 +19,7 @@ const config = {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    nodeResolve(), // 解析第三方模块
-    commonjs({
-      include: 'node_modules/**', // 包含 node_modules 中的 CommonJS 模块
-    }),
-    json(), // 支持 JSON 文件
-    typescript({
-      tsconfig: 'tsconfig.build.json', // 使用自定义 tsconfig 文件
-      clean: true, // 清理缓存
-    }),
-    sass({
-      output: 'dist/index.css'
-    }),
+    ...commonConfig.plugins,
     terser({
       compress: {
         drop_console: true,

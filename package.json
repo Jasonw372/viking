@@ -32,7 +32,7 @@
     "build-storybook": "storybook build",
     "prepare": "husky",
     "prepublishOnly": "pnpm test && pnpm lint && pnpm build",
-    "build-rollup": "pnpx rollup --config rollup.config.js",
+    "build-rollup": "pnpx rollup --config rollup.esm.config.js",
     "build-rollup-umd": "pnpx rollup --config rollup.umd.config.js"
   },
   "files": [
