@@ -31,7 +31,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky",
-    "prepublishOnly": "pnpm test && pnpm lint && pnpm build"
+    "prepublishOnly": "pnpm test && pnpm lint && pnpm build",
+    "docs:start": "pnpm --filter docs start",
+    "docs:build": "pnpm --filter docs build",
+    "docs:serve": "pnpm --filter docs serve"
   },
   "files": [
     "dist"

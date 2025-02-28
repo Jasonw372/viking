@@ -3,7 +3,7 @@ import prettier from 'eslint-plugin-prettier';
 
 export default [
   {
-    ignores: ['dist/*', '*.config.ts', '.storybook/*'],
+    ignores: ['dist/*', '*.config.ts', '.storybook/*', 'docs/*'],
   },
   ...tseslint.configs.recommended,
   {
