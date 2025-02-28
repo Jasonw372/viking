@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '../src/styles/index.scss';
-import { useTheme } from '../src/utils/theme';
+import { useTheme } from '../src/hooks/useTheme';
 import React from 'react';
 import './style.scss';
 
