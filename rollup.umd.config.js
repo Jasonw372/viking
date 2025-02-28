@@ -1,6 +1,7 @@
 import commonConfig from './rollup.config.js';
 import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 
 const config = {
   ...commonConfig,
@@ -20,6 +21,10 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify('production'),
       preventAssignment: true, // 防止变量被重新赋值
     },),
+    postcss({
+      extract: true,
+      modules: false,
+    }),
     ...commonConfig.plugins,
     terser({
       compress: {

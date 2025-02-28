@@ -1,5 +1,5 @@
 import commonConfig from './rollup.config.js';
-import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle';
+import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-from-bundle";
 import copy from 'rollup-plugin-copy';
 
 const config = {
