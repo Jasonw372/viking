@@ -18,7 +18,8 @@ const config = {
   plugins: [
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
+      preventAssignment: true, // 防止变量被重新赋值
+    },),
     ...commonConfig.plugins,
     terser({
       compress: {

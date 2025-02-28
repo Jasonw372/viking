@@ -18,9 +18,6 @@
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "pnpm clean && pnpm build-ts && pnpm build-css && pnpm copy-scss && pnpm build-rollup",
-    "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "sass ./src/styles/index.scss ./dist/index.css",
     "copy-scss": "copyfiles -u 2 src/components/**/_styles.scss dist/components && copyfiles -u 1 src/styles/* dist",
     "lint": "pnpm lint-staged",
     "preview": "vite preview",
@@ -33,7 +30,8 @@
     "prepare": "husky",
     "prepublishOnly": "pnpm test && pnpm lint && pnpm build",
     "build-rollup": "pnpx rollup --config rollup.esm.config.js",
-    "build-rollup-umd": "pnpx rollup --config rollup.umd.config.js"
+    "build-rollup-umd": "pnpx rollup --config rollup.umd.config.js",
+    "build": "pnpm clean && pnpm build-rollup && pnpm build-rollup-umd"
   },
   "files": [
     "dist"
@@ -108,6 +106,7 @@
     "react-dom": "^18.3.1",
     "rimraf": "^6.0.1",
     "rollup": "^4.34.8",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.24",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.15.2",
