@@ -8,7 +8,7 @@ import { terser } from 'rollup-plugin-terser';
 const config = {
   input: 'src/index.tsx',
   output: {
-    name: 'viking-design ',
+    name: 'VikingDesign',
     file: 'dist/index.umd.js', // 输出 JavaScript 文件
     format: 'umd', // ES 模块格式
     exports: 'named',
