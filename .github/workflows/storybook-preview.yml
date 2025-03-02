@@ -1,8 +1,8 @@
-name: Storybook Preview
+name: Docs Preview
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -34,11 +34,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Storybook
-        run: pnpm run build-storybook
+      - name: Build Docs
+        run: pnpm run docs:build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.PAT_TOKEN }}  # 使用新创建的 PAT
-          publish_dir: ./storybook-static
+          personal_token: ${{ secrets.PAT_TOKEN }} # 使用新创建的 PAT
+          publish_dir: ./docs/build
