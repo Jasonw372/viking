@@ -16,6 +16,7 @@ export default defineConfig({
         ...coverageConfigDefaults.exclude,
         'src/index.tsx',
         'storybook-static',
+        'docs'
       ],
       thresholds: {
         lines: 60,

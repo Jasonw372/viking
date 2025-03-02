@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
-import { Row, Col } from './index';
+import Grid from './index';
+const { Row, Col } = Grid;
+
 import { describe, expect, test, vi } from 'vitest';
 
 describe('Grid Component', () => {

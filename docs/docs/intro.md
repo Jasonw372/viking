@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: 组件总览
+---
+
 # Viking Design
 
 ## 简介

@@ -30,7 +30,10 @@
     "prepublishOnly": "pnpm test && pnpm lint && pnpm build",
     "build-rollup": "pnpx rollup --config rollup.esm.config.js",
     "build-rollup-umd": "pnpx rollup --config rollup.umd.config.js",
-    "build": "pnpm clean && pnpm build-rollup && pnpm build-rollup-umd"
+    "build": "pnpm clean && pnpm build-rollup && pnpm build-rollup-umd",
+    "docs:start": "pnpm --filter docs start",
+    "docs:build": "pnpm --filter docs build",
+    "docs:serve": "pnpm --filter docs serve"
   },
   "files": [
     "dist"

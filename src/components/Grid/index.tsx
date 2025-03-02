@@ -11,5 +11,3 @@ const TransGrid = {
 } as IGridComponent;
 
 export default TransGrid;
-
-export { Row, Col };

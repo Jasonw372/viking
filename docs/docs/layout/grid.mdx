@@ -1,0 +1,258 @@
+---
+sidebar_position: 2
+title: Grid 栅格
+---
+
+import { Grid } from 'viking-design';
+
+# Grid 栅格
+
+`Grid` 组件用于创建响应式的栅格布局，支持多种排列、对齐和间距设置。
+
+## 使用
+
+```ts
+import { Grid } from 'viking-design';
+const { Row, Col } = Grid;
+```
+
+## 代码演示
+
+### 基础栅格
+
+```tsx
+import { Grid } from 'viking-design';
+const { Row, Col } = Grid;
+
+<Row>
+  <Col span={24}>
+    <div style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}>
+      <span>col-24</span>
+    </div>
+  </Col>
+</Row>
+<Row>
+  <Col span={12}>
+    <div style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}>
+      <span>col-12</span>
+    </div>
+  </Col>
+  <Col span={12}>
+    <div style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}>
+      <span>col-12</span>
+    </div>
+  </Col>
+</Row>
+```
+
+<Grid.Row>
+  <Grid.Col span={24}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-24</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+<Grid.Row>
+  <Grid.Col span={12}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-12</span>
+    </div>
+  </Grid.Col>
+  <Grid.Col span={12}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-12</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+
+### 区块间隔
+
+```tsx
+import { Row, Col } from 'viking-design';
+
+<Row gutter={[16, 24]}>
+  <Col span={6}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-6</span>
+    </div>
+  </Col>
+  <Col span={6}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-6</span>
+    </div>
+  </Col>
+</Row>;
+```
+
+<Grid.Row gutter={[16, 24]}>
+  <Grid.Col span={6}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-6</span>
+    </div>
+  </Grid.Col>
+  <Grid.Col span={6}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-6</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+
+### 偏移
+
+```tsx
+import { Row, Col } from 'viking-design';
+
+<Row>
+  <Col span={8}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-8</span>
+    </div>
+  </Col>
+  <Col span={8} offset={8}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-8 offset-8</span>
+    </div>
+  </Col>
+</Row>;
+```
+
+<Grid.Row>
+  <Grid.Col span={8}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-8</span>
+    </div>
+  </Grid.Col>
+  <Grid.Col span={8} offset={8}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-8 offset-8</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+
+### 对齐方式
+
+```tsx
+import { Row, Col } from 'viking-design';
+
+<Row justify="center">
+  <Col span={4}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      col-4
+    </div>
+  </Col>
+  <Col span={4}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      col-4
+    </div>
+  </Col>
+</Row>;
+```
+
+<Grid.Row justify="center">
+  <Grid.Col span={4}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-4</span>
+    </div>
+  </Grid.Col>
+  <Grid.Col span={4}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>col-4</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+
+### 响应式布局
+
+```tsx
+import { Row, Col } from 'viking-design';
+
+<Row>
+  <Col xs={24} sm={12} md={8} lg={6} xl={4}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      Col
+    </div>
+  </Col>
+  <Col xs={24} sm={12} md={8} lg={6} xl={4}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      Col
+    </div>
+  </Col>
+</Row>;
+```
+
+<Grid.Row>
+  <Grid.Col xs={24} sm={12} md={8} lg={6} xl={4}>
+    <div
+      style={{ backgroundColor: '#0092ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>Col</span>
+    </div>
+  </Grid.Col>
+  <Grid.Col xs={24} sm={12} md={8} lg={6} xl={4}>
+    <div
+      style={{ backgroundColor: '#69c0ff', padding: '8px 0', textAlign: 'center', color: '#fff' }}
+    >
+      <span>Col</span>
+    </div>
+  </Grid.Col>
+</Grid.Row>
+
+## API
+
+### Row Props
+
+| 属性    | 说明         | 类型                                                                | 默认值    |
+| ------- | ------------ | ------------------------------------------------------------------- | --------- |
+| gutter  | 栅格间隔     | `number \| [number, number]`                                        | `0`       |
+| justify | 水平排列方式 | `'start' \| 'end' \| 'center' \| 'space-around' \| 'space-between'` | `'start'` |
+| align   | 垂直排列方式 | `'top' \| 'middle' \| 'bottom'`                                     | `'top'`   |
+
+### Col Props
+
+| 属性   | 说明               | 类型              | 默认值 |
+| ------ | ------------------ | ----------------- | ------ |
+| span   | 栅格占据的列数     | `number`          | -      |
+| offset | 栅格左侧的间隔格数 | `number`          | -      |
+| pull   | 栅格向左移动格数   | `number`          | -      |
+| push   | 栅格向右移动格数   | `number`          | -      |
+| xs     | \<576px 响应式栅格 | `ResponsiveValue` | -      |
+| sm     | ≥576px 响应式栅格  | `ResponsiveValue` | -      |
+| md     | ≥768px 响应式栅格  | `ResponsiveValue` | -      |
+| lg     | ≥992px 响应式栅格  | `ResponsiveValue` | -      |
+| xl     | ≥1200px 响应式栅格 | `ResponsiveValue` | -      |
+
+`Row` 和 `Col` 组件还支持 `div` 元素的所有原生属性。
