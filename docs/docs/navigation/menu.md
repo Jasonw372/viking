@@ -30,12 +30,14 @@ import { Menu } from 'viking-design';
 </Menu>;
 ```
 
-<Menu defaultIndex="0">
-  <Menu.Item>首页</Menu.Item>
-  <Menu.Item>关于我们</Menu.Item>
-  <Menu.Item>产品介绍</Menu.Item>
-  <Menu.Item>联系我们</Menu.Item>
-</Menu>
+<div>
+  <Menu defaultIndex="0">
+    <Menu.Item>首页</Menu.Item>
+    <Menu.Item>关于我们</Menu.Item>
+    <Menu.Item>产品介绍</Menu.Item>
+    <Menu.Item>联系我们</Menu.Item>
+  </Menu>
+</div>
 
 ### 垂直菜单
 

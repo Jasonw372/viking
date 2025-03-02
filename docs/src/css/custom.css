@@ -28,3 +28,11 @@
   --ifm-color-primary-lightest: #e6f7ff; /* 最浅蓝色 */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.markdown li > p {
+  margin-top: 0;
+}
+
+.markdown li + li {
+  margin-top: 0;
+}
