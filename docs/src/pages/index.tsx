@@ -17,12 +17,12 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <Button className="buttons">
+        
           <Link
             to="/docs/intro">
-            进入文档
+            <Button className='buttons'>进入文档</Button>
           </Link>
-        </Button>
+        
       </div>
     </header>
   );
