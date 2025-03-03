@@ -6,6 +6,7 @@ import 'rc-trigger/assets/index.css';
 library.add(fas);
 
 export { default as AutoComplete } from './components/AutoComplete';
+export { default as Checkbox } from './components/CheckBox';
 export { default as Avatar } from './components/Avatar';
 export { default as Button } from './components/Button';
 export { default as Flex } from './components/Flex';

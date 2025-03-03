@@ -1,0 +1,168 @@
+# Checkbox 复选框
+import { Checkbox, Grid } from 'viking-design';
+
+`checkbox`复选框组件，用于在一组选项中进行多选。
+
+## 何时使用
+
+- 在一组可选项中进行多项选择时
+- 单独使用可以表示两种状态之间的切换
+
+## 代码演示
+
+### 基础用法
+
+最简单的用法，展示了受控和非受控两种模式。
+
+```jsx
+import { Checkbox } from 'viking-design';
+
+const BasicDemo = () => (
+  <>
+    <Checkbox defaultChecked>非受控模式</Checkbox>
+    <br />
+    <Checkbox checked={true}>受控模式</Checkbox>
+  </>
+);
+
+export default BasicDemo;
+```
+
+<Checkbox defaultChecked>非受控模式</Checkbox>
+<br />
+<Checkbox checked={true}>受控模式</Checkbox>
+
+
+### 禁用状态
+
+复选框不可用状态。
+
+```jsx
+import { Checkbox } from 'viking-design';
+
+const DisabledDemo = () => (
+  <>
+    <Checkbox disabled>禁用状态</Checkbox>
+    <br />
+    <Checkbox disabled checked>禁用且选中</Checkbox>
+  </>
+);
+
+export default DisabledDemo;
+```
+
+
+<Checkbox disabled>禁用状态</Checkbox>
+<br />
+<Checkbox disabled checked>禁用且选中</Checkbox>
+
+### 复选框组
+
+方便的从数组生成多个复选框。
+
+```jsx
+import { Checkbox } from 'viking-design';
+
+const options = [
+  { label: '苹果', value: 'apple' },
+  { label: '香蕉', value: 'banana' },
+  { label: '橙子', value: 'orange' },
+];
+
+const GroupDemo = () => {
+  const onChange = (checkedValues) => {
+    console.log('checked = ', checkedValues);
+  };
+
+  return (
+    <Checkbox.Group 
+      options={options} 
+      defaultValue={['apple']} 
+      onChange={onChange} 
+    />
+  );
+};
+
+export default GroupDemo;
+```
+
+<Checkbox.Group 
+	options={[
+  { label: '苹果', value: 'apple' },
+  { label: '香蕉', value: 'banana' },
+  { label: '橙子', value: 'orange' },
+]} 
+	defaultValue={['apple']} 
+	onChange={(checkedValues)=>{console.log('checked = ', checkedValues)}} 
+/>
+
+
+
+### 自定义布局
+
+使用 Grid 组件实现灵活的布局。
+
+```jsx
+import { Checkbox } from 'viking-design';
+import { Row, Col } from 'viking-design';
+
+const CustomLayoutDemo = () => (
+  <Checkbox.Group style={{ width: '100%' }}>
+    <Row>
+      <Col span={8}><Checkbox value="A">选项A</Checkbox></Col>
+      <Col span={8}><Checkbox value="B">选项B</Checkbox></Col>
+      <Col span={8}><Checkbox value="C">选项C</Checkbox></Col>
+    </Row>
+  </Checkbox.Group>
+);
+
+export default CustomLayoutDemo;
+```
+
+
+<Checkbox.Group style={{ width: '100%' }}>
+	<Grid.Row>
+		<Grid.Col span={8}><Checkbox value="A">选项A</Checkbox></Grid.Col>
+		<Grid.Col span={8}><Checkbox value="B">选项B</Checkbox></Grid.Col>
+		<Grid.Col span={8}><Checkbox value="C">选项C</Checkbox></Grid.Col>
+	</Grid.Row>
+</Checkbox.Group>
+## API
+
+### Checkbox
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| checked | 指定当前是否选中（受控模式） | boolean | - |
+| defaultChecked | 初始是否选中（非受控模式） | boolean | false |
+| disabled | 禁用状态 | boolean | false |
+| label | 复选框标签 | string | - |
+| onChange | 变化时的回调函数 | (checked: boolean) => void | - |
+| value | 复选框的值，配合 Group 使用 | string \| number | - |
+| className | 自定义类名 | string | - |
+
+### Checkbox.Group
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| defaultValue | 默认选中的选项（非受控模式） | (string \| number)[] | [] |
+| disabled | 整组禁用 | boolean | false |
+| options | 指定可选项 | \{ label: string; value: string \| number; disabled?: boolean \}[] | — |
+| value | 指定选中的选项（受控模式） | (string \| number)[] | - |
+| onChange | 变化时的回调函数 | (checkedValue: (string \| number)[]) => void | - |
+| className | 自定义类名 | string | - |
+| style | 自定义样式 | React.CSSProperties | - |
+
+### Checkbox Methods
+
+| 名称 | 说明 |
+| --- | --- |
+| blur() | 移除焦点 |
+| focus() | 获取焦点 |
+
+## 设计说明
+
+- 复选框通常用于状态切换和多项选择场景
+- 复选框组件支持键盘操作，可通过Tab键切换焦点，空格键选中/取消选中
+- 在禁用状态下，复选框会显示为灰色，且不可交互
+- 复选框组支持通过options快速生成选项，也支持通过children自定义选项布局
