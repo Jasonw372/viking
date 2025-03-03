@@ -105,16 +105,6 @@ export const P: Story = {
   name: '前后缀的输入框',
 };
 
-export const ComplexAddons: Story = {
-  args: {
-    prepend: '123',
-    append: 'Status',
-    size: 'lg',
-    defaultValue: '12343142',
-  },
-  name: '复杂前后缀的输入框',
-};
-
 export const Controlled = () => {
   const [value, setValue] = useState('');
   return <Input value={value} onChange={e => setValue(e.target.value)} />;
