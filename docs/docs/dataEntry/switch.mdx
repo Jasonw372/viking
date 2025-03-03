@@ -1,0 +1,113 @@
+import { Switch, Flex, Space } from 'viking-design';
+
+# Switch 开关
+
+`Switch` 组件用于在两种状态间切换，通常用于表示开关状态。
+
+## 使用
+
+```ts
+import { Switch } from 'viking-design';
+```
+
+## 代码演示
+
+### 基础用法
+
+```tsx
+import { Switch } from 'viking-design';
+
+<Switch defaultChecked={false} />;
+```
+
+<Switch defaultChecked={false} />
+
+### 大小
+
+```tsx
+import { Switch } from 'viking-design';
+
+<Flex gap={'sm'} align={'center'}>
+  <Switch size="lg" />
+  <Switch/>
+  <Switch size="sm" />
+</Flex>;
+```
+
+<Flex gap={'sm'} align={'center'}>
+  <Switch size="lg" />
+  <Switch/>
+  <Switch size="sm" />
+</Flex>
+
+### 禁用状态
+
+```tsx
+import { Switch } from 'viking-design';
+
+<Switch disabled />;
+```
+
+<Switch disabled />
+
+### 加载状态
+
+```tsx
+import { Switch } from 'viking-design';
+
+<Switch loading />;
+```
+
+<Switch loading />
+
+### 带文案
+
+```tsx
+import { Switch } from 'viking-design';
+
+<Switch checkedChildren="开" unCheckedChildren="关" />;
+```
+
+<Switch checkedChildren="开" unCheckedChildren="关" />
+
+### 受控组件
+
+```tsx
+import { Switch } from 'viking-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Switch
+      checked={checked}
+      onChange={checked => {
+        setChecked(checked);
+      }}
+    />
+  );
+};
+```
+
+## API
+
+### Switch Props
+
+| 属性              | 说明             | 类型                         | 默认值      |
+| ----------------- | ---------------- | ---------------------------- | ----------- |
+| checked           | 指定当前是否选中 | `boolean`                    | -           |
+| defaultChecked    | 初始是否选中     | `boolean`                    | `false`     |
+| disabled          | 是否禁用         | `boolean`                    | `false`     |
+| size              | 开关大小         | `'sm' \| 'lg' \| 'default'`  | `'default'` |
+| loading           | 加载中的开关     | `boolean`                    | `false`     |
+| onChange          | 变化时回调函数   | `(checked: boolean) => void` | -           |
+| checkedChildren   | 选中时的内容     | `React.ReactNode`            | -           |
+| unCheckedChildren | 非选中时的内容   | `React.ReactNode`            | -           |
+| autoFocus         | 自动获取焦点     | `boolean`                    | `false`     |
+
+### Switch Methods
+
+| 名称  | 说明     |
+| ----- | -------- |
+| focus | 获取焦点 |
+| blur  | 移除焦点 |

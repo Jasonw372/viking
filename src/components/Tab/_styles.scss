@@ -1,7 +1,9 @@
 @use '../../styles/variables';
 
 .tabs {
-  .tabs-nav { 
+  display: flex;
+  flex-direction: column;
+  .tabs-nav {
     display: flex;
     color: variables.$body-color;
     background-color: variables.$body-bg;
@@ -33,10 +35,11 @@
   }
 }
 
-.nav-line{
+.nav-line {
   .tabs-nav-item {
     &.is-active {
-      border-bottom: variables.$nav-tabs-border-width * 2 solid  variables.$nav-tabs-link-active-color;
+      border-bottom: variables.$nav-tabs-border-width * 2 solid
+        variables.$nav-tabs-link-active-color;
     }
   }
 }
@@ -44,12 +47,13 @@
 .nav-card {
   .tabs-nav-item {
     border: variables.$nav-tabs-border-width solid transparent;
-    margin-bottom: - variables.$nav-tabs-border-width;
+    margin-bottom: variables.$nav-tabs-border-width;
     &.is-active {
       background-color: variables.$nav-tabs-link-active-bg;
       border-color: variables.$nav-tabs-link-active-border-color;
       border-top-left-radius: variables.$nav-tabs-border-radius;
       border-top-right-radius: variables.$nav-tabs-border-radius;
+      margin-bottom: variables.$nav-tabs-border-width * -1;
     }
   }
 }

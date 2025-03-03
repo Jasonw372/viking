@@ -1,0 +1,104 @@
+import { Tab } from 'viking-design';
+
+# Tab 标签页
+
+`Tab` 组件用于在多个选项卡之间切换，通常用于展示和切换不同的内容。
+
+## 使用
+
+```ts
+import { Tab } from 'viking-design';
+```
+
+## 代码演示
+
+### 基础用法
+
+```tsx
+import { Tab } from 'viking-design';
+
+<Tab defaultIndex={0}>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+```
+
+<Tab defaultIndex={0}>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+
+### 卡片式标签页
+
+```tsx
+import { Tab } from 'viking-design';
+
+<Tab defaultIndex={0} type="card">
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+```
+
+<Tab defaultIndex={0} type="card">
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+
+### 禁用标签项
+
+```tsx
+import { Tab } from 'viking-design';
+
+<Tab defaultIndex={0}>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2" disabled>内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+```
+
+<Tab defaultIndex={0}>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2" disabled>内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+
+### 自定义样式标签页
+
+```tsx
+import { Tab } from 'viking-design';
+
+<Tab
+  defaultIndex={0}
+  style={{ backgroundColor: '#f7f7f7', borderRadius: '4px' }}
+>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+```
+
+<Tab
+  defaultIndex={0}
+  style={{ backgroundColor: '#f7f7f7', borderRadius: '4px' }}
+>
+  <Tab.Item label="Tab 1">内容 1</Tab.Item>
+  <Tab.Item label="Tab 2">内容 2</Tab.Item>
+  <Tab.Item label="Tab 3">内容 3</Tab.Item>
+</Tab>
+
+## API
+
+| 属性         | 说明                         | 类型                                  | 默认值  |
+| ------------ | ---------------------------- | ------------------------------------- | ------- |
+| defaultIndex | 默认选中的标签索引           | number                                | 0       |
+| activeIndex  | 当前活动的标签索引           | number                                | -       |
+| onSelect     | 切换标签时的回调函数         | (selectedIndex: number) => void       | -       |
+| className    | 自定义类名                   | string                                | -       |
+| style        | 自定义样式                   | React.CSSProperties                   | -       |
+| type         | 标签类型（line 或 card）     | 'line' \| 'card'                      | line    |
+
+
