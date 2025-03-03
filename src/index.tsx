@@ -21,3 +21,4 @@ export { default as Switch } from './components/Switch';
 export { default as Tab } from './components/Tab';
 export { default as Transition } from './components/Transition';
 export { default as Upload } from './components/Upload';
+export { default as Tooltip } from './components/Tooltip';

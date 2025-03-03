@@ -1,0 +1,197 @@
+# Tooltip 文字提示
+import { Tooltip, Button, Flex } from 'viking-design';
+
+`Tooltip` 是一个简单的文字提示组件，鼠标悬停、点击或聚焦时可以显示提示文字。
+
+## 基础用法
+
+最简单的文字提示。
+
+```tsx
+import { Tooltip, Button } from 'viking-design';
+
+export default () => (
+  <Tooltip title="这是一个提示文本">
+    <Button>鼠标悬停查看提示</Button>
+  </Tooltip>
+);
+```
+
+<Tooltip title="这是一个提示文本">
+  <Button>鼠标悬停查看提示</Button>
+</Tooltip>
+
+## 不同位置
+
+支持 4 个不同的方向显示。
+
+```tsx
+import { Tooltip, Button, Flex } from 'viking-design';
+
+export default () => (
+  <Flex direction="column" gap={50}>
+    <Flex gap={30}>
+      <Tooltip placement="top" title="顶部提示">
+        <Button>上</Button>
+      </Tooltip>
+      <Tooltip placement="bottom" title="底部提示">
+        <Button>下</Button>
+      </Tooltip>
+    </Flex>
+    <Flex gap={30}>
+      <Tooltip placement="left" title="左侧提示">
+        <Button>左</Button>
+      </Tooltip>
+      <Tooltip placement="right" title="右侧提示">
+        <Button>右</Button>
+      </Tooltip>
+    </Flex>
+  </Flex>
+);
+```
+
+<Flex direction="column" gap={50}>
+  <Flex gap={30}>
+    <Tooltip placement="top" title="顶部提示">
+      <Button>上</Button>
+    </Tooltip>
+    <Tooltip placement="bottom" title="底部提示">
+      <Button>下</Button>
+    </Tooltip>
+  </Flex>
+  <Flex gap={30}>
+    <Tooltip placement="left" title="左侧提示">
+      <Button>左</Button>
+    </Tooltip>
+    <Tooltip placement="right" title="右侧提示">
+      <Button>右</Button>
+    </Tooltip>
+  </Flex>
+</Flex>
+
+## 触发方式
+
+支持鼠标悬停、点击和聚焦三种触发方式。
+
+```tsx
+import { Tooltip, Button } from 'viking-design';
+
+export default () => (
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Tooltip trigger="hover" title="悬停触发">
+      <Button>悬停</Button>
+    </Tooltip>
+    <Tooltip trigger="click" title="点击触发">
+      <Button>点击</Button>
+    </Tooltip>
+    <Tooltip trigger="focus" title="聚焦触发">
+      <Button>聚焦</Button>
+    </Tooltip>
+  </div>
+);
+```
+
+<div style={{ display: 'flex', gap: '20px' }}>
+  <Tooltip trigger="hover" title="悬停触发">
+    <Button>悬停</Button>
+  </Tooltip>
+  <Tooltip trigger="click" title="点击触发">
+    <Button>点击</Button>
+  </Tooltip>
+  <Tooltip trigger="focus" title="聚焦触发">
+    <Button>聚焦</Button>
+  </Tooltip>
+</div>
+
+## 自定义样式
+
+可以自定义背景颜色、文字颜色和边框样式。
+
+```tsx
+import { Tooltip, Button } from 'viking-design';
+
+export default () => (
+  <Tooltip
+    title="自定义样式"
+    style={{
+      backgroundColor: 'red',
+      color: 'yellow',
+      border: '1px solid #f50',
+      borderRadius: '4px',
+    }}
+    placement="top"
+  >
+    <Button>自定义样式</Button>
+  </Tooltip>
+);
+```
+
+<Tooltip
+  title="自定义样式"
+  style={{
+    backgroundColor: 'red',
+    color: 'yellow',
+    border: '1px solid #f50',
+    borderRadius: '4px',
+  }}
+  placement="top"
+>
+  <Button>自定义样式</Button>
+</Tooltip>
+
+## 预设颜色
+
+使用 `color` 属性可以设置预设的背景颜色。
+
+```tsx
+import { Tooltip, Button } from 'viking-design';
+
+export default () => (
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Tooltip title="默认颜色" placement="top">
+      <Button>默认</Button>
+    </Tooltip>
+    <Tooltip title="自定义红色" placement="top" color="#ff4d4f">
+      <Button>红色</Button>
+    </Tooltip>
+    <Tooltip title="自定义蓝色" placement="top" color="#1890ff">
+      <Button>蓝色</Button>
+    </Tooltip>
+    <Tooltip title="自定义绿色" placement="top" color="#52c41a">
+      <Button>绿色</Button>
+    </Tooltip>
+  </div>
+);
+```
+
+<div style={{ display: 'flex', gap: '20px' }}>
+  <Tooltip title="默认颜色" placement="top">
+    <Button>默认</Button>
+  </Tooltip>
+  <Tooltip title="自定义红色" placement="top" color="#ff4d4f">
+    <Button>红色</Button>
+  </Tooltip>
+  <Tooltip title="自定义蓝色" placement="top" color="#1890ff">
+    <Button>蓝色</Button>
+  </Tooltip>
+  <Tooltip title="自定义绿色" placement="top" color="#52c41a">
+    <Button>绿色</Button>
+  </Tooltip>
+</div>
+
+## API
+
+### Tooltip
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| title | 提示文字 | `ReactNode` | - |
+| trigger | 触发行为 | `'hover' \| 'click' \| 'focus'` | `'hover'` |
+| placement | 气泡框位置 | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| visible | 用于手动控制浮层显隐 | `boolean` | - |
+| mouseEnterDelay | 鼠标移入后延时多少才显示 | `number` | `0.1` |
+| mouseLeaveDelay | 鼠标移出后延时多少才隐藏 | `number` | `0.1` |
+| color | 背景颜色 | `string` | - |
+| className | 自定义类名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onVisibleChange | 显示隐藏的回调 | `(visible: boolean) => void` | - |
