@@ -168,7 +168,7 @@ const config: Config = {
       'docusaurus-plugin-module-alias',
       {
         alias: {
-          'viking-design': path.resolve(__dirname, '../src/index.tsx'),
+          'viking-design': path.resolve(__dirname, '../src'),
         },
       }
     ],

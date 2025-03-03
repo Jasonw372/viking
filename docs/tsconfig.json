@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "viking-design": [
-        "../src/index.tsx"
+        "../src"
       ],
     }
   },

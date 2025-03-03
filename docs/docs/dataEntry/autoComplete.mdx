@@ -1,0 +1,147 @@
+import CustomAutoComplete from '../../demos/autoComplete/CustomAutoComplete';
+import DefaultAutoComplete from '../../demos/autoComplete/DefaultAutoComplete';
+
+# AutoComplete 自动完成
+
+`AutoComplete` 组件提供自动完成功能，根据用户的输入建议选项。
+
+## 使用
+
+```ts
+import { AutoComplete } from 'viking-design';
+```
+
+## 代码演示
+
+### 默认用法
+
+```tsx
+import { AutoComplete } from 'viking-design';
+import React, { useState } from 'react';
+
+
+const options = ['Apple', 'Banana', 'Orange'];
+
+const DefaultAutoComplete = () => {
+  const [value, setValue] = useState('');
+  const handleSearch = (query: string) => {
+    return options
+      .filter(option => option.toLowerCase().includes(query.toLowerCase()))
+      .map(option => ({ value: option }));
+  };
+
+  return (
+    <div style={{width: '300px', margin: '50px auto'}}>
+      <AutoComplete
+        placeholder="请输入..."
+        fetchSuggestions={handleSearch}
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        onSelect={item => {
+          setValue(item.value);
+        }}
+      />
+    </div>
+  );
+};
+
+export default DefaultAutoComplete;
+```
+
+<DefaultAutoComplete />
+
+### 自定义渲染样式
+
+```tsx
+import React, { useState } from 'react';
+import {AutoComplete} from 'viking-design';
+import { DataSourceType } from 'viking-design/components/AutoComplete';
+
+interface ProgrammingLanguageItem {
+  value: string;
+  icon: string;
+}
+
+const languages: ProgrammingLanguageItem[] = [
+  { value: 'JavaScript', icon: '📘' },
+  { value: 'TypeScript', icon: '📘' },
+  { value: 'Python', icon: '🐍' },
+  { value: 'Java', icon: '☕' },
+  { value: 'C#', icon: '📘' },
+  { value: 'Ruby', icon: '💎' },
+  { value: 'Go', icon: '🔵' },
+  { value: 'PHP', icon: '🐘' },
+  { value: 'Swift', icon: '🍎' },
+  { value: 'Kotlin', icon: '🤖' },
+  { value: 'Rust', icon: '⚙️' },
+  { value: 'Scala', icon: '🔴' },
+  { value: 'Haskell', icon: '🎯' },
+  { value: 'Dart', icon: '🎯' },
+  { value: 'R', icon: '📊' },
+  { value: 'MATLAB', icon: '🔢' },
+  { value: 'Perl', icon: '🐪' },
+  { value: 'Lua', icon: '🌙' },
+  { value: 'Shell', icon: '🐚' },
+  { value: 'SQL', icon: '💾' },
+];
+
+const CustomAutoComplete: React.FC = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  // 获取建议项
+  const fetchSuggestions = (keyword: string): ProgrammingLanguageItem[] => {
+    return languages.filter(lang => lang.value.toLowerCase().startsWith(keyword.toLowerCase()));
+  };
+
+  // 渲染自定义选项
+  const renderOption = (item: DataSourceType<ProgrammingLanguageItem>) => {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span role="img" aria-label="icon">{item.icon}</span>
+        <span>{item.value}</span>
+      </div>
+    );
+  };
+
+  return (
+    <div style={{ width: '300px', margin: '50px auto' }}>
+      <AutoComplete
+        placeholder="搜索编程语言..."
+        fetchSuggestions={fetchSuggestions}
+        renderOption={renderOption}
+        onChange={e => setInputValue(e.target.value)}
+        onSelect={item => console.log('选择:', item)}
+      />
+      <p>输入值: {inputValue}</p>
+    </div>
+  );
+};
+
+export default CustomAutoComplete;
+```
+
+<CustomAutoComplete />
+
+## API
+
+### AutoComplete Props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| fetchSuggestions | 返回输入建议的方法，可以拿到当前的输入，返回同步的数组或者 Promise | `(keyword: string) => DataSourceType[] \| Promise<DataSourceType[]>` | - |
+| onSelect | 选择选项时触发的回调 | `(item: DataSourceType) => void` | - |
+| defaultValue | 输入框默认值 | `string` | - |
+| renderOption | 自定义渲染下拉项，支持 JSX | `(item: DataSourceType) => ReactNode` | - |
+
+除了上述属性外，AutoComplete 组件还支持 Input 组件的所有属性（除了 `onSelect` 和 `defaultValue`）。
+
+### DataSourceType
+
+```ts
+interface DataSourceObject {
+  value: string;
+  [key: string]: any;
+}
+```
+
+`DataSourceType` 是一个泛型类型，它继承自 `DataSourceObject`。这意味着你可以传入任何包含 `value` 属性的对象作为数据源。例如：
