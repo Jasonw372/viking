@@ -1,0 +1,117 @@
+# Avatar 头像
+import { Avatar } from 'viking-design';
+
+`Avatar`用来代表用户或事物，支持图片、图标或字符展示。
+
+## 基础用法
+
+最简单的头像使用方式。
+
+```tsx
+import { Avatar } from 'viking-design';
+
+export default () => (
+  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="用户头像" />
+);
+```
+
+<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="用户头像" />
+
+## 不同尺寸
+
+头像有五种预设尺寸：small、default、large、xl、2xl，也可以设置数字来自定义尺寸。
+
+```tsx
+import { Avatar } from 'viking-design';
+
+export default () => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+    <Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size="xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size="2xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+  </div>
+);
+```
+
+<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+	<Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar size="xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar size="2xl" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+</div>
+
+## 不同形状
+
+支持圆形和方形两种形状。
+
+```tsx
+import { Avatar } from 'viking-design';
+
+export default () => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+    <Avatar shape="circle" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar shape="square" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+  </div>
+);
+```
+
+<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+	<Avatar shape="circle" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+	<Avatar shape="square" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+</div>
+
+## 文字头像
+
+当无法显示图片时，可以使用文字作为替代。
+
+```tsx
+import { Avatar } from 'viking-design';
+
+export default () => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+    <Avatar>BL</Avatar>
+    <Avatar>SN</Avatar>
+    <Avatar>JL</Avatar>
+  </div>
+);
+```
+
+<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+	<Avatar>BL</Avatar>
+	<Avatar>SN</Avatar>
+	<Avatar>JL</Avatar>
+</div>
+## 图片加载失败
+
+图片加载失败时会显示 fallback 内容。
+
+```tsx
+import { Avatar } from 'viking-design';
+
+export default () => (
+  <Avatar src="invalid-image.png" onError={() => console.warn('图片加载失败')}>
+    err
+  </Avatar>
+);
+```
+
+<Avatar src="invalid-image.png" onError={() => console.warn('图片加载失败')}>err</Avatar>
+
+## API
+
+### Avatar
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| size | 头像尺寸 | `'small' \| 'default' \| 'large' \| 'xl' \| '2xl' \| number` | `'default'` |
+| shape | 头像形状 | `'circle' \| 'square'` | `'circle'` |
+| src | 图片地址 | `string` | - |
+| alt | 图片无法显示时的替代文本 | `string` | - |
+| children | 文本内容，当没有图片时显示 | `ReactNode` | - |
+| className | 自定义类名 | `string` | - |
+| onError | 图片加载失败时的回调 | `() => void` | - |

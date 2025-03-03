@@ -35,7 +35,18 @@ const Avatar: React.FC<AvatarProps> = props => {
         height: typeof size === 'number' ? `${size}px` : undefined,
       }}
     >
-      {src && isImgExist ? <img src={src} alt={alt} onError={handleError} /> : children}
+      {src && isImgExist ? (
+        <img
+          src={src}
+          alt={alt}
+          onError={handleError}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      ) : typeof children === 'string' ? (
+        <span style={{ whiteSpace: 'nowrap' }}>{children}</span>
+      ) : (
+        children
+      )}
     </span>
   );
 };

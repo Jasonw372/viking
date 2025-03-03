@@ -57,13 +57,13 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = props => {
   if (btnType === 'link') {
     return (
       <a className={classes} href={href} {...restProps}>
-        {children}
+        {typeof children === 'string' ? children.trim() : children}
       </a>
     );
   } else {
     return (
       <button className={classes} disabled={disabled} {...restProps}>
-        {children}
+        {typeof children === 'string' ? children.trim() : children}
       </button>
     );
   }
