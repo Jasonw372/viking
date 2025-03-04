@@ -3,8 +3,10 @@ import { useRef, useState } from 'react';
 import Flex from '../Flex';
 import Button from '../Button';
 import Checkbox from './index';
-import { Col, Row } from '../Grid';
+import Grid from '../Grid';
 import { CheckboxRef } from './checkBox';
+
+const { Col, Row } = Grid;
 
 const meta: Meta<typeof Checkbox> = {
   title: 'components/Checkbox',

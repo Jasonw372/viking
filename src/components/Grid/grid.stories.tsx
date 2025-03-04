@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Row, Col } from './grid';
 import Flex from '../Flex';
+import { Row, Col } from './grid';
 
 const meta = {
   title: 'Components/Grid',
