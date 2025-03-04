@@ -1,6 +1,7 @@
 @use '../../styles/variables';
 
 .menu {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -8,6 +9,7 @@
   list-style: none;
   background: variables.$menu-bg;
   color: variables.$menu-color;
+  overflow: visible;
   border-bottom: variables.$menu-border-width solid variables.$menu-border-color;
   box-shadow: variables.$menu-box-shadow;
 
@@ -50,7 +52,6 @@
   }
 
   .submenu-container {
-    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;

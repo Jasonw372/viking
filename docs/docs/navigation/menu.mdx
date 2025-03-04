@@ -4,6 +4,7 @@ title: Menu 菜单
 ---
 
 import { Menu } from 'viking-design';
+import SubMenuDemo from '../../demos/menu/subMenuDemo'
 
 # Menu 菜单
 
@@ -30,14 +31,13 @@ import { Menu } from 'viking-design';
 </Menu>;
 ```
 
-<div>
-  <Menu defaultIndex="0">
-    <Menu.Item>首页</Menu.Item>
-    <Menu.Item>关于我们</Menu.Item>
-    <Menu.Item>产品介绍</Menu.Item>
-    <Menu.Item>联系我们</Menu.Item>
-  </Menu>
-</div>
+
+<Menu defaultIndex="0">
+  <Menu.Item>首页</Menu.Item>
+  <Menu.Item>关于我们</Menu.Item>
+  <Menu.Item>产品介绍</Menu.Item>
+  <Menu.Item>联系我们</Menu.Item>
+</Menu>
 
 ### 垂直菜单
 
@@ -55,8 +55,6 @@ import { Menu } from 'viking-design';
 </Menu>;
 ```
 
-<!-- TODO: 子菜单无法显示bug -->
-
 <Menu defaultIndex="0" mode="vertical">
   <Menu.Item>首页</Menu.Item>
   <Menu.Item>关于我们</Menu.Item>
@@ -66,6 +64,7 @@ import { Menu } from 'viking-design';
   </Menu.SubMenu>
   <Menu.Item>联系我们</Menu.Item>
 </Menu>
+
 
 ### 带子菜单的菜单
 
@@ -83,15 +82,8 @@ import { Menu } from 'viking-design';
 </Menu>;
 ```
 
-<Menu defaultIndex="0">
-  <Menu.Item>首页</Menu.Item>
-  <Menu.SubMenu title="产品介绍">
-    <Menu.Item>产品1</Menu.Item>
-    <Menu.Item>产品2</Menu.Item>
-    <Menu.Item>产品3</Menu.Item>
-  </Menu.SubMenu>
-  <Menu.Item>联系我们</Menu.Item>
-</Menu>
+<SubMenuDemo/>
+
 ### 禁用菜单项
 
 ```tsx
