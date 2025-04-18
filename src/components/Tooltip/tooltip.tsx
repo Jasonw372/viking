@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import Trigger from 'rc-trigger';
 import classNames from 'classnames';
 
@@ -33,87 +33,101 @@ export interface TooltipProps {
   color?: string;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
-  title,
-  trigger = 'hover',
-  placement = 'top',
-  children,
-  className,
-  style = {},
-  visible,
-  mouseEnterDelay = 0.1,
-  mouseLeaveDelay = 0.1,
-  onVisibleChange,
-  color,
-}) => {
-  const resetColor = color ? color : style['backgroundColor'];
+const Tooltip = forwardRef<any, TooltipProps>(
+  (
+    {
+      title,
+      trigger = 'hover',
+      placement = 'top',
+      children,
+      className,
+      style = {},
+      visible,
+      mouseEnterDelay = 0.1,
+      mouseLeaveDelay = 0.1,
+      onVisibleChange,
+      color,
+    },
+    ref,
+  ) => {
+    const resetColor = color ? color : style['backgroundColor'];
+    const triggerRef = useRef<any>(null);
 
-  const overlay = (
-    <div
-      className={classNames('tooltip-content', className)}
-      style={
-        resetColor
-          ? ({
-              ['--tooltip-color' as string]: resetColor,
-              ...style,
-            } as React.CSSProperties)
-          : style
-      }
-    >
-      {title}
-    </div>
-  );
+    useImperativeHandle(ref, () => ({
+      forceAlign: () => {
+        if (triggerRef.current && triggerRef.current.forcePopupAlign) {
+          triggerRef.current.forcePopupAlign();
+        }
+      },
+    }));
 
-  const [internalVisible, setInternalVisible] = useState(false);
+    const overlay = (
+      <div
+        className={classNames('tooltip-content', className)}
+        style={
+          resetColor
+            ? ({
+                ['--tooltip-color' as string]: resetColor,
+                ...style,
+              } as React.CSSProperties)
+            : style
+        }
+      >
+        {title}
+      </div>
+    );
 
-  const handleVisibleChange = (vis: boolean) => {
-    setInternalVisible(vis);
-    onVisibleChange?.(vis);
-    console.log(`Tooltip visibility changed: ${vis}`);
-  };
+    const [internalVisible, setInternalVisible] = useState(false);
 
-  return (
-    <Trigger
-      action={[trigger]}
-      popup={overlay}
-      popupPlacement={placement}
-      popupClassName="tooltip-popup"
-      mouseEnterDelay={mouseEnterDelay}
-      mouseLeaveDelay={mouseLeaveDelay}
-      popupVisible={visible !== undefined ? visible : internalVisible}
-      destroyPopupOnHide={true}
-      getPopupContainer={() => document.body}
-      onPopupVisibleChange={handleVisibleChange}
-      builtinPlacements={{
-        top: {
-          points: ['bc', 'tc'],
-          offset: [0, -10],
-          overflow: { adjustX: true, adjustY: true },
-          targetOffset: [0, 0],
-        },
-        bottom: {
-          points: ['tc', 'bc'],
-          offset: [0, 10],
-          overflow: { adjustX: true, adjustY: true },
-          targetOffset: [0, 0],
-        },
-        left: {
-          points: ['cr', 'cl'],
-          offset: [-10, 0],
-          overflow: { adjustX: true, adjustY: true },
-          targetOffset: [0, 0],
-        },
-        right: {
-          points: ['cl', 'cr'],
-          offset: [10, 0],
-          overflow: { adjustX: true, adjustY: true },
-          targetOffset: [0, 0],
-        },
-      }}
-    >
-      {children}
-    </Trigger>
-  );
-};
+    const handleVisibleChange = (vis: boolean) => {
+      setInternalVisible(vis);
+      onVisibleChange?.(vis);
+    };
+
+    return (
+      <Trigger
+        ref={triggerRef}
+        action={[trigger]}
+        popup={overlay}
+        popupPlacement={placement}
+        popupClassName="tooltip-popup"
+        mouseEnterDelay={mouseEnterDelay}
+        mouseLeaveDelay={mouseLeaveDelay}
+        popupVisible={visible !== undefined ? visible : internalVisible}
+        destroyPopupOnHide={false}
+        getPopupContainer={() => document.body}
+        onPopupVisibleChange={handleVisibleChange}
+        builtinPlacements={{
+          top: {
+            points: ['bc', 'tc'],
+            offset: [0, -10],
+            overflow: { adjustX: true, adjustY: true },
+            targetOffset: [0, 0],
+          },
+          bottom: {
+            points: ['tc', 'bc'],
+            offset: [0, 10],
+            overflow: { adjustX: true, adjustY: true },
+            targetOffset: [0, 0],
+          },
+          left: {
+            points: ['cr', 'cl'],
+            offset: [-10, 0],
+            overflow: { adjustX: true, adjustY: true },
+            targetOffset: [0, 0],
+          },
+          right: {
+            points: ['cl', 'cr'],
+            offset: [10, 0],
+            overflow: { adjustX: true, adjustY: true },
+            targetOffset: [0, 0],
+          },
+        }}
+      >
+        {children}
+      </Trigger>
+    );
+  },
+);
 
 export default Tooltip;

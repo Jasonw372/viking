@@ -22,3 +22,16 @@ export const Default: Story = {
     defaultValue: 50,
   },
 };
+
+export const Vertical: Story = {
+  args: {
+    min: 0,
+    max: 100,
+    defaultValue: 50,
+    vertical: true,
+    sliderHeight: 400,
+  },
+  render: args => {
+    return <Slider {...args} />;
+  },
+};
